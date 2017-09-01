@@ -10,7 +10,7 @@ public class FlickeringLight : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if(Random.Range(0,100) <= 20)
+        if(Random.Range(0,100) <= 10)
             gameObject.GetComponent<Light>().intensity = Random.Range(minIntensity, maxIntensity);
 	}
 }
