@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelGenerationManager : MonoBehaviour {
     public GameObject[] RoomPrefabs;
     private LevelGenerationHelper levelGenerationHelper;
-    private Bounds[] roomBounds;
+    private Bounds[] roomBounds = new Bounds[100];
     // Use this for initialization
     void Start () {
         RoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms");
@@ -15,6 +15,16 @@ public class LevelGenerationManager : MonoBehaviour {
         {
             roomBounds[i] = GetChildrenRenderingBounds(RoomPrefabs[i]);
         }
+        for(int y = 0; y < levelGenerationHelper.gridSize; y++)
+            for(int x = 0; x < levelGenerationHelper.gridSize; x++)
+            {
+                if(levelGenerationHelper.roomPlacementGrid[x,y] == 1)
+                {
+                    Instantiate(RoomPrefabs[0], new Vector3(x*20, 0, y*12), transform.rotation);
+                }
+            }
+        
+
 	}
 
 
