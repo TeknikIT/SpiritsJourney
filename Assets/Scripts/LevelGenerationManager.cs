@@ -20,7 +20,8 @@ public class LevelGenerationManager : MonoBehaviour {
             {
                 if(levelGenerationHelper.roomPlacementGrid[x,y] == 1)
                 {
-                    Instantiate(RoomPrefabs[0], new Vector3(x*20, 0, y*12), transform.rotation);
+                    int randomRoom = Random.Range(0, RoomPrefabs.Length);
+                    Instantiate(RoomPrefabs[randomRoom], new Vector3(x * roomBounds[randomRoom].size.x, 0, y * roomBounds[randomRoom].size.z), transform.rotation);
                 }
             }
         
