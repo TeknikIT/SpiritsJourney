@@ -57,7 +57,7 @@ public class LevelGenerationHelper {
         {
             PickARandomRoomAndDirection();
         }
-        WriteGridToConsole();
+        
     }
 
     private void GenerateEmptyGrid()

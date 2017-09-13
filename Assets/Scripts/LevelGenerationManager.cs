@@ -6,28 +6,40 @@ public class LevelGenerationManager : MonoBehaviour {
     public GameObject[] RoomPrefabs;
     private LevelGenerationHelper levelGenerationHelper;
     private Bounds[] roomBounds = new Bounds[100];
+    private List<GameObject> rooms;
     // Use this for initialization
     void Start () {
+        InstantiateRooms();   
+	}
+
+    void InstantiateRooms()
+    {
+        rooms = new List<GameObject>();
         RoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms");
-        levelGenerationHelper= new LevelGenerationHelper(10, 10);
+        levelGenerationHelper = new LevelGenerationHelper(10, 10);
         //Place Rooms
-        for(int i = 0; i < RoomPrefabs.Length; i++)
+        for (int i = 0; i < RoomPrefabs.Length; i++)
         {
             roomBounds[i] = GetChildrenRenderingBounds(RoomPrefabs[i]);
         }
-        for(int y = 0; y < levelGenerationHelper.gridSize; y++)
-            for(int x = 0; x < levelGenerationHelper.gridSize; x++)
+        for (int y = 0; y < levelGenerationHelper.gridSize; y++)
+            for (int x = 0; x < levelGenerationHelper.gridSize; x++)
             {
-                if(levelGenerationHelper.roomPlacementGrid[x,y] == 1)
+                if (levelGenerationHelper.roomPlacementGrid[x, y] == 1)
                 {
                     int randomRoom = Random.Range(0, RoomPrefabs.Length);
-                    Instantiate(RoomPrefabs[randomRoom], new Vector3(x * roomBounds[randomRoom].size.x, 0, y * roomBounds[randomRoom].size.z), transform.rotation);
+                    rooms.Add(Instantiate(RoomPrefabs[randomRoom], new Vector3(x * roomBounds[randomRoom].size.x, 0, y * roomBounds[randomRoom].size.z), transform.rotation) as GameObject);
                 }
             }
-        
+    }
 
-	}
-
+    void ClearAllRooms()
+    {
+        foreach (GameObject go in rooms)
+        {
+            Object.Destroy(go);
+        }
+    }
 
     Bounds GetChildrenRenderingBounds(GameObject go)
     {
@@ -50,6 +62,10 @@ public class LevelGenerationManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+		if(Input.GetKeyUp(KeyCode.Space))
+        {
+            ClearAllRooms();
+            InstantiateRooms();
+        }
 	}
 }
