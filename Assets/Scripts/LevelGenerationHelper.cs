@@ -41,18 +41,20 @@ public class LevelGenerationHelper {
     {
         _gridSize = gridSize;
         _levelSize = levelSize;
-        GenerateLevel();
+        GenerateLevel(); //Needs to be done if i want to regenerate at a later time
     }
 
     private void GenerateLevel()
     {
-        roomPlacementGrid = new int[gridSize, gridSize];
-        createdRooms = new List<Vector2>();
+        roomPlacementGrid = new int[gridSize, gridSize];//Creates the main grid
+        createdRooms = new List<Vector2>(); //This list will have all the rooms cordinates that are created.
+        //This is to be able to randomly pick one of them easily
         //Setup grid with a zero in every cell. Zero means no room.
         GenerateEmptyGrid();
         //Populate center piece and add it to the locator list. One means room.
         PlaceRoom(gridSize / 2, gridSize / 2);
 
+        //This statment checks if enough rooms have been created.
         while(createdRooms.Count < levelSize)
         {
             PickARandomRoomAndDirection();
@@ -62,6 +64,7 @@ public class LevelGenerationHelper {
 
     private void GenerateEmptyGrid()
     {
+        //Loops through every space in the grid and sets it to 0 (empty)
         for (int y = 0; y < gridSize; y++)
             for (int x = 0; x < gridSize; x++)
                 roomPlacementGrid[x, y] = 0;
@@ -69,28 +72,37 @@ public class LevelGenerationHelper {
 
     private void PlaceRoom(int x, int y)
     {
+        //makes the selected tile 1 and add it to the room list
         roomPlacementGrid[x, y] = 1;
         createdRooms.Add(new Vector2(x, y));
     }
 
     private void PlaceRoom(Vector2 roomCordinates, int directionIndex)
     {
+        //Sets the direction Vector based on the direction specified by the properties
         Vector2 direction = Vector2.zero;
         Vector2 resultingRoom;
-        if (directionIndex == 1)
-            direction = Vector2.up;
-        else if (directionIndex == 2)
-            direction = Vector2.left;
-        else if (directionIndex == 3)
-            direction = Vector2.down;
-        else if (directionIndex == 4)
-            direction = Vector2.right;
+        direction = Direction(directionIndex);
 
         resultingRoom = roomCordinates + direction;
 
         roomPlacementGrid[(int)resultingRoom.x, (int)resultingRoom.y] = 1;
         createdRooms.Add(new Vector2((int)resultingRoom.x, (int)resultingRoom.y));
 
+    }
+
+    private Vector2 Direction(int index)
+    {
+        if (index == 1)
+            return Vector2.up;
+        else if (index == 2)
+            return Vector2.left;
+        else if (index == 3)
+            return Vector2.down;
+        else if (index == 4)
+            return Vector2.right;
+        else
+            return Vector2.zero;
     }
 
     private bool Obstructed(Vector2 chosenRoom, int chosenDirection)
@@ -138,15 +150,24 @@ public class LevelGenerationHelper {
         return false;
     }
 
+    private bool ObstructedAndNoNeighbours(Vector2 chosenRoom, int chosenDirection)
+    {
+        Vector2 resultingVector = chosenRoom + Direction(chosenDirection);
+        //CONTINUE HERE
+        return false;
+    }
+
     private void PickARandomRoomAndDirection()
     {
         int chosenRoomNumber, chosenDirection;
+        //variables to hold the random values
         do
         {
             chosenRoomNumber = Random.Range(0, createdRooms.Count);
             chosenDirection = Random.Range(1, 4);
+            //Checks if the selected slot is occupied or not
         } while (Obstructed(createdRooms[chosenRoomNumber], chosenDirection));
-
+        //If the room isn't obstucted then we place a room. createdRooms is a Vector2 list.
         PlaceRoom(createdRooms[chosenRoomNumber], chosenDirection);
     }
 
