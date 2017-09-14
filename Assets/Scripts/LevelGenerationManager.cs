@@ -16,7 +16,7 @@ public class LevelGenerationManager : MonoBehaviour {
     {
         rooms = new List<GameObject>();
         RoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms");
-        levelGenerationHelper = new LevelGenerationHelper(10, 10);
+        levelGenerationHelper = new LevelGenerationHelper(11, 10);
         //Place Rooms
         for (int i = 0; i < RoomPrefabs.Length; i++)
         {

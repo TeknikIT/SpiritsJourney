@@ -153,7 +153,7 @@ public class LevelGenerationHelper {
     private bool ObstructedAndNeighbours(Vector2 chosenRoom, int chosenDirection)
     {
         Vector2 resultingVector = chosenRoom + Direction(chosenDirection);
-        if (NumberOfOccupiedNeighbours(chosenRoom) < 2)
+        if (NumberOfOccupiedNeighbours(resultingVector) <= 1 && !Obstructed(chosenRoom, chosenDirection))
         {
             return false;
         }
@@ -172,7 +172,6 @@ public class LevelGenerationHelper {
             {
                 counter++;
             }
-
         }
         return counter;
     }
@@ -186,7 +185,7 @@ public class LevelGenerationHelper {
             chosenRoomNumber = Random.Range(0, createdRooms.Count);
             chosenDirection = Random.Range(1, 4);
             //Checks if the selected slot is occupied or not
-        } while (Obstructed(createdRooms[chosenRoomNumber], chosenDirection));
+        } while (ObstructedAndNeighbours(createdRooms[chosenRoomNumber], chosenDirection));
         //If the room isn't obstucted then we place a room. createdRooms is a Vector2 list.
         PlaceRoom(createdRooms[chosenRoomNumber], chosenDirection);
     }
