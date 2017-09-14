@@ -150,11 +150,31 @@ public class LevelGenerationHelper {
         return false;
     }
 
-    private bool ObstructedAndNoNeighbours(Vector2 chosenRoom, int chosenDirection)
+    private bool ObstructedAndNeighbours(Vector2 chosenRoom, int chosenDirection)
     {
         Vector2 resultingVector = chosenRoom + Direction(chosenDirection);
-        //CONTINUE HERE
-        return false;
+        if (NumberOfOccupiedNeighbours(chosenRoom) < 2)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    private int NumberOfOccupiedNeighbours(Vector2 centerRoom)
+    {
+        int counter = 0;
+        for(int i = 0; i < 4; i++)
+        {
+            if (roomPlacementGrid[(int)(centerRoom + Direction(i)).x, (int)(centerRoom + Direction(i)).y] != 0)
+            {
+                counter++;
+            }
+
+        }
+        return counter;
     }
 
     private void PickARandomRoomAndDirection()
