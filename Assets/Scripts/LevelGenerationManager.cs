@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelGenerationManager : MonoBehaviour {
     public GameObject[] RoomPrefabs;
+    public int levelSize;
     private LevelGenerationHelper levelGenerationHelper;
     private Bounds[] roomBounds = new Bounds[100];
     private List<GameObject> rooms;
@@ -16,13 +17,16 @@ public class LevelGenerationManager : MonoBehaviour {
     {
         rooms = new List<GameObject>();
         RoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms");
-        levelGenerationHelper = new LevelGenerationHelper(10);
+        levelGenerationHelper = new LevelGenerationHelper(levelSize);
         //Place Rooms
         for (int i = 0; i < RoomPrefabs.Length; i++)
         {
             roomBounds[i] = GetChildrenRenderingBounds(RoomPrefabs[i]);
         }
-        for (int y = 0; y < levelGenerationHelper.gridSize; y++)
+        /*
+         * This part was unnececary because i already have the cordinates of the rooms in the createdRooms list.
+         * Saved as a failsafe.
+         * for (int y = 0; y < levelGenerationHelper.gridSize; y++)
             for (int x = 0; x < levelGenerationHelper.gridSize; x++)
             {
                 if (levelGenerationHelper.roomPlacementGrid[x, y] == 1)
@@ -31,6 +35,23 @@ public class LevelGenerationManager : MonoBehaviour {
                     rooms.Add(Instantiate(RoomPrefabs[randomRoom], new Vector3(x * roomBounds[randomRoom].size.x, 0, y * roomBounds[randomRoom].size.z), transform.rotation) as GameObject);
                 }
             }
+            */
+        
+        //Place the centerroom more central instead of it being far away when size changes
+        for(int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
+        {
+            levelGenerationHelper.createdRooms[i] = new Vector2(levelGenerationHelper.createdRooms[i].x - levelGenerationHelper.gridSize / 2,
+                levelGenerationHelper.createdRooms[i].y - levelGenerationHelper.gridSize / 2);
+        }
+            
+        for(int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
+        {
+            int randomRoom = Random.Range(0, RoomPrefabs.Length);
+            rooms.Add(Instantiate(RoomPrefabs[randomRoom], new Vector3(levelGenerationHelper.createdRooms[i].x * roomBounds[randomRoom].size.x, 
+                0, levelGenerationHelper.createdRooms[i].y * roomBounds[randomRoom].size.z), 
+                transform.rotation) as GameObject);
+            rooms[i].transform.parent = GameObject.Find("Rooms").transform;
+        }
     }
 
     void ClearAllRooms()
