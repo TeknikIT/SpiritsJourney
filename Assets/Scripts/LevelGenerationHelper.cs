@@ -7,6 +7,8 @@ public class LevelGenerationHelper {
     private int[,] _roomPlacementGrid;
     private List<Vector2> _createdRooms;
     private int _gridSize, _levelSize; //gridSize defines the dimensions of the grid. LevelSize defines the amount of rooms.
+    #region properties
+   
     public int[,] roomPlacementGrid
     {
         get { return _roomPlacementGrid; }
@@ -37,12 +39,13 @@ public class LevelGenerationHelper {
         get { return _levelSize; }
     }
 
-    public LevelGenerationHelper(int gridSize, int levelSize)
+    public LevelGenerationHelper(int levelSize)
     {
-        _gridSize = gridSize;
+        _gridSize = levelSize * 2;
         _levelSize = levelSize;
         GenerateLevel(); //Needs to be done if i want to regenerate at a later time
     }
+    #endregion
 
     private void GenerateLevel()
     {
@@ -75,6 +78,33 @@ public class LevelGenerationHelper {
         //makes the selected tile 1 and add it to the room list
         roomPlacementGrid[x, y] = 1;
         createdRooms.Add(new Vector2(x, y));
+    }
+
+    private void PickARandomRoomAndDirection()
+    {
+        int chosenRoomNumber, chosenDirection;
+        //variables to hold the random values
+        do
+        {
+            chosenRoomNumber = Random.Range(0, createdRooms.Count);
+            chosenDirection = Random.Range(1, 5);
+            //Checks if the selected slot is occupied or not
+        } while (ObstructedAndNeighbours(createdRooms[chosenRoomNumber], chosenDirection));
+        //If the room isn't obstucted then we place a room. createdRooms is a Vector2 list.
+        PlaceRoom(createdRooms[chosenRoomNumber], chosenDirection);
+    }
+
+    private bool ObstructedAndNeighbours(Vector2 chosenRoom, int chosenDirection)
+    {
+        Vector2 resultingVector = chosenRoom + Direction(chosenDirection);
+        if (NumberOfOccupiedNeighbours(resultingVector) <= 1 && !Obstructed(chosenRoom, chosenDirection))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     private void PlaceRoom(Vector2 roomCordinates, int directionIndex)
@@ -150,44 +180,18 @@ public class LevelGenerationHelper {
         return false;
     }
 
-    private bool ObstructedAndNeighbours(Vector2 chosenRoom, int chosenDirection)
-    {
-        Vector2 resultingVector = chosenRoom + Direction(chosenDirection);
-        if (NumberOfOccupiedNeighbours(resultingVector) <= 1 && !Obstructed(chosenRoom, chosenDirection))
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-
     private int NumberOfOccupiedNeighbours(Vector2 centerRoom)
     {
         int counter = 0;
-        for(int i = 0; i < 4; i++)
+        for(int i = 1; i < 5; i++)
         {
+            //Direction(i) is for the the suronding rooms
             if (roomPlacementGrid[(int)(centerRoom + Direction(i)).x, (int)(centerRoom + Direction(i)).y] != 0)
             {
                 counter++;
             }
         }
         return counter;
-    }
-
-    private void PickARandomRoomAndDirection()
-    {
-        int chosenRoomNumber, chosenDirection;
-        //variables to hold the random values
-        do
-        {
-            chosenRoomNumber = Random.Range(0, createdRooms.Count);
-            chosenDirection = Random.Range(1, 4);
-            //Checks if the selected slot is occupied or not
-        } while (ObstructedAndNeighbours(createdRooms[chosenRoomNumber], chosenDirection));
-        //If the room isn't obstucted then we place a room. createdRooms is a Vector2 list.
-        PlaceRoom(createdRooms[chosenRoomNumber], chosenDirection);
     }
 
     private void WriteGridToConsole()
