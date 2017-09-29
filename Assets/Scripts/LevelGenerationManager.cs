@@ -8,10 +8,16 @@ public class LevelGenerationManager : MonoBehaviour {
     private LevelGenerationHelper levelGenerationHelper;
     private Bounds[] roomBounds = new Bounds[100];
     private List<GameObject> rooms;
+    private List< Vector2> directions;
     // Use this for initialization
     void Start () {
-        InstantiateRooms();   
-	}
+        directions = new List<Vector2>();
+        directions.Add(Vector2.up);
+        directions.Add(Vector2.right);
+        directions.Add(Vector2.down);
+        directions.Add(Vector2.left);
+        InstantiateRooms();
+    }
 
     void InstantiateRooms()
     {
@@ -51,6 +57,37 @@ public class LevelGenerationManager : MonoBehaviour {
                 0, levelGenerationHelper.createdRooms[i].y * roomBounds[randomRoom].size.z), 
                 transform.rotation) as GameObject);
             rooms[i].transform.parent = GameObject.Find("Rooms").transform;
+            rooms[i].GetComponent<RoomManager>().Initialize();
+        }
+        //Make the array workable as an array again
+        for (int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
+        {
+            levelGenerationHelper.createdRooms[i] = new Vector2(levelGenerationHelper.createdRooms[i].x + levelGenerationHelper.gridSize / 2,
+                levelGenerationHelper.createdRooms[i].y + levelGenerationHelper.gridSize / 2);
+        }
+
+        //Open the correct doors
+        for (int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
+        {
+            CheckDoors(i);
+        }
+
+    }
+
+    void CheckDoors(int index)
+    {
+        for(int direction = 0; direction < 4; direction++)
+        {
+            Vector2 resultingVector = levelGenerationHelper.createdRooms[index] + directions[direction];
+
+            if (levelGenerationHelper.roomPlacementGrid[(int)resultingVector.x, (int)resultingVector.y] == 0)
+            {
+                rooms[index].GetComponent<RoomManager>().placeDoorCover(direction);
+            }
+            else
+            {
+                rooms[index].GetComponent<RoomManager>().placeDoor(direction);
+            }
         }
     }
 
