@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerationManager : MonoBehaviour {
-    public GameObject[] RoomPrefabs;
+    public GameObject[] GeneralRoomPrefabs, BossRoomPrefabs, StartingRoomPrefabs;
     public int levelSize;
     private LevelGenerationHelper levelGenerationHelper;
     private Bounds[] roomBounds = new Bounds[100];
@@ -22,50 +22,50 @@ public class LevelGenerationManager : MonoBehaviour {
     void InstantiateRooms()
     {
         rooms = new List<GameObject>();
-        RoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms");
+        GeneralRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/GeneralRooms");
+        BossRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/BossRooms");
+        StartingRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/StartingRooms");
         levelGenerationHelper = new LevelGenerationHelper(levelSize);
         //Place Rooms
-        for (int i = 0; i < RoomPrefabs.Length; i++)
+        for (int i = 0; i < GeneralRoomPrefabs.Length; i++)
         {
-            roomBounds[i] = GetChildrenRenderingBounds(RoomPrefabs[i]);
+            roomBounds[i] = GetChildrenRenderingBounds(GeneralRoomPrefabs[i]);
         }
-        /*
-         * This part was unnececary because i already have the cordinates of the rooms in the createdRooms list.
-         * Saved as a failsafe.
-         * for (int y = 0; y < levelGenerationHelper.gridSize; y++)
-            for (int x = 0; x < levelGenerationHelper.gridSize; x++)
-            {
-                if (levelGenerationHelper.roomPlacementGrid[x, y] == 1)
-                {
-                    int randomRoom = Random.Range(0, RoomPrefabs.Length);
-                    rooms.Add(Instantiate(RoomPrefabs[randomRoom], new Vector3(x * roomBounds[randomRoom].size.x, 0, y * roomBounds[randomRoom].size.z), transform.rotation) as GameObject);
-                }
-            }
-            */
-        
-        //Place the centerroom more central instead of it being far away when size changes
-        for(int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
-        {
-            levelGenerationHelper.createdRooms[i] = new Vector2(levelGenerationHelper.createdRooms[i].x - levelGenerationHelper.gridSize / 2,
-                levelGenerationHelper.createdRooms[i].y - levelGenerationHelper.gridSize / 2);
-        }
+       
+        int halfGridSize = levelGenerationHelper.gridSize / 2;
             
         for(int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
         {
-            int randomRoom = Random.Range(0, RoomPrefabs.Length);
-            rooms.Add(Instantiate(RoomPrefabs[randomRoom], new Vector3(levelGenerationHelper.createdRooms[i].x * roomBounds[randomRoom].size.x, 
-                0, levelGenerationHelper.createdRooms[i].y * roomBounds[randomRoom].size.z), 
-                transform.rotation) as GameObject);
-            rooms[i].transform.parent = GameObject.Find("Rooms").transform;
-            rooms[i].GetComponent<RoomManager>().Initialize();
+            switch(levelGenerationHelper.roomPlacementGrid[(int)levelGenerationHelper.createdRooms[i].x, (int)levelGenerationHelper.createdRooms[i].y]){
+                case 1:
+                    int randomGeneralRoom = Random.Range(0, GeneralRoomPrefabs.Length);
+                    rooms.Add(Instantiate(GeneralRoomPrefabs[randomGeneralRoom], new Vector3((levelGenerationHelper.createdRooms[i].x - halfGridSize) * roomBounds[randomGeneralRoom].size.x,
+                        0, (levelGenerationHelper.createdRooms[i].y - halfGridSize)* roomBounds[randomGeneralRoom].size.z),
+                        transform.rotation) as GameObject);
+                    rooms[i].transform.parent = GameObject.Find("Rooms").transform;
+                    rooms[i].GetComponent<RoomManager>().Initialize();
+                    break;
+                case 2:
+                    int randomStartingRoom = Random.Range(0, StartingRoomPrefabs.Length);
+                    rooms.Add(Instantiate(StartingRoomPrefabs[randomStartingRoom], new Vector3((levelGenerationHelper.createdRooms[i].x - halfGridSize) * roomBounds[randomStartingRoom].size.x,
+                        0, (levelGenerationHelper.createdRooms[i].y - halfGridSize) * roomBounds[randomStartingRoom].size.z),
+                        transform.rotation) as GameObject);
+                    rooms[i].transform.parent = GameObject.Find("Rooms").transform;
+                    rooms[i].GetComponent<RoomManager>().Initialize();
+                    break;
+                case 3:
+                    Debug.Log("placed boss");
+                    int randomBossRoom = Random.Range(0, BossRoomPrefabs.Length);
+                    rooms.Add(Instantiate(BossRoomPrefabs[randomBossRoom], new Vector3((levelGenerationHelper.createdRooms[i].x - halfGridSize) * roomBounds[randomBossRoom].size.x,
+                        0, (levelGenerationHelper.createdRooms[i].y - halfGridSize) * roomBounds[randomBossRoom].size.z),
+                        transform.rotation) as GameObject);
+                    rooms[i].transform.parent = GameObject.Find("Rooms").transform;
+                    rooms[i].GetComponent<RoomManager>().Initialize();
+                    break;
+            }
+            
         }
-        //Make the array workable as an array again
-        for (int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
-        {
-            levelGenerationHelper.createdRooms[i] = new Vector2(levelGenerationHelper.createdRooms[i].x + levelGenerationHelper.gridSize / 2,
-                levelGenerationHelper.createdRooms[i].y + levelGenerationHelper.gridSize / 2);
-        }
-
+        
         //Open the correct doors
         for (int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
         {

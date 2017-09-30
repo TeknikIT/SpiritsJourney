@@ -55,14 +55,16 @@ public class LevelGenerationHelper {
         //Setup grid with a zero in every cell. Zero means no room.
         GenerateEmptyGrid();
         //Populate center piece and add it to the locator list. One means room.
-        PlaceRoom(gridSize / 2, gridSize / 2);
+        PlaceRoom(gridSize / 2, gridSize / 2, 2);
 
         //This statment checks if enough rooms have been created.
         while(createdRooms.Count < levelSize)
         {
-            PickARandomRoomAndDirection();
+            if (createdRooms.Count == levelSize - 1)
+                PlaceSpecialRoom(3);
+            else
+                PickARandomRoomAndDirection();
         }
-        
     }
 
     private void GenerateEmptyGrid()
@@ -73,10 +75,10 @@ public class LevelGenerationHelper {
                 roomPlacementGrid[x, y] = 0;
     }
 
-    private void PlaceRoom(int x, int y)
+    private void PlaceRoom(int x, int y, int roomIndex)
     {
         //makes the selected tile 1 and add it to the room list
-        roomPlacementGrid[x, y] = 1;
+        roomPlacementGrid[x, y] = roomIndex;
         createdRooms.Add(new Vector2(x, y));
     }
 
@@ -93,9 +95,12 @@ public class LevelGenerationHelper {
         //If the room isn't obstucted then we place a room. createdRooms is a Vector2 list.
         PlaceRoom(createdRooms[chosenRoomNumber], chosenDirection);
     }
+    
 
     private bool ObstructedAndNeighbours(Vector2 chosenRoom, int chosenDirection)
     {
+        //Checks if there is a room where you are about to place yours and if the room has more than 1 neighbor
+        //Makes the level more branching 
         Vector2 resultingVector = chosenRoom + Direction(chosenDirection);
         if (NumberOfOccupiedNeighbours(resultingVector) <= 1 && !Obstructed(chosenRoom, chosenDirection))
         {
@@ -120,9 +125,36 @@ public class LevelGenerationHelper {
         createdRooms.Add(new Vector2((int)resultingRoom.x, (int)resultingRoom.y));
 
     }
+    private void PlaceSpecialRoom(int roomIndex)
+    {
+        int chosenRoomNumber, chosenDirection;
+        //variables to hold the random values
+        do
+        {
+            chosenRoomNumber = Random.Range(0, createdRooms.Count);
+            chosenDirection = Random.Range(1, 5);
+            //Checks if the selected slot is occupied or not
+        } while (ObstructedAndNeighbours(createdRooms[chosenRoomNumber], chosenDirection));
+
+        Vector2 resultingRoom;
+
+        resultingRoom = createdRooms[chosenRoomNumber] + Direction(chosenDirection);
+
+        roomPlacementGrid[(int)resultingRoom.x, (int)resultingRoom.y] = roomIndex;
+        createdRooms.Add(new Vector2((int)resultingRoom.x, (int)resultingRoom.y));
+
+    }
 
     private Vector2 Direction(int index)
     {
+        //Method for converting a number to a direction
+        /*
+        * 1 = NORTH
+        * 2 = WEST
+        * 3 = SOUTH
+        * 4 = EAST
+        */
+
         if (index == 1)
             return Vector2.up;
         else if (index == 2)
@@ -143,45 +175,16 @@ public class LevelGenerationHelper {
          * 3 = SOUTH
          * 4 = EAST
          */
-
-        //TOP
-        if (chosenDirection == 1)
-        {
-            if (roomPlacementGrid[(int)chosenRoom.x, (int)chosenRoom.y + 1] == 1)
-                return true;
-            else
-                return false;
-        }
-        // WEST
-        if (chosenDirection == 2)
-        {
-            if (roomPlacementGrid[(int)chosenRoom.x - 1, (int)chosenRoom.y] == 1)
-                return true;
-            else
-                return false;
-        }
-        // SOUTH
-        if (chosenDirection == 3)
-        {
-            if (roomPlacementGrid[(int)chosenRoom.x, (int)chosenRoom.y - 1] == 1)
-                return true;
-            else
-                return false;
-        }
-        // EAST
-        if (chosenDirection == 4)
-        {
-            if (roomPlacementGrid[(int)chosenRoom.x + 1, (int)chosenRoom.y] == 1)
-                return true;
-            else
-                return false;
-        }
-
-        return false;
+        Vector2 resultingPosition = chosenRoom + Direction(chosenDirection);
+        if (roomPlacementGrid[(int)resultingPosition.x, (int)resultingPosition.y] == 1)
+            return true;
+        else
+            return false;
     }
 
     private int NumberOfOccupiedNeighbours(Vector2 centerRoom)
     {
+        //Checking all the neighbors of a selected room
         int counter = 0;
         for(int i = 1; i < 5; i++)
         {
@@ -193,9 +196,10 @@ public class LevelGenerationHelper {
         }
         return counter;
     }
-
+    
     private void WriteGridToConsole()
     {
+        //Used for debug
         for (int y = 0; y < gridSize; y++)
         {
             string output = "";
