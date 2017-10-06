@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4499331468179398}
+  - component: {fileID: 65078152651096806}
   m_Layer: 0
   m_Name: door_l
   m_TagString: Untagged
@@ -146,6 +147,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4780217435390942}
+  - component: {fileID: 65596627659559848}
   m_Layer: 0
   m_Name: door_r
   m_TagString: Untagged
@@ -387,6 +389,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1481200879625206}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65078152651096806
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130339686392486}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 32.64, y: 1, z: 62.18}
+  m_Center: {x: -15.4, y: 0, z: 24.26}
 --- !u!65 &65450880902972176
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -399,6 +413,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65596627659559848
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1957655674943302}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 32.64, y: 1, z: 62.18}
+  m_Center: {x: -15.4, y: 0, z: -24.26}
 --- !u!65 &65786165918218548
 BoxCollider:
   m_ObjectHideFlags: 1
