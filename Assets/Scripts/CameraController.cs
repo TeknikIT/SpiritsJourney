@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
     public GameObject player;
-    public float cameraHeight = 20f;
-    public float cameraDistance = 20f;
+    public float cameraHeight = 12f;
+    public float cameraDistance = 5.5f;
     //public float cameraTilt = -40f;
 	
 	// Update is called once per frame
