@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerationManager : MonoBehaviour {
-    public GameObject[] GeneralRoomPrefabs, BossRoomPrefabs, StartingRoomPrefabs;
+    private GameObject[] GeneralRoomPrefabs, BossRoomPrefabs, StartingRoomPrefabs;
     public int levelSize;
     private LevelGenerationHelper levelGenerationHelper;
     private Bounds[] roomBounds = new Bounds[100];
