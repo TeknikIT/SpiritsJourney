@@ -176,10 +176,10 @@ public class LevelGenerationHelper {
          * 4 = EAST
          */
         Vector2 resultingPosition = chosenRoom + Direction(chosenDirection);
-        if (roomPlacementGrid[(int)resultingPosition.x, (int)resultingPosition.y] == 1)
-            return true;
-        else
+        if (roomPlacementGrid[(int)resultingPosition.x, (int)resultingPosition.y] == 0)
             return false;
+        else
+            return true;
     }
 
     private int NumberOfOccupiedNeighbours(Vector2 centerRoom)

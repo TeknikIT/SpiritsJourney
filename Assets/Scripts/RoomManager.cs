@@ -5,6 +5,8 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour {
     private List<GameObject> doors;
     private List<GameObject> doorCovers;
+    public bool roomCompleted = false;
+    private List<GameObject> monsters;
     // Use this for initialization
     public void Initialize() {
         doors = new List<GameObject>(4);
@@ -17,6 +19,10 @@ public class RoomManager : MonoBehaviour {
         {
             doorCovers.Add(doorCover.gameObject);
         }
+        foreach(Transform monster in transform.Find("Monsters").transform)
+        {
+            monsters.Add(monster.gameObject);
+        }
         
 	}
 	
@@ -28,6 +34,14 @@ public class RoomManager : MonoBehaviour {
     public void placeDoorCover(int direction)
     {
         doorCovers[direction].SetActive(true);
+    }
+
+    private void Update()
+    {
+        if(monsters == null || monsters.Count == 0)
+        {
+            roomCompleted = true;
+        }
     }
 
 }

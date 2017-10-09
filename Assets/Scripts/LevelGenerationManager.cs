@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerationManager : MonoBehaviour {
+    #region Singleton
+    public static LevelGenerationManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+    #endregion
     private GameObject[] GeneralRoomPrefabs, BossRoomPrefabs, StartingRoomPrefabs;
     public int levelSize;
     private LevelGenerationHelper levelGenerationHelper;
@@ -19,7 +27,19 @@ public class LevelGenerationManager : MonoBehaviour {
         InstantiateRooms();
     }
 
-    void InstantiateRooms()
+    public void Reload()
+    {
+        Transform room = GameObject.Find("Rooms").transform;
+        foreach(Transform r in room)
+        {
+            Destroy(r.gameObject);
+        }
+        InstantiateRooms();
+        PlayerManager.instance.transform.position = PlayerManager.instance.GetComponent<PlayerController>().originPosition;
+        
+    }
+
+    public void InstantiateRooms()
     {
         rooms = new List<GameObject>();
         GeneralRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/GeneralRooms");
