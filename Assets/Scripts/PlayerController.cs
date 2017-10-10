@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
 
 
     public float speed = 6.0F;
-    //public float gravity = 20.0F;
+    public float gravity = 20.0F;
     public Vector3 originPosition;
     private Vector3 moveDirection = Vector3.zero;
     void Update () {
@@ -16,11 +16,16 @@ public class PlayerController : MonoBehaviour {
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
         }
-        //moveDirection.y -= gravity * Time.deltaTime;
+        moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
     }
     void Start()
     {
         originPosition = transform.position;
+    }
+
+    private void Shoot()
+    {
+        
     }
 }

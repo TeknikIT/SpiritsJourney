@@ -74,7 +74,6 @@ public class LevelGenerationManager : MonoBehaviour {
                     rooms[i].GetComponent<RoomManager>().Initialize();
                     break;
                 case 3:
-                    Debug.Log("placed boss");
                     int randomBossRoom = Random.Range(0, BossRoomPrefabs.Length);
                     rooms.Add(Instantiate(BossRoomPrefabs[randomBossRoom], new Vector3((levelGenerationHelper.createdRooms[i].x - halfGridSize) * roomBounds[randomBossRoom].size.x,
                         0, (levelGenerationHelper.createdRooms[i].y - halfGridSize) * roomBounds[randomBossRoom].size.z),
