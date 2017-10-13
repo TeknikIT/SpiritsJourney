@@ -36,6 +36,7 @@ public class LevelGenerationManager : MonoBehaviour {
         }
         InstantiateRooms();
         PlayerManager.instance.transform.position = PlayerManager.instance.GetComponent<PlayerController>().originPosition;
+        PlayerManager.instance.health = 100;
         
     }
 
