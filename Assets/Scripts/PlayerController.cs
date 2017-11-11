@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour {
     public Vector3 originPosition;
     private Vector3 moveDirection = Vector3.zero;
     private Vector2 positionOnScreen, mouseOnScreen;
-    Object bullet;
+    GameObject bullet;
+    GameObject arrow;
     void Update () {
         CharacterController controller = GetComponent<CharacterController>();
         if (controller.isGrounded) {
@@ -20,25 +21,45 @@ public class PlayerController : MonoBehaviour {
         }
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
-        bullet = Resources.Load("Prefabs/Bullet");
+        bullet = (GameObject)Resources.Load("Prefabs/Bullet");
+        /*
         positionOnScreen = Camera.main.WorldToScreenPoint(transform.position);
         mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
         float angle = Mathf.Atan2(positionOnScreen.x - mouseOnScreen.x, positionOnScreen.y - mouseOnScreen.y);
-        Debug.Log(angle);
+        Debug.Log(angle);*/
         if (Input.GetButton("Fire1"))
         {
-            
-            Shoot(angle);
+            Aim();
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            Shoot();
         }
     }
     void Start()
     {
         originPosition = transform.position;
+        arrow = gameObject.transform.Find("Arrow").gameObject;
+        //arrow.transform.position = new Vector3(arrow.transform.position.x, 0, arrow.transform.position.z);
     }
 
-    private void Shoot(float angle)
+    private void Shoot()
     {
         
-        Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0f, 0f, angle));
+        Debug.Log("BANG!");
+        Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z));
+        arrow.SetActive(false);
+    }
+    private void Aim()
+    {
+        arrow.SetActive(true);
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Terrain")))
+        {
+            arrow.transform.LookAt(hit.point);
+            arrow.transform.rotation = Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z);
+        }
+        Debug.DrawLine(transform.position, new Vector3(hit.point.x, 0, hit.point.z), Color.green, 10);
     }
 }

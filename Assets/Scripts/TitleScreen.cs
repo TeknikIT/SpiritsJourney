@@ -11,8 +11,8 @@ public class TitleScreen : MonoBehaviour {
     float timer = 0;
 	// Use this for initialization
 	void Start () {
-        text = GetComponentInChildren<Text>();
-        image = gameObject.transform.Find("Logo").gameObject;
+        text = gameObject.transform.Find("Panel").GetComponentInChildren<Text>();
+        image = gameObject.transform.Find("Panel").transform.Find("Logo").gameObject;
         StartCoroutine(FlucuateTextAlpha(Mathf.PI / 2));
     }
 	

@@ -11,7 +11,7 @@ public class EnemyManager : MonoBehaviour {
     }
     public void Kill()
     {
-
+        Destroy(gameObject);
     }
     public void TakeDamage(int damage)
     {

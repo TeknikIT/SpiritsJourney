@@ -2250,7 +2250,7 @@ GameObject:
   - component: {fileID: 33886756228517796}
   - component: {fileID: 65340774139324746}
   - component: {fileID: 23466555961543500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Terrain
   m_Icon: {fileID: 0}

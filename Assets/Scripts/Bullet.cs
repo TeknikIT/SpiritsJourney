@@ -6,16 +6,26 @@ public class Bullet : MonoBehaviour {
 
     public float moveSpeed = 10f;
     public int damage = 25;
-    private Vector3 movementDirection;
+    private float timer;
+    public float maxAliveTime;
+    public Vector3 movementDirection;
 	// Use this for initialization
 	void Start () {
-        movementDirection = Vector3.forward;	
+        movementDirection = Vector3.forward;
+        Debug.Log(movementDirection);
+        timer = 0;
 	}
     
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position += movementDirection * moveSpeed * Time.deltaTime;
+        //transform.position += movementDirection * moveSpeed * Time.deltaTime;
+        transform.Translate(movementDirection * moveSpeed * Time.deltaTime, Space.Self);
+        timer += Time.deltaTime;
+        if(timer > maxAliveTime)
+        {
+            Destroy(gameObject);
+        }
 	}
     private void OnTriggerEnter(Collider other)
     {
