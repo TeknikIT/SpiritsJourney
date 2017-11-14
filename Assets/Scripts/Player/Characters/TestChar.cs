@@ -39,7 +39,7 @@ public class TestChar : Character {
 
         if (dashing)
         {
-            target = transform.InverseTransformDirection(target);
+            target = transform.TransformDirection(target);
             Vector3 moveBy = target * Time.deltaTime;
             
             PlayerManager.instance.GetComponent<CharacterController>().Move(moveBy);
