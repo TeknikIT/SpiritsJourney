@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,10 +39,29 @@ public class RoomManager : MonoBehaviour {
 
     private void Update()
     {
-        if(monsters == null || monsters.Count == 0)
+        if(monsters == null || monsters.Count <= 0)
         {
             roomCompleted = true;
         }
+        if (roomCompleted)
+        {
+            openAllDoors();
+        }
+    }
+    public void openAllDoors()
+    {
+        try
+        {
+            foreach (GameObject door in doors)
+            {
+                door.GetComponent<Animator>().SetBool("IsOpen", true);
+            }
+        }
+        catch(InvalidCastException e)
+        {
+
+        }
+        
     }
 
 }
