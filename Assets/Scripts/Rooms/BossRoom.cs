@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossRoom : RoomManager {
+public class BossRoom : MonoBehaviour {
 
     public static void LevelFinished()
     {

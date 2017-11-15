@@ -5,8 +5,9 @@ using UnityEngine;
 public class TestChar : Character {
 
     GameObject projectile;
-    public float dashDistance, dashSpeed;
-    bool dashing;
+    public float dashDistance, dashTime;
+    private float dashSpeed;
+    public bool dashing;
     public Vector3 target, distanceTraveled;
 
     private void Start()
@@ -36,15 +37,17 @@ public class TestChar : Character {
             CharacterSpecificAbility();
         }
 
-
+        Debug.DrawLine(Vector3.zero, transform.InverseTransformDirection(Vector3.forward) * 10, Color.green);
         if (dashing)
         {
-            target = transform.TransformDirection(target);
-            Vector3 moveBy = target * Time.deltaTime;
+            // THIS IS THE PROBLEM
             
+            dashSpeed = dashDistance / dashTime;
+            Vector3 moveBy = target * dashSpeed * Time.deltaTime;
             PlayerManager.instance.GetComponent<CharacterController>().Move(moveBy);
             distanceTraveled += moveBy;
-            if(Vector3.Distance(Vector3.zero, distanceTraveled) >= dashDistance)
+            Debug.Log(Vector3.Distance(Vector3.zero, distanceTraveled));
+            if(Mathf.Abs(Vector3.Distance(Vector3.zero, distanceTraveled)) >= dashDistance)
             {
                 dashing = false;
                 distanceTraveled = Vector3.zero;
@@ -64,8 +67,15 @@ public class TestChar : Character {
 
     public override void CharacterSpecificAbility()
     {
+        target = Vector3.forward;
+        if (!dashing)
+        {
+            target = transform.TransformDirection(target);
+        }
         dashing = true;
-        target = (Vector3.forward * dashSpeed);
+        Instantiate(projectile, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z));
+        arrow.SetActive(false);
+
         base.CharacterSpecificAbility();
     }
 

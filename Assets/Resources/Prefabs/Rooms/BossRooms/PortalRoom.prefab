@@ -888,7 +888,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4959238030568992}
   - component: {fileID: 114966406778971402}
-  - component: {fileID: 114021615446208880}
+  - component: {fileID: 114915178919015300}
   m_Layer: 0
   m_Name: PortalRoom
   m_TagString: Untagged
@@ -7454,18 +7454,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114021615446208880
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1355785560796278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d949ad8214763a44cb632e2f5b0e0209, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roomCompleted: 0
 --- !u!114 &114067309170200820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7738,6 +7726,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a655b70accda6ea4b8edb5aa5bb74be2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114915178919015300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1355785560796278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d949ad8214763a44cb632e2f5b0e0209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114917778691877324

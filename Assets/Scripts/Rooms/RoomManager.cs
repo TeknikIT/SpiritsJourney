@@ -50,18 +50,10 @@ public class RoomManager : MonoBehaviour {
     }
     public void openAllDoors()
     {
-        try
+        foreach (GameObject door in doors)
         {
-            foreach (GameObject door in doors)
-            {
+            if (door.GetComponent<Animator>().gameObject.activeSelf)
                 door.GetComponent<Animator>().SetBool("IsOpen", true);
-            }
         }
-        catch(InvalidCastException e)
-        {
-
-        }
-        
     }
-
 }
