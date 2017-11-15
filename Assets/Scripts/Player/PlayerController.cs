@@ -15,8 +15,10 @@ public class PlayerController : MonoBehaviour {
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if(moveDirection != Vector3.zero)
             transform.rotation = Quaternion.LookRotation(moveDirection);
-        moveDirection.y -= gravity;
-        controller.Move(moveDirection * speed);
+        moveDirection *= speed;
+        moveDirection.y -= gravity * Time.deltaTime;
+
+        controller.Move(moveDirection * Time.deltaTime);
         
         //transform.Translate(moveDirection * speed * Time.deltaTime, Space.Self);
         
