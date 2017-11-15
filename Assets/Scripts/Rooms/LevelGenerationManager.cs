@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(LevelGenerationHelper))]
 public class LevelGenerationManager : MonoBehaviour {
     #region Singleton
     public static LevelGenerationManager instance;
@@ -13,10 +13,10 @@ public class LevelGenerationManager : MonoBehaviour {
     #endregion
     private GameObject[] GeneralRoomPrefabs, BossRoomPrefabs, StartingRoomPrefabs;
     public int levelSize;
-    private LevelGenerationHelper levelGenerationHelper;
+    public LevelGenerationHelper levelGenerationHelper;
     private Bounds[] roomBounds = new Bounds[100];
-    private List<GameObject> rooms;
-    private List< Vector2> directions;
+    public List<GameObject> rooms;
+    public List< Vector2> directions;
     // Use this for initialization
     void Start () {
         directions = new List<Vector2>();
@@ -25,6 +25,7 @@ public class LevelGenerationManager : MonoBehaviour {
         directions.Add(Vector2.down);
         directions.Add(Vector2.left);
         InstantiateRooms();
+        GetComponent<LevelManager>().Initialize();
     }
 
     public void Reload()
@@ -64,7 +65,7 @@ public class LevelGenerationManager : MonoBehaviour {
                         0, (levelGenerationHelper.createdRooms[i].y - halfGridSize)* roomBounds[randomGeneralRoom].size.z),
                         transform.rotation) as GameObject);
                     rooms[i].transform.parent = GameObject.Find("Rooms").transform;
-                    rooms[i].GetComponent<RoomManager>().Initialize();
+                    rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.createdRooms[i], i);
                     break;
                 case 2:
                     int randomStartingRoom = Random.Range(0, StartingRoomPrefabs.Length);
@@ -72,7 +73,7 @@ public class LevelGenerationManager : MonoBehaviour {
                         0, (levelGenerationHelper.createdRooms[i].y - halfGridSize) * roomBounds[randomStartingRoom].size.z),
                         transform.rotation) as GameObject);
                     rooms[i].transform.parent = GameObject.Find("Rooms").transform;
-                    rooms[i].GetComponent<RoomManager>().Initialize();
+                    rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.createdRooms[i], i);
                     break;
                 case 3:
                     int randomBossRoom = Random.Range(0, BossRoomPrefabs.Length);
@@ -80,7 +81,7 @@ public class LevelGenerationManager : MonoBehaviour {
                         0, (levelGenerationHelper.createdRooms[i].y - halfGridSize) * roomBounds[randomBossRoom].size.z),
                         transform.rotation) as GameObject);
                     rooms[i].transform.parent = GameObject.Find("Rooms").transform;
-                    rooms[i].GetComponent<RoomManager>().Initialize();
+                    rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.createdRooms[i], i);
                     break;
             }
             

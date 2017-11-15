@@ -37,7 +37,6 @@ public class TestChar : Character {
             CharacterSpecificAbility();
         }
 
-        Debug.DrawLine(Vector3.zero, transform.InverseTransformDirection(Vector3.forward) * 10, Color.green);
         if (dashing)
         {
             // THIS IS THE PROBLEM

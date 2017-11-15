@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657862, g: 0.49641275, b: 0.5748155, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -108,7 +108,49 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &618574928
+--- !u!1001 &707033143
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 763717612}
+    m_Modifications:
+    - target: {fileID: 4220345127963584, guid: 39d7057a8b6bffc47aadec0ac112fc98, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220345127963584, guid: 39d7057a8b6bffc47aadec0ac112fc98, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220345127963584, guid: 39d7057a8b6bffc47aadec0ac112fc98, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220345127963584, guid: 39d7057a8b6bffc47aadec0ac112fc98, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220345127963584, guid: 39d7057a8b6bffc47aadec0ac112fc98, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220345127963584, guid: 39d7057a8b6bffc47aadec0ac112fc98, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220345127963584, guid: 39d7057a8b6bffc47aadec0ac112fc98, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220345127963584, guid: 39d7057a8b6bffc47aadec0ac112fc98, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 39d7057a8b6bffc47aadec0ac112fc98, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &763717611
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -150,6 +192,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67de9d55cd82a924480cc85f61dd00e0, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &763717612 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4453349941490778, guid: 67de9d55cd82a924480cc85f61dd00e0,
+    type: 2}
+  m_PrefabInternal: {fileID: 763717611}
 --- !u!1 &911316901
 GameObject:
   m_ObjectHideFlags: 0

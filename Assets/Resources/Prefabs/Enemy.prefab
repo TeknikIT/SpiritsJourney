@@ -306,6 +306,7 @@ MonoBehaviour:
   moveSpeed: 5
   minDistance: 2
   gravity: 20
+  isActive: 0
 --- !u!114 &114313255032429744
 MonoBehaviour:
   m_ObjectHideFlags: 1

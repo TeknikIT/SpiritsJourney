@@ -1434,6 +1434,7 @@ GameObject:
   - component: {fileID: 4743107956833636}
   - component: {fileID: 114976949821286336}
   - component: {fileID: 114655368880249802}
+  - component: {fileID: 65989311529811742}
   m_Layer: 0
   m_Name: StartingRoom
   m_TagString: Untagged
@@ -6890,6 +6891,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65989311529811742
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620797721829122}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20.4, y: 4, z: 12.5}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!65 &65990589256531838
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -7587,7 +7600,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c620087f770c49488525baa24138950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomCompleted: 1
 --- !u!114 &114657754046105680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7718,6 +7730,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomCompleted: 1
+  roomActive: 0
+  roomGridPosition: {x: 0, y: 0}
 --- !u!137 &137013949313406514
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
