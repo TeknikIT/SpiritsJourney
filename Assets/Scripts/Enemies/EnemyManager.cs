@@ -5,12 +5,15 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour {
 
     public int health;
+    public RoomManager room;
     private void Start()
     {
         health = 100;
+        
     }
     public void Kill()
     {
+        room.monsters.Remove(this.gameObject);
         Destroy(gameObject);
     }
     public void TakeDamage(int damage)

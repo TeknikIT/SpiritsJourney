@@ -8,7 +8,7 @@ public class RoomManager : MonoBehaviour {
     private List<GameObject> doorCovers;
     public bool roomCompleted = false;
     public bool roomActive = false;
-    private List<GameObject> monsters;
+    public List<GameObject> monsters;
     public Vector2 roomGridPosition;
     public int roomArrayPosition;
     // Use this for initialization
@@ -27,6 +27,10 @@ public class RoomManager : MonoBehaviour {
         foreach(Transform monster in transform.Find("Monsters").transform)
         {
             monsters.Add(monster.gameObject);
+        }
+        foreach(GameObject m in monsters)
+        {
+            m.GetComponent<EnemyManager>().room = this;
         }
         roomGridPosition = gridPosition;
         roomArrayPosition = arrayPosition;
