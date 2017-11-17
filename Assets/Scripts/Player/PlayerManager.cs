@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour {
     public GameObject player;
     public void KillPlayer()
     {
-        LevelGenerationManager.instance.Reload();
+        LevelManager.instance.Reload();
     }
     private void Start()
     {

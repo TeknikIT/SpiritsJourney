@@ -24,6 +24,7 @@ public class Bullet : MonoBehaviour {
         timer += Time.deltaTime;
         if(timer > maxAliveTime)
         {
+            Debug.Log("Destroyed!");
             Destroy(gameObject);
         }
 	}
@@ -33,5 +34,18 @@ public class Bullet : MonoBehaviour {
         {
             other.GetComponent<EnemyManager>().TakeDamage(damage);
         }
+        if(other.tag == "EnemyChild")
+        {
+            other.GetComponentInParent<EnemyManager>().TakeDamage(damage);
+        }
+        if(other.tag == "Utillity" || other.tag == "Player")
+        {
+            //EVERYITHING EXECT UNTILITY AND PLAYER
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
 }

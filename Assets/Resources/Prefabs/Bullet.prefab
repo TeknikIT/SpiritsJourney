@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 4548569089264052}
   - component: {fileID: 114306486909366644}
   - component: {fileID: 136501998969044696}
+  - component: {fileID: 54298456659937394}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -112,6 +113,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1187827193613966}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54298456659937394
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1488399979127040}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!96 &96801835527020672
 TrailRenderer:
   serializedVersion: 2
@@ -227,7 +243,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  m_Radius: 0.19
+  m_Height: 0.72
+  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}

@@ -4,6 +4,15 @@ using UnityEngine;
 [RequireComponent(typeof(LevelGenerationManager))]
 public class LevelManager : MonoBehaviour {
 
+    #region Singleton
+    public static LevelManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+    #endregion
+
     public static int activeRoom;
 
     public static void SetActiveRoom (int arrayPosition)
@@ -25,6 +34,18 @@ public class LevelManager : MonoBehaviour {
         levelGenerationManager = GetComponent<LevelGenerationManager>();
         rooms = levelGenerationManager.rooms;
         directions = levelGenerationManager.directions;
+    }
+
+    public void Reload()
+    {
+        Transform room = GameObject.Find("Rooms").transform;
+        foreach (Transform r in room)
+        {
+            Destroy(r.gameObject);
+        }
+        levelGenerationManager.InstantiateRooms();
+        PlayerManager.instance.transform.position = PlayerManager.instance.GetComponent<PlayerController>().originPosition;
+        PlayerManager.instance.health = 100;
     }
 
     private void OpenNeighboursDoors()
@@ -61,6 +82,10 @@ public class LevelManager : MonoBehaviour {
         if(rooms[activeRoom].GetComponent<RoomManager>().roomActive && rooms[activeRoom].GetComponent<RoomManager>().roomCompleted)
         {
             OpenNeighboursDoors();
+        }
+        else if(rooms[activeRoom].GetComponent<RoomManager>().roomActive && !rooms[activeRoom].GetComponent<RoomManager>().roomCompleted)
+        {
+            rooms[activeRoom].GetComponent<RoomManager>().LockAllDoors();
         }
         display = rooms[activeRoom].GetComponent<RoomManager>().roomGridPosition;
 	}

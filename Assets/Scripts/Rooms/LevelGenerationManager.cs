@@ -28,18 +28,6 @@ public class LevelGenerationManager : MonoBehaviour {
         GetComponent<LevelManager>().Initialize();
     }
 
-    public void Reload()
-    {
-        Transform room = GameObject.Find("Rooms").transform;
-        foreach(Transform r in room)
-        {
-            Destroy(r.gameObject);
-        }
-        InstantiateRooms();
-        PlayerManager.instance.transform.position = PlayerManager.instance.GetComponent<PlayerController>().originPosition;
-        PlayerManager.instance.health = 100;
-        
-    }
 
     public void InstantiateRooms()
     {

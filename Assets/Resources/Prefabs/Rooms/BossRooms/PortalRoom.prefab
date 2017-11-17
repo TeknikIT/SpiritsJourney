@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 4176632179462650}
   m_Layer: 0
   m_Name: Doors
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -874,7 +874,7 @@ GameObject:
   - component: {fileID: 4989932525641548}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -892,7 +892,7 @@ GameObject:
   - component: {fileID: 65203158890860348}
   m_Layer: 0
   m_Name: PortalRoom
-  m_TagString: Untagged
+  m_TagString: Utillity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -994,7 +994,7 @@ GameObject:
   - component: {fileID: 4278801413310204}
   m_Layer: 0
   m_Name: Monsters
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1640,7 +1640,7 @@ GameObject:
   - component: {fileID: 4150392544914070}
   m_Layer: 0
   m_Name: CoverWalls
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1673,7 +1673,7 @@ GameObject:
   - component: {fileID: 4704652278406596}
   m_Layer: 0
   m_Name: Pillars
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1774,7 +1774,7 @@ GameObject:
   - component: {fileID: 4935364677914660}
   m_Layer: 0
   m_Name: OuterWalls
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1914,7 +1914,7 @@ GameObject:
   - component: {fileID: 23328412442259188}
   m_Layer: 8
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7802,7 +7802,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomCompleted: 0
   roomActive: 0
+  monsters: []
   roomGridPosition: {x: 0, y: 0}
+  roomArrayPosition: 0
 --- !u!114 &114971743818962072
 MonoBehaviour:
   m_ObjectHideFlags: 1

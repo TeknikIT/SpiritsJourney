@@ -45,7 +45,6 @@ public class TestChar : Character {
             Vector3 moveBy = target * dashSpeed * Time.deltaTime;
             PlayerManager.instance.GetComponent<CharacterController>().Move(moveBy);
             distanceTraveled += moveBy;
-            Debug.Log(Vector3.Distance(Vector3.zero, distanceTraveled));
             if(Mathf.Abs(Vector3.Distance(Vector3.zero, distanceTraveled)) >= dashDistance)
             {
                 dashing = false;

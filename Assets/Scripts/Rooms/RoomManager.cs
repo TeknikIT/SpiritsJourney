@@ -75,6 +75,14 @@ public class RoomManager : MonoBehaviour {
         
     }
 
+    internal void LockAllDoors()
+    {
+        foreach (GameObject door in doors)
+        {
+            if (door.GetComponent<Animator>().gameObject.activeSelf)
+                door.GetComponent<Animator>().SetBool("IsOpen", false);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

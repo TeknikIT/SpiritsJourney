@@ -1437,7 +1437,7 @@ GameObject:
   - component: {fileID: 65989311529811742}
   m_Layer: 0
   m_Name: StartingRoom
-  m_TagString: Untagged
+  m_TagString: Utillity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7731,7 +7731,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomCompleted: 1
   roomActive: 0
+  monsters: []
   roomGridPosition: {x: 0, y: 0}
+  roomArrayPosition: 0
 --- !u!137 &137013949313406514
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -6,6 +6,6 @@ public class BossRoom : MonoBehaviour {
 
     public static void LevelFinished()
     {
-        LevelGenerationManager.instance.Reload();
+        LevelManager.instance.Reload();
     }
 }
