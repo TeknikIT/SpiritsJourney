@@ -153,8 +153,8 @@ MonoBehaviour:
     y: 0
     width: 254
     height: 280
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -227,8 +227,8 @@ MonoBehaviour:
     y: 0
     width: 1005
     height: 371
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 17}
@@ -436,9 +436,9 @@ MonoBehaviour:
     height: 259
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 1afcffff00000000
+    m_SelectedIDs: 04290000
+    m_LastClickedID: 10500
+    m_ExpandedIDs: e4f6ffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -499,7 +499,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Resources/Materials
+    - Assets/Resources/Models/Trees/Fir_1/Materials
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
@@ -510,7 +510,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 32}
     m_SelectedIDs: c8390000
     m_LastClickedID: 14792
-    m_ExpandedIDs: 00000000222600003a2600009c260000c6260000ee260000362700007c27000020290000
+    m_ExpandedIDs: 000000007e26000098260000fc2600000a270000502700007a270000b4270000b6270000dc27000044280000d8290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -535,10 +535,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 0}
+    scrollPos: {x: 0, y: 120}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000222600003a260000922600009c260000ee260000f22600003627000020290000
+    m_ExpandedIDs: 000000007e26000098260000fc2600000a270000502700007a270000b4270000b6270000dc27000044280000d8290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -651,9 +651,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -36.164486, y: -6.035187, z: 91.64792}
+    m_Target: {x: 56.03486, y: -17.52977, z: 55.063618}
     speed: 2
-    m_Value: {x: -36.164486, y: -6.035187, z: 91.64792}
+    m_Value: {x: 56.03486, y: -17.52977, z: 55.063618}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -676,13 +676,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.052303903, y: -0.13561726, z: 0.0071695084, w: 0.9893538}
+    m_Target: {x: -0.099449344, y: -0.46568003, z: 0.052761026, w: -0.8777632}
     speed: 2
-    m_Value: {x: -0.052303903, y: 0.13561726, z: -0.0071695084, w: -0.9893537}
+    m_Value: {x: 0.09944935, y: 0.46568006, z: -0.052761026, w: 0.8777632}
   m_Size:
-    m_Target: 95.22701
+    m_Target: 96.53201
     speed: 2
-    m_Value: 95.22701
+    m_Value: 96.53201
   m_Ortho:
     m_Target: 0
     speed: 2
