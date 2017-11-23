@@ -6,12 +6,12 @@ The story beings with <b>Cursor</b> regaining consciousness in the <b>Widow fore
 
 <h2>Gameplay</h2>
 <h3>Stats:</h3>
-<b>Health Points(HP)</b> - When this drops to 0 inside of the <b>stronghold</b> a ghost disconnect occurs unless stated otherwise by items
-<b>Attack(ATK)</b> - This determines how much damage you will deal towards the enemy.
-<b>Cooldowns(CD)</b> - This determines the frequency of which you can cast your abilities with.
-<b>Speed(SPD)</b> - this determines how fast you move.
-<b>AttackSpeed(AS)</b> - this determines how fast you basic attack //not to be confused with CD which only reduces your abilities cooldown and not your basic attacks
-<b>knockback(KNB)</b> - this determines the ammount of knockback you cause on your attack that has a knockback attribut
+<b>Health Points(HP)</b> - When this drops to 0 inside of the <b>stronghold</b> a ghost disconnect occurs unless stated otherwise by items.<br>
+<b>Attack(ATK)</b> - This determines how much damage you will deal towards the enemy.<br>
+<b>Cooldowns(CD)</b> - This determines the frequency of which you can cast your abilities with.<br>
+<b>Speed(SPD)</b> - this determines how fast you move.<br>
+<b>AttackSpeed(AS)</b> - this determines how fast you basic attack //not to be confused with CD which only reduces your abilities cooldown and not your basic attacks<be>
+<b>knockback(KNB)</b> - this determines the ammount of knockback you cause on your attack that has a knockback attribut<br>
 
 <h3>Currency</h3>
 The game will have <b>tokens</b> and <b>crystals</b>, <b>tokens</b> are used as a out of dungeon currency to get permanent uppgrades and unlocks although theese reset to 0 every time you enter the <b>stronghold</b> and <b>crystals</b> are shards of solid magic that you can spend inside the <b>stronghold</b> although <b>Cursor</b> cannot hold onto theese which means that their use is limited in the dungeon, they are also lost upon ghost disconnect which happens once the controlled ghost HP hits 0(unless stated otherwise).
