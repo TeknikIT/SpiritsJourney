@@ -10,7 +10,7 @@ The story beings with <b>Cursor</b> regaining consciousness in the <b>Widow fore
 <b>Attack(ATK)</b> - This determines how much damage you will deal towards the enemy.<br>
 <b>Cooldowns(CD)</b> - This determines the frequency of which you can cast your abilities with.<br>
 <b>Speed(SPD)</b> - this determines how fast you move.<br>
-<b>AttackSpeed(AS)</b> - this determines how fast you basic attack //not to be confused with CD which only reduces your abilities cooldown and not your basic attacks<be>
+<b>AttackSpeed(AS)</b> - this determines how fast you basic attack //not to be confused with CD which only reduces your abilities cooldown and not your basic attacks<br>
 <b>knockback(KNB)</b> - this determines the ammount of knockback you cause on your attack that has a knockback attribut<br>
 
 <h3>Currency</h3>
