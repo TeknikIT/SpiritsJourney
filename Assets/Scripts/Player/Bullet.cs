@@ -32,11 +32,11 @@ public class Bullet : MonoBehaviour {
     {
         if(other.tag == "Enemy")
         {
-            other.GetComponent<EnemyManager>().TakeDamage(damage);
+            other.GetComponent<EnemyManager>().TakeDamageWithKnockback(damage, 10f, movementDirection);
         }
         if(other.tag == "EnemyChild")
         {
-            other.GetComponentInParent<EnemyManager>().TakeDamage(damage);
+            other.GetComponentInParent<EnemyManager>().TakeDamageWithKnockback(damage, 10f, movementDirection);
         }
         if(other.tag == "Utillity" || other.tag == "Player")
         {

@@ -24,4 +24,13 @@ public class EnemyManager : MonoBehaviour {
             Kill();
         }
     }
+    public void TakeDamageWithKnockback(int damage, float knockbackForce, Vector3 knockbackDirection)
+    {
+        health -= damage;
+        GetComponent<EnemyController>().Knockback(knockbackForce, knockbackDirection);
+        if (health <= 0)
+        {
+            Kill();
+        }
+    }
 }
