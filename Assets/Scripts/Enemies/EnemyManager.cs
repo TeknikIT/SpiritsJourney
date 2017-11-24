@@ -27,7 +27,7 @@ public class EnemyManager : MonoBehaviour {
     public void TakeDamageWithKnockback(int damage, float knockbackForce, Vector3 knockbackDirection)
     {
         health -= damage;
-        GetComponent<EnemyController>().Knockback(knockbackForce, knockbackDirection);
+        GetComponent<EnemyController>().StartKnockback(knockbackForce, knockbackDirection);
         if (health <= 0)
         {
             Kill();

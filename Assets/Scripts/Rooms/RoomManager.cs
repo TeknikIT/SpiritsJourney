@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour {
-    private List<GameObject> doors;
+    public List<GameObject> doors;
     private List<GameObject> doorCovers;
     public bool roomCompleted = false;
     public bool roomActive = false;

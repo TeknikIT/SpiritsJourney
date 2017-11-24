@@ -44,6 +44,7 @@ public class LevelManager : MonoBehaviour {
             Destroy(r.gameObject);
         }
         levelGenerationManager.InstantiateRooms();
+        rooms = levelGenerationManager.rooms;
         PlayerManager.instance.transform.position = PlayerManager.instance.GetComponent<PlayerController>().originPosition;
         PlayerManager.instance.health = 100;
     }
@@ -67,13 +68,16 @@ public class LevelManager : MonoBehaviour {
 
     private int GetOppositeDirection(int direction)
     {
-        for(int i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++)
         {
             if(direction + 1 > 3)
             {
                 direction = 0;
             }
-            direction++;
+            else
+            {
+                direction++;
+            }
         }
         return direction;
     }

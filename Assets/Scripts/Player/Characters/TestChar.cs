@@ -57,14 +57,16 @@ public class TestChar : Character {
 
     public override void BasicAbility()
     {
+        base.BasicAbility();
         Instantiate(projectile, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z));
         arrow.SetActive(false);
   
-        base.BasicAbility();
+        
     }
 
     public override void CharacterSpecificAbility()
     {
+        base.CharacterSpecificAbility();
         target = Vector3.forward;
         if (!dashing)
         {
@@ -74,7 +76,7 @@ public class TestChar : Character {
         Instantiate(projectile, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z));
         arrow.SetActive(false);
 
-        base.CharacterSpecificAbility();
+        
     }
 
     public override void RecoveryAbility()

@@ -7804,6 +7804,8 @@ MonoBehaviour:
   minDistance: 2
   gravity: 20
   isActive: 0
+  isKnockbacked: 0
+  timer: 0
 --- !u!114 &114490835097170462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7863,6 +7865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a707ee4855429ba46816e4d005dbbc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doors: []
   roomCompleted: 0
   roomActive: 0
   monsters: []

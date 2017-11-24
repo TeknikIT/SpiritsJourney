@@ -8,9 +8,10 @@ public class EnemyController : MonoBehaviour {
     public int minDistance = 1;
     public float gravity = 20.0F;
     public bool isActive, isKnockbacked;
-    private float timer;
+    public float timer;
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
+    private IEnumerator coroutine;
     // Use this for initialization
     void Start()
     {
@@ -35,24 +36,21 @@ public class EnemyController : MonoBehaviour {
         
     }
 
-    public void Knockback(float strength, Vector3 hitDirection)
+    public void StartKnockback(float strength, Vector3 hitDirection)
+    {
+        timer = 0;
+        coroutine = Knockback(strength, hitDirection);
+        StartCoroutine(coroutine);
+    }
+
+    private IEnumerator Knockback(float strength, Vector3 hitDirection)
     {
         isActive = false;
-        timer += Time.deltaTime;
-        isKnockbacked = true;
-        if (timer >= 0.2)
+        while (timer < 0.1)
         {
-            isKnockbacked = false;
-            timer = 0;
-            isActive = true;
+            timer += Time.deltaTime;
+            yield return controller.Move(hitDirection * Time.deltaTime * strength);
         }
-        else
-        {
-            controller.Move(hitDirection * -1 * Time.deltaTime * strength);
-        }
-        if (isKnockbacked)
-        {
-            Knockback(strength, hitDirection);
-        }
+        isActive = true;
     }
 }

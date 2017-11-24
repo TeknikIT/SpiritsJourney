@@ -5,14 +5,13 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     public float moveSpeed = 10f;
-    public int damage = 25;
+    public int damage = 1;
     private float timer;
     public float maxAliveTime;
     public Vector3 movementDirection;
 	// Use this for initialization
 	void Start () {
         movementDirection = Vector3.forward;
-        Debug.Log(movementDirection);
         timer = 0;
 	}
     
@@ -32,11 +31,11 @@ public class Bullet : MonoBehaviour {
     {
         if(other.tag == "Enemy")
         {
-            other.GetComponent<EnemyManager>().TakeDamageWithKnockback(damage, 10f, movementDirection);
+            other.GetComponent<EnemyManager>().TakeDamageWithKnockback(damage, 5f, movementDirection);
         }
         if(other.tag == "EnemyChild")
         {
-            other.GetComponentInParent<EnemyManager>().TakeDamageWithKnockback(damage, 10f, movementDirection);
+            other.GetComponentInParent<EnemyManager>().TakeDamageWithKnockback(damage, 10f, transform.TransformDirection(movementDirection));
         }
         if(other.tag == "Utillity" || other.tag == "Player")
         {

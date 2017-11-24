@@ -332,8 +332,20 @@ MonoBehaviour:
   characterName: Erica
   health: 100
   arrow: {fileID: 1099737831186194}
-  dashDistance: 5
-  dashTime: 0.1
+  coolDowns:
+  - 1.25
+  - 5
+  - 0
+  - 0
+  - 0
+  timeStamps:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  dashDistance: 4
+  dashTime: 0.2
   dashing: 0
   target: {x: 0, y: 0, z: 0}
   distanceTraveled: {x: 0, y: 0, z: 0}
