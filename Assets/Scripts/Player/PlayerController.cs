@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
         moveDirection.y -= gravity * Time.deltaTime;
 
         controller.Move(moveDirection * Time.deltaTime);
-        
+        GetComponent<Animator>().SetFloat("Velocity", Vector3.Distance(Vector3.zero, controller.velocity));
         //transform.Translate(moveDirection * speed * Time.deltaTime, Space.Self);
         
        

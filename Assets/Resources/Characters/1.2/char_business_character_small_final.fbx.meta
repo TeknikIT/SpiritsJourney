@@ -1,0 +1,242 @@
+fileFormatVersion: 2
+guid: 3cb3a13f03792c546a659c5408837843
+timeCreated: 1511552136
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Armature
+    100002: birefcase_handle
+    100004: briefcase_1
+    100006: briefcase_2
+    100008: briefcase_2_end
+    100010: business_character
+    100012: Camera
+    100014: //RootNode
+    100016: head
+    100018: head_end
+    100020: l_ankle
+    100022: l_arm
+    100024: l_fingers1
+    100026: l_fingers2
+    100028: l_fingers2_end
+    100030: l_foot
+    100032: l_hand
+    100034: l_knee
+    100036: l_shoulder
+    100038: l_thigh
+    100040: l_thumb1
+    100042: l_thumb2
+    100044: l_thumb2_end
+    100046: l_toe
+    100048: l_toe_end
+    100050: Lamp
+    100052: neck
+    100054: pelvis
+    100056: r_ankle
+    100058: r_arm
+    100060: r_fingers1
+    100062: r_fingers2
+    100064: r_fingers2_end
+    100066: r_foot
+    100068: r_hand
+    100070: r_knee
+    100072: r_shoulder
+    100074: r_thigh
+    100076: r_thumb1
+    100078: r_thumb2
+    100080: r_thumb2_end
+    100082: r_toe
+    100084: r_toe_end
+    100086: root
+    100088: spine1
+    100090: spine2
+    100092: spine3
+    100094: spine4
+    400000: Armature
+    400002: birefcase_handle
+    400004: briefcase_1
+    400006: briefcase_2
+    400008: briefcase_2_end
+    400010: business_character
+    400012: Camera
+    400014: //RootNode
+    400016: head
+    400018: head_end
+    400020: l_ankle
+    400022: l_arm
+    400024: l_fingers1
+    400026: l_fingers2
+    400028: l_fingers2_end
+    400030: l_foot
+    400032: l_hand
+    400034: l_knee
+    400036: l_shoulder
+    400038: l_thigh
+    400040: l_thumb1
+    400042: l_thumb2
+    400044: l_thumb2_end
+    400046: l_toe
+    400048: l_toe_end
+    400050: Lamp
+    400052: neck
+    400054: pelvis
+    400056: r_ankle
+    400058: r_arm
+    400060: r_fingers1
+    400062: r_fingers2
+    400064: r_fingers2_end
+    400066: r_foot
+    400068: r_hand
+    400070: r_knee
+    400072: r_shoulder
+    400074: r_thigh
+    400076: r_thumb1
+    400078: r_thumb2
+    400080: r_thumb2_end
+    400082: r_toe
+    400084: r_toe_end
+    400086: root
+    400088: spine1
+    400090: spine2
+    400092: spine3
+    400094: spine4
+    2000000: Camera
+    4300000: business_character
+    7400000: Armature|anim_run
+    7400002: Armature|anim_stand
+    7400004: Armature|anim_stand
+    9500000: //RootNode
+    10800000: Lamp
+    13700000: business_character
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|anim_run
+      takeName: Armature|anim_run
+      firstFrame: 0
+      lastFrame: 33
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|anim_stand
+      takeName: Armature|anim_stand
+      firstFrame: 0
+      lastFrame: 194
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
