@@ -1,3 +1,4 @@
+[Logo]: https://raw.githubusercontent.com/TeknikIT/SpiritsJourney/master/Assets/Resources/UI/Logo.png "Spirits Journey"
 <h1>Spirits Journey</h1>
 This is a game made as a graduation project.
 
