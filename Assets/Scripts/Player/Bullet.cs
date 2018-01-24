@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour {
         }
         if(other.tag == "Utillity" || other.tag == "Player")
         {
-            //EVERYITHING EXECT UNTILITY AND PLAYER
+            //EVERYITHING EXEPCT UNTILITY AND PLAYER
         }
         else
         {

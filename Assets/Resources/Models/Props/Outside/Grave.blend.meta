@@ -6,12 +6,27 @@ ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Armature
+    100004: Cube_000
+    100006: Cube_001
+    100008: glowingtext
+    100010: root
     400000: //RootNode
+    400002: Armature
+    400004: Cube_000
+    400006: Cube_001
+    400008: glowingtext
+    400010: root
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cube
+    4300002: Cube_001
+    4300004: Cube_000
     7400000: Default Take
+    7400002: GlowTextAnimation
     9500000: //RootNode
+    13700000: Cube_000
+    13700002: Cube_001
   materials:
     importMaterials: 1
     materialName: 0
