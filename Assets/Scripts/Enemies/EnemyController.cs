@@ -33,15 +33,12 @@ public class EnemyController : MonoBehaviour {
         controller = GetComponent<CharacterController>(); //Gets the character controller
         if (isActive) //Checks if the character should move
         {
-<<<<<<< HEAD
             transform.LookAt(new Vector3(Player.position.x, gameObject.GetComponent<Collider>().bounds.center.y, Player.position.z));
-=======
             //Rotates towards the player and sets the y coordinate to the enemies y coord.
             transform.LookAt(new Vector3(Player.position.x, transform.position.y, Player.position.z));
             //Resets the movement direction
             moveDirection = Vector3.zero;
             //Checks if the distance to the player is greater then the minimum allowed distance
->>>>>>> 8c1fe45393364b90d9d7d68aeb6358474c4218ea
             if (Vector3.Distance(transform.position, Player.position) >= minDistance)
             {
                 //Sets the movement direction toward the player
