@@ -16,5 +16,7 @@ public class AnimationTest : MonoBehaviour {
         {
             anim.SetBool("IsOpen", true);
         }
+
+        //Karolina var här!
 	}
 }

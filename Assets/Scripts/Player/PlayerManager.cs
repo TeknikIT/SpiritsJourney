@@ -14,6 +14,9 @@ public class PlayerManager : MonoBehaviour {
         instance = this;
     }
     #endregion
+    /// <summary>
+    /// Used for keeping track over health and damage
+    /// </summary>
     public GameObject player;
     public void KillPlayer()
     {
@@ -26,6 +29,7 @@ public class PlayerManager : MonoBehaviour {
     private void Update()
     {
         timer += Time.deltaTime;
+        GameObject.Find("Text").GetComponent<UnityEngine.UI.Text>().text = "Health: " + health;
     }
     public void TakeDamage(int damage)
     {

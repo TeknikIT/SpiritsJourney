@@ -5,7 +5,7 @@ using UnityEngine;
 public class Blades : MonoBehaviour {
 
     public float rotationSpeed = 10f;
-    public int damageCoefficient = 0;
+    public int damageCoefficient = 5;
 	
 	// Update is called once per frame
 	void Update () {

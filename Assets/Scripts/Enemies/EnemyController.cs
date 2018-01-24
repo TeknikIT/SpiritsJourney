@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour {
         controller = GetComponent<CharacterController>();
         if (isActive)
         {
-            transform.LookAt(Player);
+            transform.LookAt(new Vector3(Player.position.x, gameObject.GetComponent<Collider>().bounds.center.y, Player.position.z));
             if (Vector3.Distance(transform.position, Player.position) >= minDistance)
             {
                 moveDirection = transform.forward * moveSpeed;

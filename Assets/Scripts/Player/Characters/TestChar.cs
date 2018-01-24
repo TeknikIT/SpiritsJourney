@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Character used for testing different abilities.
+/// </summary>
+
+
 public class TestChar : Character {
 
     GameObject projectile;
@@ -55,43 +61,60 @@ public class TestChar : Character {
 
     }
 
-    public override void BasicAbility()
+    public override bool BasicAbility()
     {
-        base.BasicAbility();
-        Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z));
-        arrow.SetActive(false);
-  
-        
-    }
-
-    public override void CharacterSpecificAbility()
-    {
-        base.CharacterSpecificAbility();
-        target = Vector3.forward;
-        if (!dashing)
+        if (base.BasicAbility())
         {
-            target = transform.TransformDirection(target);
+            Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z));
         }
-        dashing = true;
-        Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z));
         arrow.SetActive(false);
+        return true;
+    }
+
+    public override bool CharacterSpecificAbility()
+    {
+        if (base.CharacterSpecificAbility())
+        {
+            target = Vector3.forward;
+            if (!dashing)
+            {
+                target = transform.TransformDirection(target);
+            }
+            dashing = true;
+            Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z));
+        }
+        
+        arrow.SetActive(false);
+        return true;
 
         
     }
 
-    public override void RecoveryAbility()
+    public override bool RecoveryAbility()
     {
-        base.RecoveryAbility();
+        if (base.RecoveryAbility())
+        {
+
+        }
+        return true;
     }
 
-    public override void UtilityAbility()
+    public override bool UtilityAbility()
     {
-        base.UtilityAbility();
+        if (base.UtilityAbility())
+        {
+
+        }
+        return true;
     }
 
-    public override void SpecialAbility()
+    public override bool SpecialAbility()
     {
-        base.SpecialAbility();
+        if (base.SpecialAbility())
+        {
+
+        }
+        return true;
     }
 
     public override void Aim()

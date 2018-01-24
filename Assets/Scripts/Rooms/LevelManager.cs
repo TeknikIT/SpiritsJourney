@@ -1,6 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
+/// <summary>
+/// Keeping track of all the rooms on the level, i.e. when the doors are supposed to open
+/// </summary>
+
+
 [RequireComponent(typeof(LevelGenerationManager))]
 public class LevelManager : MonoBehaviour {
 

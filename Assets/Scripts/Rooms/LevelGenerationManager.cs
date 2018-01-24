@@ -11,30 +11,34 @@ public class LevelGenerationManager : MonoBehaviour {
         instance = this;
     }
     #endregion
-    private GameObject[] GeneralRoomPrefabs, BossRoomPrefabs, StartingRoomPrefabs;
-    public int levelSize;
-    public LevelGenerationHelper levelGenerationHelper;
-    private Bounds[] roomBounds = new Bounds[100];
-    public List<GameObject> rooms;
-    public List< Vector2> directions;
+    private GameObject[] GeneralRoomPrefabs, BossRoomPrefabs, StartingRoomPrefabs; //Room prefabs
+    public int levelSize; //The size of the level. More than one 100 is very laggy
+    public LevelGenerationHelper levelGenerationHelper; //Helperclass for creating the level
+    private Bounds[] roomBounds = new Bounds[100]; //Size of rooms, Used for making enough room between rooms
+    public List<GameObject> rooms; // A list of all the rooms in the game
+    public List< Vector2> directions;//A list of vectors setting integers to Vectors
     // Use this for initialization
     void Start () {
+        //Initalizing lists
         directions = new List<Vector2>();
         directions.Add(Vector2.up);
         directions.Add(Vector2.right);
         directions.Add(Vector2.down);
         directions.Add(Vector2.left);
+        //Creating the rooms
         InstantiateRooms();
-        GetComponent<LevelManager>().Initialize();
+        GetComponent<LevelManager>().Initialize(); // Initializing Levelmanager
     }
 
 
     public void InstantiateRooms()
     {
         rooms = new List<GameObject>();
+        //Loading in all prefabs
         GeneralRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/GeneralRooms");
         BossRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/BossRooms");
         StartingRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/StartingRooms");
+        //Instantating the levelhelper which returns a levelgrid
         levelGenerationHelper = new LevelGenerationHelper(levelSize);
         //Place Rooms
         for (int i = 0; i < GeneralRoomPrefabs.Length; i++)
@@ -82,7 +86,7 @@ public class LevelGenerationManager : MonoBehaviour {
         }
 
     }
-
+    //Checking were to place doors
     void CheckDoors(int index)
     {
         for(int direction = 0; direction < 4; direction++)
@@ -100,6 +104,8 @@ public class LevelGenerationManager : MonoBehaviour {
         }
     }
 
+    //Clearing all rooms
+    //Used for reset
     void ClearAllRooms()
     {
         foreach (GameObject go in rooms)
@@ -108,6 +114,7 @@ public class LevelGenerationManager : MonoBehaviour {
         }
     }
 
+    //Gets the bounds of all the rooms
     Bounds GetChildrenRenderingBounds(GameObject go)
     {
         Renderer[] renderers = go.GetComponentsInChildren<Renderer>();
