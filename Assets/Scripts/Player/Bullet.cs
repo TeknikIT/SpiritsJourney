@@ -23,7 +23,6 @@ public class Bullet : MonoBehaviour {
         timer += Time.deltaTime;
         if(timer > maxAliveTime)
         {
-            Debug.Log("Destroyed!");
             Destroy(gameObject);
         }
 	}
