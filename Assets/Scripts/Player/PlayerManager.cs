@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour {
     private void Update()
     {
         timer += Time.deltaTime;
-        GameObject.Find("Text").GetComponent<UnityEngine.UI.Text>().text = "Health: " + health;
+        //GameObject.Find("Text").GetComponent<UnityEngine.UI.Text>().text = "Health: " + health;
     }
     public void TakeDamage(int damage)
     {

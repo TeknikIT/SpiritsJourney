@@ -6,6 +6,8 @@ using UnityEngine;
 /// Controlls the enemy's movement
 /// </summary>
 
+    [RequireComponent (typeof(Animator))]
+
 public class EnemyController : MonoBehaviour {
     private Transform Player; //The player's transform
     public int moveSpeed = 5; // Movementspeed of the enemy
@@ -48,9 +50,11 @@ public class EnemyController : MonoBehaviour {
             moveDirection.y -= gravity;
             //Moves the enemy
             controller.Move(moveDirection * Time.deltaTime);
-            
-        }  
-        
+            GetComponent<Animator>().SetFloat("velocity", Vector3.Distance(Vector3.zero, controller.velocity));
+
+
+        }
+
     }
     //Starts the knockback coroutine
     public void StartKnockback(float strength, Vector3 hitDirection)
