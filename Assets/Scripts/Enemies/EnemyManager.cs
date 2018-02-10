@@ -10,10 +10,16 @@ public class EnemyManager : MonoBehaviour {
 
     public int health;
     public RoomManager room;
+    private float timer;
     private void Start()
     {
         health = 100;
         
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
     }
     /// <summary>
     /// Removes the enemy
@@ -29,11 +35,17 @@ public class EnemyManager : MonoBehaviour {
     /// <param name="damage">The damage that will be applied</param>
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        if (health <= 0)
+        if(timer > 0.5f)
         {
-            Kill();
+            health -= damage;
+            if (health <= 0)
+            {
+                Kill();
+            }
+            timer = 0;
+            Debug.Log(health);
         }
+
     }
     /// <summary>
     /// Removes health and applies knockback to the enemy
@@ -43,11 +55,16 @@ public class EnemyManager : MonoBehaviour {
     /// <param name="knockbackDirection">The direction that the knockback should be applied in</param>
     public void TakeDamageWithKnockback(int damage, float knockbackForce, Vector3 knockbackDirection)
     {
-        health -= damage;
-        GetComponent<EnemyController>().StartKnockback(knockbackForce, knockbackDirection);
-        if (health <= 0)
+        if(timer > 0.5f)
         {
-            Kill();
+            health -= damage;
+            GetComponent<EnemyController>().StartKnockback(knockbackForce, knockbackDirection);
+            if (health <= 0)
+            {
+                Kill();
+            }
+            timer = 0;
+            Debug.Log(health);
         }
     }
 }
