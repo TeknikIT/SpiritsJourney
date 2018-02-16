@@ -50,8 +50,10 @@ public class EnemyController : MonoBehaviour {
             moveDirection.y -= gravity;
             //Moves the enemy
             controller.Move(moveDirection * Time.deltaTime);
-            GetComponent<Animator>().SetFloat("velocity", Vector3.Distance(Vector3.zero, controller.velocity));
-
+            if(GetComponent<Animator>() != null)
+            {
+                GetComponent<Animator>().SetFloat("velocity", Vector3.Distance(Vector3.zero, controller.velocity));
+            }
 
         }
 
