@@ -1,15 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: d58f565a6ee38fa448dfe0892fb1aea4
-timeCreated: 1516797319
-licenseType: Free
-ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName: {}
-=======
-guid: 8b6974415fbf16844bd25edc6d71fe95
-timeCreated: 1517488300
-licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
@@ -42,7 +32,6 @@ ModelImporter:
     7400006: move
     9500000: //RootNode
     13700000: slime_small
->>>>>>> 6cd022c43a32b08a26e40b9e07e95aec0371fbee
   materials:
     importMaterials: 1
     materialName: 0

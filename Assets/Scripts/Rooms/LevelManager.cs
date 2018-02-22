@@ -34,11 +34,10 @@ public class LevelManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         
-        
     }
     public void Initialize()
     {
-        levelGenerationManager = GetComponent<LevelGenerationManager>();
+        levelGenerationManager = LevelGenerationManager.instance;
         rooms = levelGenerationManager.rooms;
         directions = levelGenerationManager.directions;
     }
