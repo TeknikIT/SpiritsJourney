@@ -6,8 +6,7 @@ public class PlayerManager : MonoBehaviour {
 
     #region Singleton
     public static PlayerManager instance;
-    public int health;
-    private float timer = 0.0f;
+    
 
     private void Awake()
     {
@@ -18,6 +17,8 @@ public class PlayerManager : MonoBehaviour {
     /// Used for keeping track over health and damage
     /// </summary>
     public GameObject player;
+    public int health;
+    private float timer = 0.0f;
     public void KillPlayer()
     {
         LevelManager.instance.Reload();

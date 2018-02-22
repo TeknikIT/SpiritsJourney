@@ -8,6 +8,7 @@ TagManager:
   - Terrain
   - Utillity
   - EnemyChild
+  - Invulnerable
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - 
   - 
   - Terrain
-  - 
+  - Ghost
   - 
   - 
   - 
