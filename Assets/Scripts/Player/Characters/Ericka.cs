@@ -65,9 +65,8 @@ namespace Assets.Scripts.Player.Characters
         {
             if (base.BasicAbility())
             {
-                Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z));
+
             }
-            arrow.SetActive(false);
             return true;
         }
 
@@ -75,15 +74,9 @@ namespace Assets.Scripts.Player.Characters
         {
             if (base.CharacterSpecificAbility())
             {
-                target = Vector3.forward;
-                if (!dashing)
-                {
-                    target = transform.TransformDirection(target);
-                }
-                dashing = true;
-                
+                Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), 
+                    Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z));
             }
-
             arrow.SetActive(false);
             return true;
 
@@ -103,9 +96,17 @@ namespace Assets.Scripts.Player.Characters
         {
             if (base.UtilityAbility())
             {
-
+                target = Vector3.forward;
+                if (!dashing)
+                {
+                    target = transform.TransformDirection(target);
+                }
+                dashing = true;
             }
+            arrow.SetActive(false);
             return true;
+          
+
         }
 
         public override bool SpecialAbility()
