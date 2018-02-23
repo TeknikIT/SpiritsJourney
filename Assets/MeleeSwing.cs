@@ -6,27 +6,27 @@ public class MeleeSwing : MonoBehaviour {
 
     float slashTime;
     float currentSlashTime;
-    float rotateDistance;
-    Quaternion startRot;
-    Quaternion endRot;
-    void Start() {
+    Vector3 startRot;
+    Vector3 currentRot;
+    Vector3 endRot;
+    void Start()
+    {
         slashTime = 0.5f;
-        rotateDistance = 120f;
-        startRot = Quaternion.Euler(new Vector3(0, 60, 0));
-        endRot = Quaternion.Euler(transform.rotation.x, transform.rotation.y + rotateDistance, transform.rotation.z);
+        startRot = transform.eulerAngles;
+        currentRot = startRot;
+        endRot = new Vector3(startRot.x, startRot.y - 120f, startRot.z);
     }
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            currentSlashTime = 0f;
-        }
         currentSlashTime += Time.deltaTime;
         if(currentSlashTime > slashTime)
         {
             currentSlashTime = slashTime;
+            Destroy(gameObject);
         }
         float perc = currentSlashTime / slashTime;
-        transform.rotation = Quaternion.Lerp(startRot, endRot, perc);
-	}
+        currentRot = new Vector3(startRot.x, Mathf.LerpAngle(startRot.y, endRot.y, perc), startRot.z);
+        transform.eulerAngles = currentRot;
+
+    }
 }
