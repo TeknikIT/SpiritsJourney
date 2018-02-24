@@ -6,7 +6,7 @@ namespace Assets.Scripts.Player.Characters
 {
     class Ericka : Character
     {
-        GameObject projectile;
+        GameObject projectile, meleeHitbox;
         public float dashDistance, dashTime;
         private float dashSpeed;
         public bool dashing;
@@ -17,6 +17,7 @@ namespace Assets.Scripts.Player.Characters
         private void Start()
         {
             projectile = (GameObject)Resources.Load("Prefabs/Bullet");
+            meleeHitbox = (GameObject)Resources.Load("Prefabs/MeleeAttackHB");
             dashing = false;
             collisionAttack = false;
             collisionAttackDamage = 10;
@@ -65,7 +66,8 @@ namespace Assets.Scripts.Player.Characters
         {
             if (base.BasicAbility())
             {
-
+                var hitBox = Instantiate(meleeHitbox, transform);
+                hitBox.transform.parent = transform;
             }
             return true;
         }

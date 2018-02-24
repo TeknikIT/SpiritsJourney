@@ -29,4 +29,23 @@ public class MeleeSwing : MonoBehaviour {
         transform.eulerAngles = currentRot;
 
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(gameObject.GetComponent<Collider>().bounds.center, gameObject.GetComponent<Collider>().bounds.size);
+    }
+    private void OnTriggerEnter(Collider c)
+    {
+        if (c.CompareTag("Enemy"))
+        {
+            c.gameObject.GetComponent<EnemyManager>().TakeDamageWithKnockback(50, 10f,
+                transform.TransformDirection(PlayerManager.instance.GetComponent<PlayerController>().moveDirection));
+        }
+        if (c.CompareTag("EnemyChild"))
+        {
+            c.gameObject.GetComponentInParent<EnemyManager>().TakeDamageWithKnockback(50, 10f,
+                transform.TransformDirection(PlayerManager.instance.GetComponent<PlayerController>().moveDirection));
+
+        }
+    }
 }
