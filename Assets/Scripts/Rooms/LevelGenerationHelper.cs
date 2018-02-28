@@ -8,7 +8,7 @@ public class LevelGenerationHelper {
     private List<Vector2> _createdRooms;
     private int _gridSize, _levelSize; //gridSize defines the dimensions of the grid. LevelSize defines the amount of rooms.
     #region properties
-   
+
     public int[,] roomPlacementGrid
     {
         get { return _roomPlacementGrid; }
@@ -24,7 +24,7 @@ public class LevelGenerationHelper {
         get { return _gridSize; }
         private set //Every grid needs to have a center so this part makes sure that the sides are uneven
         {
-            if((value % 2) != 0)
+            if ((value % 2) != 0)
             {
                 _gridSize = value;
             }
@@ -50,15 +50,15 @@ public class LevelGenerationHelper {
     private void GenerateLevel()
     {
         roomPlacementGrid = new int[gridSize, gridSize];//Creates the main grid
-        createdRooms = new List<Vector2>(); //This list will have all the rooms cordinates that are created.
-        //This is to be able to randomly pick one of them easily
+        createdRooms = new List<Vector2>(); //This list include have all the cordinates of the rooms that are created.
+        //This is to be able to easily randomly pick one of them.
         //Setup grid with a zero in every cell. Zero means no room.
         GenerateEmptyGrid();
-        //Populate center piece and add it to the locator list. One means room.
+        //Populate center piece and add it to the locator list. Two means starting room.
         PlaceRoom(gridSize / 2, gridSize / 2, 2);
 
         //This statment checks if enough rooms have been created.
-        while(createdRooms.Count < levelSize)
+        while (createdRooms.Count < levelSize)
         {
             if (createdRooms.Count == levelSize - 1)
                 PlaceSpecialRoom(3);
@@ -77,7 +77,7 @@ public class LevelGenerationHelper {
 
     private void PlaceRoom(int x, int y, int roomIndex)
     {
-        //makes the selected tile 1 and add it to the room list
+        //makes the selected cell 1 and add it to the room list
         roomPlacementGrid[x, y] = roomIndex;
         createdRooms.Add(new Vector2(x, y));
     }
@@ -85,7 +85,7 @@ public class LevelGenerationHelper {
     private void PickARandomRoomAndDirection()
     {
         int chosenRoomNumber, chosenDirection;
-        //variables to hold the random values
+        //Local Variables to hold the random values
         do
         {
             chosenRoomNumber = Random.Range(0, createdRooms.Count);
@@ -95,7 +95,7 @@ public class LevelGenerationHelper {
         //If the room isn't obstucted then we place a room. createdRooms is a Vector2 list.
         PlaceRoom(createdRooms[chosenRoomNumber], chosenDirection);
     }
-    
+
 
     private bool ObstructedAndNeighbours(Vector2 chosenRoom, int chosenDirection)
     {
@@ -167,6 +167,21 @@ public class LevelGenerationHelper {
             return Vector2.zero;
     }
 
+    private int NumberOfOccupiedNeighbours(Vector2 centerRoom)
+    {
+        //Checking all the neighbors of a selected room
+        int counter = 0;
+        for (int i = 1; i < 5; i++)
+        {
+            //Direction(i) is for the the suronding rooms
+            if (roomPlacementGrid[(int)(centerRoom + Direction(i)).x, (int)(centerRoom + Direction(i)).y] != 0)
+            {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
     private bool Obstructed(Vector2 chosenRoom, int chosenDirection)
     {
         /*
@@ -182,20 +197,6 @@ public class LevelGenerationHelper {
             return true;
     }
 
-    private int NumberOfOccupiedNeighbours(Vector2 centerRoom)
-    {
-        //Checking all the neighbors of a selected room
-        int counter = 0;
-        for(int i = 1; i < 5; i++)
-        {
-            //Direction(i) is for the the suronding rooms
-            if (roomPlacementGrid[(int)(centerRoom + Direction(i)).x, (int)(centerRoom + Direction(i)).y] != 0)
-            {
-                counter++;
-            }
-        }
-        return counter;
-    }
     
     private void WriteGridToConsole()
     {

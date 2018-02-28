@@ -22,6 +22,7 @@ public class MeleeSwing : MonoBehaviour {
         if(currentSlashTime > slashTime)
         {
             currentSlashTime = slashTime;
+            transform.parent.gameObject.isStatic = false;
             Destroy(gameObject);
         }
         float perc = currentSlashTime / slashTime;

@@ -66,8 +66,10 @@ namespace Assets.Scripts.Player.Characters
         {
             if (base.BasicAbility())
             {
-                var hitBox = Instantiate(meleeHitbox, transform);
-                hitBox.transform.parent = transform;
+                Transform prevTransform = transform.parent;
+                //transform.parent.rotation = arrow.transform.rotation;
+                var hitBox = Instantiate(meleeHitbox, transform); 
+                hitBox.transform.parent = transform; /*?Hur tänkte jag här?*/;
             }
             return true;
         }
