@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< HEAD:Assets/UnmergableFiles/GenerationTest_LOCAL_4780.unity
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
-=======
   m_IndirectSpecularColor: {r: 0.44530296, g: 0.49494392, b: 0.5739421, a: 1}
->>>>>>> refs/remotes/origin/master:Assets/Resources/Scenes/GenerationTest_LOCAL_4780.unity
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -307,11 +303,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD:Assets/UnmergableFiles/GenerationTest_LOCAL_4780.unity
---- !u!1 &498154703
-=======
 --- !u!1 &535647264
->>>>>>> refs/remotes/origin/master:Assets/Resources/Scenes/GenerationTest_LOCAL_4780.unity
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 1793793284653724, guid: c5eb2eef7b742a64cb01fcfe3d7a82af,
@@ -343,11 +335,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2052706394}
   m_RootOrder: 0
-<<<<<<< HEAD:Assets/UnmergableFiles/GenerationTest_LOCAL_4780.unity
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> 12d9ce23f46faab3817a1b443783a5810a158dd1:Assets/Resources/Scenes/GenerationTest_LOCAL_4780.unity
->>>>>>> 55dfeb2732ec07d3f455b47bc72032f382f7c5d1:Assets/UnmergableFiles/GenerationTest_LOCAL_4780.unity
-=======
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!23 &535647266
 MeshRenderer:
@@ -405,7 +392,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 535647264}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
->>>>>>> refs/remotes/origin/master:Assets/Resources/Scenes/GenerationTest_LOCAL_4780.unity
 --- !u!1 &604465948
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,12 +508,12 @@ Prefab:
     - target: {fileID: 23712651491114266, guid: c5eb2eef7b742a64cb01fcfe3d7a82af,
         type: 2}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: f6a94b8eb93ac4646877ff894bdfa1fc, type: 2}
     - target: {fileID: 114390379890145246, guid: c5eb2eef7b742a64cb01fcfe3d7a82af,
         type: 2}
       propertyPath: cone
-      value: 
+      value:
       objectReference: {fileID: 2052706393}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5eb2eef7b742a64cb01fcfe3d7a82af, type: 2}
@@ -574,8 +560,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca373f619a7731e4bb7b279de8429192, type: 2}
   m_IsPrefabParent: 0
-<<<<<<< HEAD:Assets/UnmergableFiles/GenerationTest_LOCAL_4780.unity
-=======
 --- !u!1 &913012718
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,7 +830,6 @@ Transform:
   m_Father: {fileID: 707645000}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> 12d9ce23f46faab3817a1b443783a5810a158dd1:Assets/Resources/Scenes/GenerationTest_LOCAL_4780.unity
 >>>>>>> 55dfeb2732ec07d3f455b47bc72032f382f7c5d1:Assets/UnmergableFiles/GenerationTest_LOCAL_4780.unity
 =======
 >>>>>>> refs/remotes/origin/master:Assets/Resources/Scenes/GenerationTest_LOCAL_4780.unity
@@ -1092,61 +1075,3 @@ Transform:
   m_Father: {fileID: 1890441418}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD:Assets/UnmergableFiles/GenerationTest_LOCAL_4780.unity
---- !u!137 &2049990383
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13700000, guid: b52a5b32ad752654c952ba9b6be837be,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2049990381}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 33ff8ce9976b12e4db4483040c2615f5, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: b52a5b32ad752654c952ba9b6be837be, type: 3}
-  m_Bones:
-  - {fileID: 707645000}
-  - {fileID: 1805799381}
-  - {fileID: 1225774226}
-  - {fileID: 1098280796}
-  - {fileID: 1190568638}
-  - {fileID: 1314160889}
-  - {fileID: 913012719}
-  - {fileID: 2035318418}
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 707645000}
-  m_AABB:
-    m_Center: {x: 0.00040153135, y: 0.023679528, z: -0.002405406}
-    m_Extent: {x: 0.031120043, y: 0.023945943, z: 0.032779578}
-  m_DirtyAABB: 0
->>>>>>> 12d9ce23f46faab3817a1b443783a5810a158dd1:Assets/Resources/Scenes/GenerationTest_LOCAL_4780.unity
->>>>>>> 55dfeb2732ec07d3f455b47bc72032f382f7c5d1:Assets/UnmergableFiles/GenerationTest_LOCAL_4780.unity
-=======
->>>>>>> refs/remotes/origin/master:Assets/Resources/Scenes/GenerationTest_LOCAL_4780.unity
