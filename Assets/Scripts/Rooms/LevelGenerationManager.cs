@@ -19,11 +19,6 @@ public class LevelGenerationManager : MonoBehaviour {
     public List< Vector2> directions;//A list of vectors setting integers to Vectors
     // Use this for initialization
     void Start () {
-        
-    }
-
-    public void Initalize()
-    {
         //Initalizing lists
         directions = new List<Vector2>();
         directions.Add(Vector2.up);

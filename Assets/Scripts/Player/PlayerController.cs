@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 6.0F;
     public float gravity = 20.0F;
-    private Vector3 moveDirection = Vector3.zero;
+    public Vector3 moveDirection = Vector3.zero;
     public Vector3 originPosition;
     CharacterController controller;
     void Update () {

@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 824bf801baadc364fac8f4c0a42daa3a
+timeCreated: 1516797319
+licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
@@ -17,7 +19,6 @@ ModelImporter:
     3300002: default_MeshPart1
     4300000: default_MeshPart0
     4300002: default_MeshPart1
-    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -87,7 +88,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

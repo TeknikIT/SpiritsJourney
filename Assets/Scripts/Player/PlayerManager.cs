@@ -19,6 +19,8 @@ public class PlayerManager : MonoBehaviour {
     public GameObject player;
     public int health;
     private float timer = 0.0f;
+    public bool movementLocked = false, locked = false;
+    private Vector3 holdPosition;
     public void KillPlayer()
     {
         LevelManager.instance.Reload();
@@ -30,7 +32,18 @@ public class PlayerManager : MonoBehaviour {
     private void Update()
     {
         timer += Time.deltaTime;
-        //GameObject.Find("Text").GetComponent<UnityEngine.UI.Text>().text = "Health: " + health;
+        GameObject.Find("Text").GetComponent<UnityEngine.UI.Text>().text = "Health: " + health;
+        if (movementLocked)
+        {
+            holdPosition = transform.position;
+            locked = true;
+        }
+        if (locked)
+        {
+            transform.position = holdPosition;
+        }
+        
+
     }
     public void TakeDamage(int damage)
     {

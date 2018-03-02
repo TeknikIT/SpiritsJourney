@@ -1,37 +1,10 @@
 fileFormatVersion: 2
 guid: d58f565a6ee38fa448dfe0892fb1aea4
+timeCreated: 1516797319
+licenseType: Free
 ModelImporter:
   serializedVersion: 21
-  fileIDToRecycleName:
-    100000: Armature
-    100002: //RootNode
-    100004: head
-    100006: legE
-    100008: legN
-    100010: legS
-    100012: legW
-    100014: neck
-    100016: neck2
-    100018: root
-    100020: slime_small
-    400000: Armature
-    400002: //RootNode
-    400004: head
-    400006: legE
-    400008: legN
-    400010: legS
-    400012: legW
-    400014: neck
-    400016: neck2
-    400018: root
-    400020: slime_small
-    4300000: slime_small
-    7400000: Default Take
-    7400002: attack
-    7400004: idle
-    7400006: move
-    9500000: //RootNode
-    13700000: slime_small
+  fileIDToRecycleName: {}
   materials:
     importMaterials: 1
     materialName: 0

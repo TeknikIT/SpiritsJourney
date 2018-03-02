@@ -6,7 +6,7 @@ namespace Assets.Scripts.Player.Characters
 {
     class Ericka : Character
     {
-        GameObject projectile;
+        GameObject projectile, meleeHitbox;
         public float dashDistance, dashTime;
         private float dashSpeed;
         public bool dashing;
@@ -17,6 +17,7 @@ namespace Assets.Scripts.Player.Characters
         private void Start()
         {
             projectile = (GameObject)Resources.Load("Prefabs/Bullet");
+            meleeHitbox = (GameObject)Resources.Load("Prefabs/MeleeAttackHB");
             dashing = false;
             collisionAttack = false;
             collisionAttackDamage = 10;
@@ -27,7 +28,7 @@ namespace Assets.Scripts.Player.Characters
         {
             if (Input.GetButton("Basic"))
             {
-                Aim();
+                AimCone(0.2f);
             }
             if (Input.GetButtonUp("Basic"))
             {
@@ -36,7 +37,7 @@ namespace Assets.Scripts.Player.Characters
 
             if (Input.GetButton("CSA"))
             {
-                Aim();
+                AimArrow();
             }
             if (Input.GetButtonUp("CSA"))
             {
@@ -65,9 +66,10 @@ namespace Assets.Scripts.Player.Characters
         {
             if (base.BasicAbility())
             {
-                Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z));
+				var hitBox = Instantiate(meleeHitbox, PlayerManager.instance.transform.position, Quaternion.Euler(0, cone.transform.rotation.eulerAngles.y + 60, cone.transform.rotation.eulerAngles.z));
+                hitBox.transform.parent = transform;
             }
-            arrow.SetActive(false);
+            cone.SetActive(false);
             return true;
         }
 
@@ -75,15 +77,9 @@ namespace Assets.Scripts.Player.Characters
         {
             if (base.CharacterSpecificAbility())
             {
-                target = Vector3.forward;
-                if (!dashing)
-                {
-                    target = transform.TransformDirection(target);
-                }
-                dashing = true;
-                
+                Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), 
+                    Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z));
             }
-
             arrow.SetActive(false);
             return true;
 
@@ -103,9 +99,17 @@ namespace Assets.Scripts.Player.Characters
         {
             if (base.UtilityAbility())
             {
-
+                target = Vector3.forward;
+                if (!dashing)
+                {
+                    target = transform.TransformDirection(target);
+                }
+                dashing = true;
             }
+            arrow.SetActive(false);
             return true;
+          
+
         }
 
         public override bool SpecialAbility()
@@ -117,9 +121,14 @@ namespace Assets.Scripts.Player.Characters
             return true;
         }
 
-        public override void Aim()
+        public override void AimArrow()
         {
-            base.Aim();
+            base.AimArrow();
+        }
+
+        public override void AimCone(float scale)
+        {
+            base.AimCone(scale);
         }
 
         public void OnCollisionEnter(Collision c)
