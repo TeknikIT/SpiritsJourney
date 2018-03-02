@@ -15,10 +15,12 @@ public class MeleeSwing : MonoBehaviour {
         startRot = transform.eulerAngles;
         currentRot = startRot;
         endRot = new Vector3(startRot.x, startRot.y - 120f, startRot.z);
+
     }
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
         currentSlashTime += Time.deltaTime;
+        
         if(currentSlashTime > slashTime)
         {
             currentSlashTime = slashTime;
@@ -38,12 +40,12 @@ public class MeleeSwing : MonoBehaviour {
     {
         if (c.CompareTag("Enemy"))
         {
-            c.gameObject.GetComponent<EnemyManager>().TakeDamageWithKnockback(50, 10f,
+            c.gameObject.GetComponent<EnemyManager>().TakeDamageWithKnockback(50, 5f,
                 transform.TransformDirection(PlayerManager.instance.GetComponent<PlayerController>().moveDirection));
         }
         if (c.CompareTag("EnemyChild"))
         {
-            c.gameObject.GetComponentInParent<EnemyManager>().TakeDamageWithKnockback(50, 10f,
+            c.gameObject.GetComponentInParent<EnemyManager>().TakeDamageWithKnockback(50, 5f,
                 transform.TransformDirection(PlayerManager.instance.GetComponent<PlayerController>().moveDirection));
 
         }
