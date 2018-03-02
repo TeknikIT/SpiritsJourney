@@ -28,7 +28,7 @@ namespace Assets.Scripts.Player.Characters
         {
             if (Input.GetButton("Basic"))
             {
-                Aim();
+                AimCone(0.2f);
             }
             if (Input.GetButtonUp("Basic"))
             {
@@ -37,7 +37,7 @@ namespace Assets.Scripts.Player.Characters
 
             if (Input.GetButton("CSA"))
             {
-                Aim();
+                AimArrow();
             }
             if (Input.GetButtonUp("CSA"))
             {
@@ -66,11 +66,10 @@ namespace Assets.Scripts.Player.Characters
         {
             if (base.BasicAbility())
             {
-                Transform prevTransform = transform.parent;
-                //transform.parent.rotation = arrow.transform.rotation;
-                var hitBox = Instantiate(meleeHitbox, transform); 
-                hitBox.transform.parent = transform; /*?Hur tänkte jag här?*/;
+				var hitBox = Instantiate(meleeHitbox, PlayerManager.instance.transform.position, Quaternion.Euler(0, cone.transform.rotation.eulerAngles.y + 60, cone.transform.rotation.eulerAngles.z));
+                hitBox.transform.parent = transform;
             }
+            cone.SetActive(false);
             return true;
         }
 
@@ -122,9 +121,14 @@ namespace Assets.Scripts.Player.Characters
             return true;
         }
 
-        public override void Aim()
+        public override void AimArrow()
         {
-            base.Aim();
+            base.AimArrow();
+        }
+
+        public override void AimCone(float scale)
+        {
+            base.AimCone(scale);
         }
 
         public void OnCollisionEnter(Collision c)

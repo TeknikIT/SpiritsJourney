@@ -11,12 +11,13 @@ public class Character : MonoBehaviour {
 
     public string characterName; //Name of the character
     public int health; //Character health
-    public GameObject arrow; //The aim arrow
+    public GameObject arrow, cone; //The aim arrow/cone
     public float[] coolDowns, timeStamps; //Arrays containing both coolDowns and the last time the abillity was used
     private void Start()
     {
         //Initializing arrow and cd arrays
         arrow = gameObject.transform.Find("Arrow").gameObject;
+        cone = gameObject.transform.Find("Cone").gameObject;
         coolDowns = new float[5];
         timeStamps = new float[5];
     }
@@ -89,7 +90,7 @@ public class Character : MonoBehaviour {
     }
 
     //The function used for aiming
-    public virtual void Aim()
+    public virtual void AimArrow()
     {
         arrow.SetActive(true);
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -98,6 +99,18 @@ public class Character : MonoBehaviour {
         {
             arrow.transform.LookAt(hit.point);
             arrow.transform.rotation = Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z);
+        }
+    }
+    public virtual void AimCone(float scale)
+    {
+        cone.SetActive(true);
+        cone.transform.localScale = Vector3.one * scale;
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Terrain")))
+        {
+            cone.transform.LookAt(hit.point);
+            cone.transform.rotation = Quaternion.Euler(0, cone.transform.rotation.eulerAngles.y, cone.transform.rotation.eulerAngles.z);
         }
     }
 

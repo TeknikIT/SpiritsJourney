@@ -27,7 +27,7 @@ public class TestChar : Character {
     {
         if (Input.GetButton("Basic"))
         {
-            Aim();
+            AimArrow();
         }
         if (Input.GetButtonUp("Basic"))
         {
@@ -36,7 +36,7 @@ public class TestChar : Character {
 
         if (Input.GetButton("CSA"))
         {
-            Aim();
+            AimArrow();
         }
         if (Input.GetButtonUp("CSA"))
         {
@@ -117,8 +117,8 @@ public class TestChar : Character {
         return true;
     }
 
-    public override void Aim()
+    public override void AimArrow()
     {
-        base.Aim();
+        base.AimArrow();
     }
 }
