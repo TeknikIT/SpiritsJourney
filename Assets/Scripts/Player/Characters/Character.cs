@@ -113,6 +113,14 @@ public class Character : MonoBehaviour {
             cone.transform.rotation = Quaternion.Euler(0, cone.transform.rotation.eulerAngles.y, cone.transform.rotation.eulerAngles.z);
         }
     }
+    public virtual void ToggleCharacterMovement()
+    {
+        PlayerController pc = PlayerManager.instance.GetComponent<PlayerController>();
+        if (pc.movementIsLocked)
+            pc.movementIsLocked = false; 
+        else
+            pc.movementIsLocked = true;
+    }
 
 
 }

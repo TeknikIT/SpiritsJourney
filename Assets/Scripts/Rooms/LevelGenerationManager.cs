@@ -12,9 +12,11 @@ public class LevelGenerationManager : MonoBehaviour {
     }
     #endregion
     private GameObject[] GeneralRoomPrefabs, BossRoomPrefabs, StartingRoomPrefabs; //Room prefabs
+    private GameObject emptyRoom;
     public int levelSize; //The size of the level. More than one 100 is very laggy
     public LevelGenerationHelper levelGenerationHelper; //Helperclass for creating the level
     private Bounds[] roomBounds = new Bounds[100]; //Size of rooms, Used for making enough room between rooms
+    private Vector3 emptyRoomSize;
     public List<GameObject> rooms; // A list of all the rooms in the game
     public List< Vector2> directions;//A list of vectors setting integers to Vectors
     // Use this for initialization
@@ -38,6 +40,7 @@ public class LevelGenerationManager : MonoBehaviour {
         GeneralRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/GeneralRooms");
         BossRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/BossRooms");
         StartingRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/StartingRooms");
+        emptyRoom = Resources.Load<GameObject>("Prefabs/Rooms/EmptyRoom");
         //Instantating the levelhelper which returns a levelgrid
         levelGenerationHelper = new LevelGenerationHelper(levelSize);
         //Place Rooms
@@ -45,7 +48,9 @@ public class LevelGenerationManager : MonoBehaviour {
         {
             roomBounds[i] = GetChildrenRenderingBounds(GeneralRoomPrefabs[i]);
         }
-       
+
+        emptyRoomSize = emptyRoom.GetComponent<Renderer>().bounds.size;
+
         int halfGridSize = levelGenerationHelper.gridSize / 2;
             
         for(int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
@@ -77,6 +82,40 @@ public class LevelGenerationManager : MonoBehaviour {
                     break;
             }
             
+        }
+
+        float maxX, maxY, minX, minY;
+        maxX = levelGenerationHelper.createdRooms[0].x;
+        maxY = levelGenerationHelper.createdRooms[0].y;
+        minX = levelGenerationHelper.createdRooms[0].x;
+        minY = levelGenerationHelper.createdRooms[0].y;
+        for (int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
+        {
+            if (maxX < levelGenerationHelper.createdRooms[i].x)
+                maxX = levelGenerationHelper.createdRooms[i].x;
+            if (maxY < levelGenerationHelper.createdRooms[i].y)
+                maxY = levelGenerationHelper.createdRooms[i].y;
+            if (minX > levelGenerationHelper.createdRooms[i].x)
+                minX = levelGenerationHelper.createdRooms[i].x;
+            if (minX > levelGenerationHelper.createdRooms[i].y)
+                minY = levelGenerationHelper.createdRooms[i].y;
+        }
+        maxX++;
+        maxY++;
+        minX--;
+        minY--;
+
+        for (int y = (int)minY; y <= maxY; y++)
+        {
+            for(int x = (int)minX; x <= (int)maxX; x++)
+            {
+                if(levelGenerationHelper.roomPlacementGrid[x,y] == 0)
+                {
+                    var emptyRoomInstance = Instantiate(emptyRoom, new Vector3((x - halfGridSize) * emptyRoomSize.x,
+                        0.99f, (y - halfGridSize) * emptyRoomSize.z), transform.rotation);
+                    emptyRoomInstance.transform.parent = GameObject.Find("Rooms").transform;
+                }
+            }
         }
         
         //Open the correct doors

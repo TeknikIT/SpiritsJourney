@@ -17,4 +17,9 @@ public class CameraController : MonoBehaviour {
         transform.position = pos;
         transform.LookAt(player.transform);
 	}
+
+    public void PlayZoomAnim()
+    {
+        GetComponent<Animation>().Play();
+    }
 }

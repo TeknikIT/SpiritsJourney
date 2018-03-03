@@ -68,6 +68,7 @@ namespace Assets.Scripts.Player.Characters
             {
 				var hitBox = Instantiate(meleeHitbox, PlayerManager.instance.transform.position, Quaternion.Euler(0, cone.transform.rotation.eulerAngles.y + 60, cone.transform.rotation.eulerAngles.z));
                 hitBox.transform.parent = transform;
+                hitBox.GetComponent<MeleeSwing>().createdBy = this;
             }
             cone.SetActive(false);
             return true;

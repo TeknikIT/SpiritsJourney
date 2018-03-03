@@ -69,6 +69,7 @@ public class EnemyController : MonoBehaviour {
             //Moves the character during the knockback
             yield return controller.Move(hitDirection * Time.deltaTime * strength);
         }
+        yield return new WaitForSeconds(1);
         isActive = true;//Makes the character move again
     }
 }
