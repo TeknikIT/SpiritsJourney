@@ -70,7 +70,7 @@ public class RoomManager : MonoBehaviour {
 
         if (roomCompleted)
         {
-            openAllDoors();
+            OpenAllDoors();
         }
         
     }
@@ -99,7 +99,7 @@ public class RoomManager : MonoBehaviour {
             roomActive = false;
         }
     }
-    public void openAllDoors()
+    public void OpenAllDoors()
     {
         foreach (GameObject door in doors)
         {
@@ -107,7 +107,7 @@ public class RoomManager : MonoBehaviour {
                 door.GetComponent<Animator>().SetBool("IsOpen", true);
         }
     }
-    public void openADoor(int direction)
+    public void OpenADoor(int direction)
     {
         if (doors[direction].GetComponent<Animator>().gameObject.activeSelf)
             doors[direction].GetComponent<Animator>().SetBool("IsOpen", true);

@@ -66,7 +66,7 @@ public class LevelManager : MonoBehaviour {
                 {
                     if (!rooms[j].GetComponent<RoomManager>().roomCompleted)
                     {
-                        rooms[j].GetComponent<RoomManager>().openADoor(GetOppositeDirection(i));
+                        rooms[j].GetComponent<RoomManager>().OpenADoor(GetOppositeDirection(i));
                     }
                 }
             }
