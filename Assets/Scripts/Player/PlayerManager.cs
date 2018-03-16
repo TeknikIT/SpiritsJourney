@@ -32,7 +32,8 @@ public class PlayerManager : MonoBehaviour {
     private void Update()
     {
         timer += Time.deltaTime;
-        GameObject.Find("Text").GetComponent<UnityEngine.UI.Text>().text = "Health: " + health;
+        if(GameObject.Find("Text") != null)
+            GameObject.Find("Text").GetComponent<UnityEngine.UI.Text>().text = "Health: " + health;
         if (movementLocked)
         {
             holdPosition = transform.position;

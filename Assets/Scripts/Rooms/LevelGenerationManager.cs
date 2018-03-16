@@ -51,7 +51,7 @@ public class LevelGenerationManager : MonoBehaviour {
 
         emptyRoomSize = emptyRoom.GetComponent<Renderer>().bounds.size;
 
-        int halfGridSize = levelGenerationHelper.gridSize / 2;
+        int halfGridSize = levelGenerationHelper.GridSize / 2;
             
         for(int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
         {

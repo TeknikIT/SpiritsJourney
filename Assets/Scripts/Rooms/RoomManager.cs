@@ -8,6 +8,7 @@ public class RoomManager : MonoBehaviour {
     private List<GameObject> doorCovers;
     public bool roomCompleted = false;
     public bool roomActive = false;
+    public bool LootHasDropped = false;
     public List<GameObject> monsters;
     public Vector2 roomGridPosition;
     public int roomArrayPosition;
@@ -71,6 +72,10 @@ public class RoomManager : MonoBehaviour {
         if (roomCompleted)
         {
             OpenAllDoors();
+            if (!LootHasDropped)
+            {
+                SpawnLoot();
+            }
         }
         
     }
@@ -84,6 +89,12 @@ public class RoomManager : MonoBehaviour {
         }
     }
 
+    private void SpawnLoot()
+    {
+
+        LootHasDropped = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
@@ -92,6 +103,7 @@ public class RoomManager : MonoBehaviour {
             roomActive = true;
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")

@@ -19,7 +19,7 @@ public class LevelGenerationHelper {
         get { return _createdRooms; }
         set { _createdRooms = value; }
     }
-    public int gridSize
+    public int GridSize
     {
         get { return _gridSize; }
         private set //Every grid needs to have a center so this part makes sure that the sides are uneven
@@ -49,13 +49,13 @@ public class LevelGenerationHelper {
 
     private void GenerateLevel()
     {
-        roomPlacementGrid = new int[gridSize, gridSize];//Creates the main grid
+        roomPlacementGrid = new int[GridSize, GridSize];//Creates the main grid
         createdRooms = new List<Vector2>(); //This list include have all the cordinates of the rooms that are created.
         //This is to be able to easily randomly pick one of them.
         //Setup grid with a zero in every cell. Zero means no room.
         GenerateEmptyGrid();
         //Populate center piece and add it to the locator list. Two means starting room.
-        PlaceRoom(gridSize / 2, gridSize / 2, 2);
+        PlaceRoom(GridSize / 2, GridSize / 2, 2);
 
         //This statment checks if enough rooms have been created.
         while (createdRooms.Count < levelSize)
@@ -70,8 +70,8 @@ public class LevelGenerationHelper {
     private void GenerateEmptyGrid()
     {
         //Loops through every space in the grid and sets it to 0 (empty)
-        for (int y = 0; y < gridSize; y++)
-            for (int x = 0; x < gridSize; x++)
+        for (int y = 0; y < GridSize; y++)
+            for (int x = 0; x < GridSize; x++)
                 roomPlacementGrid[x, y] = 0;
     }
 
@@ -201,10 +201,10 @@ public class LevelGenerationHelper {
     private void WriteGridToConsole()
     {
         //Used for debug
-        for (int y = 0; y < gridSize; y++)
+        for (int y = 0; y < GridSize; y++)
         {
             string output = "";
-            for (int x = 0; x < gridSize; x++)
+            for (int x = 0; x < GridSize; x++)
             {
                 output += roomPlacementGrid[x, y].ToString();
             }
