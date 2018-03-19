@@ -3,12 +3,120 @@ guid: 42afc1cfc4f7d57468787d8ab4d2473c
 timeCreated: 1520015991
 licenseType: Free
 ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName: {}
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature
+    100002: birefcase_handle
+    100004: briefcase_1
+    100006: briefcase_2
+    100008: //RootNode
+    100010: Cube_001
+    100012: foot_001
+    100014: head
+    100016: l_ankle
+    100018: l_arm
+    100020: l_fingers1
+    100022: l_fingers2
+    100024: l_foot
+    100026: l_hand
+    100028: l_knee
+    100030: l_shoulder
+    100032: l_thigh
+    100034: l_thumb1
+    100036: l_thumb2
+    100038: l_toe
+    100040: neck
+    100042: pelvis
+    100044: r_ankle
+    100046: r_arm
+    100048: r_fingers1
+    100050: r_fingers2
+    100052: r_foot
+    100054: r_hand
+    100056: r_knee
+    100058: r_shoulder
+    100060: r_thigh
+    100062: r_thumb1
+    100064: r_thumb2
+    100066: r_toe
+    100068: root
+    100070: spine1
+    100072: spine2
+    100074: spine3
+    100076: spine4
+    400000: Armature
+    400002: birefcase_handle
+    400004: briefcase_1
+    400006: briefcase_2
+    400008: //RootNode
+    400010: Cube_001
+    400012: foot_001
+    400014: head
+    400016: l_ankle
+    400018: l_arm
+    400020: l_fingers1
+    400022: l_fingers2
+    400024: l_foot
+    400026: l_hand
+    400028: l_knee
+    400030: l_shoulder
+    400032: l_thigh
+    400034: l_thumb1
+    400036: l_thumb2
+    400038: l_toe
+    400040: neck
+    400042: pelvis
+    400044: r_ankle
+    400046: r_arm
+    400048: r_fingers1
+    400050: r_fingers2
+    400052: r_foot
+    400054: r_hand
+    400056: r_knee
+    400058: r_shoulder
+    400060: r_thigh
+    400062: r_thumb1
+    400064: r_thumb2
+    400066: r_toe
+    400068: root
+    400070: spine1
+    400072: spine2
+    400074: spine3
+    400076: spine4
+    4300000: Cube_001
+    4300002: foot_001
+    7400000: Default Take
+    7400002: anim_run
+    7400004: anim_stand
+    9500000: //RootNode
+    13700000: Cube_001
+    13700002: foot_001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: a8e84392465080747a0b37f01e6b67e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_001
+    second: {fileID: 2100000, guid: f0f1b68b3adb9644d8c58619216cccef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _null__002
+    second: {fileID: 2100000, guid: 9c0b05312b2208d4086f0e0ad07f94d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: briefcase
+    second: {fileID: 2100000, guid: 24aae5bcbe1bf7147b1dc5146387f33a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -21,6 +129,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -45,6 +154,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88

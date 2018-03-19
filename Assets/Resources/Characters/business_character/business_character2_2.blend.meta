@@ -3,12 +3,111 @@ guid: 0427b0521ab86c748b2be3bdf2192948
 timeCreated: 1520015990
 licenseType: Free
 ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName: {}
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature
+    100002: birefcase_handle
+    100004: briefcase_1
+    100006: briefcase_2
+    100008: //RootNode
+    100010: business_character_011
+    100012: head
+    100014: l_ankle
+    100016: l_arm
+    100018: l_fingers1
+    100020: l_fingers2
+    100022: l_foot
+    100024: l_hand
+    100026: l_knee
+    100028: l_shoulder
+    100030: l_thigh
+    100032: l_thumb1
+    100034: l_thumb2
+    100036: l_toe
+    100038: neck
+    100040: pelvis
+    100042: r_ankle
+    100044: r_arm
+    100046: r_fingers1
+    100048: r_fingers2
+    100050: r_foot
+    100052: r_hand
+    100054: r_knee
+    100056: r_shoulder
+    100058: r_thigh
+    100060: r_thumb1
+    100062: r_thumb2
+    100064: r_toe
+    100066: root
+    100068: spine1
+    100070: spine2
+    100072: spine3
+    100074: spine4
+    400000: Armature
+    400002: birefcase_handle
+    400004: briefcase_1
+    400006: briefcase_2
+    400008: //RootNode
+    400010: business_character_011
+    400012: head
+    400014: l_ankle
+    400016: l_arm
+    400018: l_fingers1
+    400020: l_fingers2
+    400022: l_foot
+    400024: l_hand
+    400026: l_knee
+    400028: l_shoulder
+    400030: l_thigh
+    400032: l_thumb1
+    400034: l_thumb2
+    400036: l_toe
+    400038: neck
+    400040: pelvis
+    400042: r_ankle
+    400044: r_arm
+    400046: r_fingers1
+    400048: r_fingers2
+    400050: r_foot
+    400052: r_hand
+    400054: r_knee
+    400056: r_shoulder
+    400058: r_thigh
+    400060: r_thumb1
+    400062: r_thumb2
+    400064: r_toe
+    400066: root
+    400068: spine1
+    400070: spine2
+    400072: spine3
+    400074: spine4
+    4300000: business_character_011
+    7400000: Default Take
+    7400002: anim_run
+    7400004: anim_stand
+    9500000: //RootNode
+    13700000: business_character_011
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: briefcase
+    second: {fileID: 2100000, guid: f7968ba498ac4544bacd5b4361da1356, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: business_character__business_character_tga
+    second: {fileID: 2100000, guid: ff05b6f842d1e374c9cc157b5d7a417e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glasses__glasses_tga
+    second: {fileID: 2100000, guid: 76135626ae3d955459b5806007656093, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -21,6 +120,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -45,6 +145,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
