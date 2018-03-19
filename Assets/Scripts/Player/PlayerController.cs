@@ -5,13 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 
-    public float speed = 6.0F;
+    public float speed;
     public float gravity = 20.0F;
+    public Character character;
     public Vector3 moveDirection = Vector3.zero;
     public Vector3 originPosition;
     public bool movementIsLocked = false;
     CharacterController controller;
     void Update () {
+        speed = character.moveSpeed;
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if(moveDirection != Vector3.zero)
             transform.rotation = Quaternion.LookRotation(moveDirection);
@@ -36,6 +38,9 @@ public class PlayerController : MonoBehaviour {
     {
         originPosition = transform.position;
         controller = GetComponent<CharacterController>();
+        character = gameObject.GetComponent<Character>();
+        
+
         //arrow.transform.position = new Vector3(arrow.transform.position.x, 0, arrow.transform.position.z);
     }
 

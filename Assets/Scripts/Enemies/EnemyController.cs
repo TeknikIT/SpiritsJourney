@@ -49,9 +49,20 @@ public class EnemyController : MonoBehaviour {
             //Moves the enemy
             controller.Move(moveDirection * Time.deltaTime);
             
-        }  
+        }
         
+        if (GetComponent<Animator>() == null)
+        {
+            if (transform.Find("AnimationModel") != null){
+                transform.Find("AnimationModel").GetComponent<Animator>().SetFloat("Velocity", Vector3.Distance(Vector3.zero, controller.velocity));
+            }
+        }
+        else
+        {
+            //GetComponent<Animator>().SetFloat("Velocity", Vector3.Distance(Vector3.zero, controller.velocity));
+        }
     }
+
     //Starts the knockback coroutine
     public void StartKnockback(float strength, Vector3 hitDirection)
     {

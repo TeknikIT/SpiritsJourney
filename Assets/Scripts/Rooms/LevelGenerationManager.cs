@@ -19,6 +19,8 @@ public class LevelGenerationManager : MonoBehaviour {
     private Vector3 emptyRoomSize;
     public List<GameObject> rooms; // A list of all the rooms in the game
     public List< Vector2> directions;//A list of vectors setting integers to Vectors
+    public float maxX, maxY, minX, minY;
+
     // Use this for initialization
     void Start () {
         //Initalizing lists
@@ -84,7 +86,6 @@ public class LevelGenerationManager : MonoBehaviour {
             
         }
 
-        float maxX, maxY, minX, minY;
         maxX = levelGenerationHelper.createdRooms[0].x;
         maxY = levelGenerationHelper.createdRooms[0].y;
         minX = levelGenerationHelper.createdRooms[0].x;
@@ -97,7 +98,7 @@ public class LevelGenerationManager : MonoBehaviour {
                 maxY = levelGenerationHelper.createdRooms[i].y;
             if (minX > levelGenerationHelper.createdRooms[i].x)
                 minX = levelGenerationHelper.createdRooms[i].x;
-            if (minX > levelGenerationHelper.createdRooms[i].y)
+            if (minY > levelGenerationHelper.createdRooms[i].y)
                 minY = levelGenerationHelper.createdRooms[i].y;
         }
         maxX++;

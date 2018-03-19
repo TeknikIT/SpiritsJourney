@@ -9,6 +9,7 @@ TagManager:
   - Utillity
   - EnemyChild
   - Invulnerable
+  - Pickup
   layers:
   - Default
   - TransparentFX

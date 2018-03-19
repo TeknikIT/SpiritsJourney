@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class LootManager : MonoBehaviour {
 
-    public GameObject[] pickups;
+    public BuffItem[] pickups;
+    public GameObject[] lootContainer;
 
     private void Start()
     {
-        pickups = Resources.LoadAll<GameObject>("Prefabs/Loot/");
-
+        pickups = Resources.LoadAll<BuffItem>("Prefabs/Loot/ItemInfo");
+        lootContainer = Resources.LoadAll<GameObject>("Prefabs/Loot/LootContainer");
     }
 
-    public GameObject RandomPotion()
+    public BuffItem RandomPotion()
     {
-        return gameObject;
+        int i = Random.Range(0, pickups.Length);
+        return pickups[i];
+    }
+
+    public GameObject RandomContainer()
+    {
+        int i = Random.Range(0, lootContainer.Length);
+        return lootContainer[i];
     }
 }

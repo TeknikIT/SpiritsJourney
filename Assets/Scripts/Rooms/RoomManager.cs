@@ -12,6 +12,7 @@ public class RoomManager : MonoBehaviour {
     public List<GameObject> monsters;
     public Vector2 roomGridPosition;
     public int roomArrayPosition;
+    private LootManager lootManager;
     // Use this for initialization
     public void Initialize(Vector2 gridPosition, int arrayPosition) {
         doors = new List<GameObject>(4);
@@ -72,12 +73,16 @@ public class RoomManager : MonoBehaviour {
         if (roomCompleted)
         {
             OpenAllDoors();
-            if (!LootHasDropped)
+            if (!LootHasDropped && transform.Find("LootPoint") != null) 
             {
                 SpawnLoot();
             }
         }
         
+    }
+    private void Start()
+    {
+        lootManager = LevelManager.instance.GetComponent<LootManager>();
     }
 
     internal void LockAllDoors()
@@ -91,7 +96,7 @@ public class RoomManager : MonoBehaviour {
 
     private void SpawnLoot()
     {
-
+        Instantiate(lootManager.RandomContainer(), transform.Find("LootPoint"));
         LootHasDropped = true;
     }
 

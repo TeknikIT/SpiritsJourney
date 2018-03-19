@@ -14,7 +14,7 @@ public class MeleeSwing : MonoBehaviour {
     bool charLocked;
     void Start()
     {
-        slashTime = 0.25f;
+        slashTime = 0.15f;
         startRot = transform.eulerAngles;
         currentRot = startRot;
         endRot = new Vector3(startRot.x, startRot.y - 120f, startRot.z);

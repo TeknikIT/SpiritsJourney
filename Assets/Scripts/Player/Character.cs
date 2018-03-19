@@ -11,8 +11,13 @@ public class Character : MonoBehaviour {
 
     public string characterName; //Name of the character
     public int health; //Character health
+    public float moveSpeed;
+    public float damageModifier;
     public GameObject arrow, cone; //The aim arrow/cone
     public float[] coolDowns, timeStamps; //Arrays containing both coolDowns and the last time the abillity was used
+    
+    public List<BuffItem> buffItems; 
+
     private void Start()
     {
         //Initializing arrow and cd arrays
@@ -21,6 +26,7 @@ public class Character : MonoBehaviour {
         coolDowns = new float[5];
         timeStamps = new float[5];
     }
+
 
     //Basic abillity, left mouse button
     public virtual bool BasicAbility()
@@ -122,5 +128,15 @@ public class Character : MonoBehaviour {
             pc.movementIsLocked = true;
     }
 
+    public virtual void AddPickupItem(BuffItem buffItem)
+    {
+        buffItems.Add(buffItem);
+        health += buffItem.healthIncrease;
+        moveSpeed *= buffItem.speedIncrease;
+        for(int i = 0; i < coolDowns.Length; i++)
+        {
+            coolDowns[i] *= buffItem.cooldownDecrease;
+        }
 
+    }
 }
