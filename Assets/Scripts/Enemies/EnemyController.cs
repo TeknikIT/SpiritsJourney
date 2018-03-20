@@ -7,16 +7,16 @@ using UnityEngine;
 /// </summary>
 
 public class EnemyController : MonoBehaviour {
-    private Transform Player; //The player's transform
-    public int moveSpeed = 5; // Movementspeed of the enemy
-    public int minDistance = 1; //The minimum distance the enemy strives to get to
+    protected Transform Player; //The player's transform
+    public float moveSpeed = 5; // Movementspeed of the enemy
+    public float minDistance = 1; //The minimum distance the enemy strives to get to
     public float gravity = 20.0F; //Gravitymodifier
     public bool isActive; //Displays if the character should move
     public float timer; // timer used for counting
-    private Vector3 moveDirection = Vector3.zero; //A vector of the movement direction
-    private CharacterController controller; //The charactercontroller component on the enemty
+    protected Vector3 moveDirection = Vector3.zero; //A vector of the movement direction
+    protected CharacterController controller; //The charactercontroller component on the enemty
     //Mostly used for movement
-    private IEnumerator coroutine; //A coroutine. Allows code to run simulaniously
+    protected IEnumerator coroutine; //A coroutine. Allows code to run simulaniously
     //Especially knockback
 
     //Used for initialization
@@ -29,6 +29,11 @@ public class EnemyController : MonoBehaviour {
 
     // Update is called once per frame
     void Update()
+    {
+        Movement();
+    }
+
+    public virtual void Movement()
     {
         controller = GetComponent<CharacterController>(); //Gets the character controller
         if (isActive) //Checks if the character should move
@@ -48,12 +53,13 @@ public class EnemyController : MonoBehaviour {
             moveDirection.y -= gravity;
             //Moves the enemy
             controller.Move(moveDirection * Time.deltaTime);
-            
+
         }
-        
+
         if (GetComponent<Animator>() == null)
         {
-            if (transform.Find("AnimationModel") != null){
+            if (transform.Find("AnimationModel") != null)
+            {
                 transform.Find("AnimationModel").GetComponent<Animator>().SetFloat("Velocity", Vector3.Distance(Vector3.zero, controller.velocity));
             }
         }
