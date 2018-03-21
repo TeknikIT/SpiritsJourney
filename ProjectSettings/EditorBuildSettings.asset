@@ -4,4 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Resources/Scenes/Tutorial.unity
+    guid: 5318ece46ba02964da3b74361e9448c9
+  - enabled: 1
+    path: Assets/Resources/Scenes/Hubworld.unity
+    guid: 75c728f3f65d95042bbdb9f9bd2d0e84
+  - enabled: 1
+    path: Assets/Resources/Scenes/GenerationTest_LOCAL_4780.unity
+    guid: 2a4936a53ea8d0047970a29fe9b1bcf6
