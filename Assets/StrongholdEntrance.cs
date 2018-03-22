@@ -8,7 +8,7 @@ public class StrongholdEntrance : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            HubManager.instance.ToDungeon();
+            HubManager.instance.ToNextScene();
         }
     }
 }

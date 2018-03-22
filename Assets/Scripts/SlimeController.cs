@@ -30,4 +30,13 @@ public class SlimeController : EnemyController {
         transform.Find("AnimationModel").GetComponent<Animator>().SetFloat("Velocity", Vector3.Distance(Vector3.zero, new Vector3(moveDirection.x, 0, moveDirection.z)));
         transform.Find("AnimationModel").GetComponent<Animator>().SetFloat("DistanceToChar", Vector3.Distance(transform.position, Player.position));
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other);
+        if(other.tag == "Player")
+        {
+            PlayerManager.instance.TakeDamage(20);
+        }
+    }
 }
