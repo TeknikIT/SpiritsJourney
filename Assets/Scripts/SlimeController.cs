@@ -33,7 +33,6 @@ public class SlimeController : EnemyController {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other);
         if(other.tag == "Player")
         {
             PlayerManager.instance.TakeDamage(20);

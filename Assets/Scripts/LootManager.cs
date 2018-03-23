@@ -6,11 +6,18 @@ public class LootManager : MonoBehaviour {
 
     public BuffItem[] pickups;
     public GameObject[] lootContainer;
+    private bool hasBeenInitialized = false;
 
-    private void Start()
+    private void Initialize()
     {
         pickups = Resources.LoadAll<BuffItem>("Prefabs/Loot/ItemInfo");
         lootContainer = Resources.LoadAll<GameObject>("Prefabs/Loot/LootContainer");
+        hasBeenInitialized = true;
+    }
+
+    private void Start()
+    {
+        Initialize();
     }
 
     public BuffItem RandomPotion()
@@ -21,6 +28,10 @@ public class LootManager : MonoBehaviour {
 
     public GameObject RandomContainer()
     {
+        if (!hasBeenInitialized)
+        {
+            Initialize();
+        }
         int i = Random.Range(0, lootContainer.Length);
         return lootContainer[i];
     }

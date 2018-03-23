@@ -9,7 +9,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour {
 
     public int health;
-    public RoomManager room;
+    public BaseRoomManager room;
     private float timer;
     private void Start()
     {

@@ -65,6 +65,8 @@ public class LevelGenerationHelper {
             else
                 PickARandomRoomAndDirection();
         }
+
+        ReplaceRoom(4);
     }
 
     private void GenerateEmptyGrid()
@@ -136,13 +138,27 @@ public class LevelGenerationHelper {
             //Checks if the selected slot is occupied or not
         } while (ObstructedAndNeighbours(createdRooms[chosenRoomNumber], chosenDirection));
 
-        Vector2 resultingRoom;
 
-        resultingRoom = createdRooms[chosenRoomNumber] + Direction(chosenDirection);
+        Vector2 resultingRoom = createdRooms[chosenRoomNumber] + Direction(chosenDirection);
 
         roomPlacementGrid[(int)resultingRoom.x, (int)resultingRoom.y] = roomIndex;
         createdRooms.Add(new Vector2((int)resultingRoom.x, (int)resultingRoom.y));
 
+    }
+
+    private void ReplaceRoom(int roomIndex)
+    {
+        int chosenRoomNumber;
+        Vector2 resultingRoom;
+        //variables to hold the random values
+        do
+        {
+            chosenRoomNumber = Random.Range(0, createdRooms.Count);
+            resultingRoom = createdRooms[chosenRoomNumber];
+            //Checks if the selected slot is occupied or not
+        } while (NumberOfOccupiedNeighbours(resultingRoom) > 1);
+
+        roomPlacementGrid[(int)resultingRoom.x, (int)resultingRoom.y] = roomIndex;
     }
 
     private Vector2 Direction(int index)

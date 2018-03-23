@@ -11,7 +11,7 @@ public class LevelGenerationManager : MonoBehaviour {
         instance = this;
     }
     #endregion
-    private GameObject[] GeneralRoomPrefabs, BossRoomPrefabs, StartingRoomPrefabs; //Room prefabs
+    private GameObject[] GeneralRoomPrefabs, BossRoomPrefabs, StartingRoomPrefabs, LootRoomPrefabs; //Room prefabs
     private GameObject emptyRoom;
     public int levelSize; //The size of the level. More than one 100 is very laggy
     public LevelGenerationHelper levelGenerationHelper; //Helperclass for creating the level
@@ -42,6 +42,7 @@ public class LevelGenerationManager : MonoBehaviour {
         GeneralRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/GeneralRooms");
         BossRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/BossRooms");
         StartingRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/StartingRooms");
+        LootRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/LootRooms");
         emptyRoom = Resources.Load<GameObject>("Prefabs/Rooms/EmptyRoom");
         //Instantating the levelhelper which returns a levelgrid
         levelGenerationHelper = new LevelGenerationHelper(levelSize);
@@ -82,7 +83,16 @@ public class LevelGenerationManager : MonoBehaviour {
                     rooms[i].transform.parent = GameObject.Find("Rooms").transform;
                     rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.createdRooms[i], i);
                     break;
+                case 4:
+                    int randomLootRoom = Random.Range(0, LootRoomPrefabs.Length);
+                    rooms.Add(Instantiate(LootRoomPrefabs[randomLootRoom], new Vector3((levelGenerationHelper.createdRooms[i].x - halfGridSize) * roomBounds[randomLootRoom].size.x,
+                        0, (levelGenerationHelper.createdRooms[i].y - halfGridSize) * roomBounds[randomLootRoom].size.z),
+                        transform.rotation) as GameObject);
+                    rooms[i].transform.parent = GameObject.Find("Rooms").transform;
+                    rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.createdRooms[i], i);
+                    break;
             }
+
             
         }
 
@@ -135,11 +145,11 @@ public class LevelGenerationManager : MonoBehaviour {
 
             if (levelGenerationHelper.roomPlacementGrid[(int)resultingVector.x, (int)resultingVector.y] == 0)
             {
-                rooms[index].GetComponent<RoomManager>().placeDoorCover(direction);
+                rooms[index].GetComponent<RoomManager>().PlaceDoorCover(direction);
             }
             else
             {
-                rooms[index].GetComponent<RoomManager>().placeDoor(direction);
+                rooms[index].GetComponent<RoomManager>().PlaceDoor(direction);
             }
         }
     }

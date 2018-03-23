@@ -8,16 +8,14 @@ public class RoomManager : MonoBehaviour {
     private List<GameObject> doorCovers;
     public bool roomCompleted = false;
     public bool roomActive = false;
-    public bool LootHasDropped = false;
-    public List<GameObject> monsters;
     public Vector2 roomGridPosition;
     public int roomArrayPosition;
-    private LootManager lootManager;
+    protected LootManager lootManager;
     // Use this for initialization
-    public void Initialize(Vector2 gridPosition, int arrayPosition) {
+    public virtual void Initialize(Vector2 gridPosition, int arrayPosition) {
         doors = new List<GameObject>(4);
         doorCovers = new List<GameObject>(4);
-        monsters = new List<GameObject>();
+
         foreach(Transform door in transform.Find("Doors").transform)
         {
             doors.Add(door.gameObject);
@@ -26,63 +24,27 @@ public class RoomManager : MonoBehaviour {
         {
             doorCovers.Add(doorCover.gameObject);
         }
-        foreach(Transform monster in transform.Find("Monsters").transform)
-        {
-            monsters.Add(monster.gameObject);
-        }
-        foreach(GameObject m in monsters)
-        {
-            m.GetComponent<EnemyManager>().room = this;
-        }
+       
         roomGridPosition = gridPosition;
         roomArrayPosition = arrayPosition;
-	}
-	
-    public void placeDoor(int direction)
+        lootManager = LevelManager.instance.GetComponent<LootManager>();
+
+    }
+
+    public virtual void PlaceDoor(int direction)
     {
         doors[direction].SetActive(true);
     }
 
-    public void placeDoorCover(int direction)
+    public virtual void PlaceDoorCover(int direction)
     {
         doorCovers[direction].SetActive(true);
     }
 
-    private void Update()
-    {
-        //Need to remove killed character 
-        if(monsters == null || monsters.Count <= 0)
-        {
-            roomCompleted = true;
-        }
-        if (roomActive)
-        {
-            foreach (GameObject m in monsters)
-            {
-                m.GetComponent<EnemyController>().isActive = true;
-            }
-        }
-        else
-        {
-            foreach (GameObject m in monsters)
-            {
-                m.GetComponent<EnemyController>().isActive = false;
-            }
-        }
 
-        if (roomCompleted)
-        {
-            OpenAllDoors();
-            if (!LootHasDropped && transform.Find("LootPoint") != null) 
-            {
-                SpawnLoot();
-            }
-        }
-        
-    }
-    private void Start()
+    protected virtual void Update()
     {
-        lootManager = LevelManager.instance.GetComponent<LootManager>();
+
     }
 
     internal void LockAllDoors()
@@ -94,11 +56,7 @@ public class RoomManager : MonoBehaviour {
         }
     }
 
-    private void SpawnLoot()
-    {
-        Instantiate(lootManager.RandomContainer(), transform.Find("LootPoint"));
-        LootHasDropped = true;
-    }
+
 
     private void OnTriggerEnter(Collider other)
     {

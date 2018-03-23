@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossRoom : MonoBehaviour {
+public class BossRoomManager : RoomManager {
 
     public static void LevelFinished()
     {
         LevelManager.instance.Reload();
     }
+
 }

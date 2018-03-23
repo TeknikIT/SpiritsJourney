@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour {
     public float minDistance = 1; //The minimum distance the enemy strives to get to
     public float gravity = 20.0F; //Gravitymodifier
     public bool isActive; //Displays if the character should move
+    public bool hasBeenActivated;
     public float timer; // timer used for counting
     protected Vector3 moveDirection = Vector3.zero; //A vector of the movement direction
     protected CharacterController controller; //The charactercontroller component on the enemty
@@ -24,6 +25,7 @@ public class EnemyController : MonoBehaviour {
     {
         Player = PlayerManager.instance.transform;
         isActive = false; //Default state of the enemy.
+        hasBeenActivated = false;
         //Makes sure that the enemy doesnt move before a character hasn't entered the room.
     }
 
@@ -86,7 +88,7 @@ public class EnemyController : MonoBehaviour {
             //Moves the character during the knockback
             yield return controller.Move(hitDirection * Time.deltaTime * strength);
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
         isActive = true;//Makes the character move again
     }
 }

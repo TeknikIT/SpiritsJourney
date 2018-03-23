@@ -8,7 +8,7 @@ public class Portal : MonoBehaviour {
     {
         if(other.gameObject.tag == "Player")
         {
-            BossRoom.LevelFinished();
+            BossRoomManager.LevelFinished();
         }
     }
 }

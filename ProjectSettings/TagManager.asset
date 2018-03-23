@@ -10,6 +10,7 @@ TagManager:
   - EnemyChild
   - Invulnerable
   - Pickup
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX
