@@ -14,7 +14,7 @@ public class LootRoomManager : RoomManager {
 
     protected void SpawnLoot()
     {
-        Instantiate(lootManager.RandomContainer(), transform.Find("LootPoint"));
+        Instantiate(lootManager.RandomContainerWithItem(), transform.Find("LootPoint"));
     }
 
     public override void Initialize(Vector2 gridPosition, int arrayPosition)

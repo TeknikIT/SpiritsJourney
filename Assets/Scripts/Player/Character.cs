@@ -16,7 +16,8 @@ public class Character : MonoBehaviour {
     public GameObject arrow, cone; //The aim arrow/cone
     public float[] coolDowns, timeStamps; //Arrays containing both coolDowns and the last time the abillity was used
     
-    public List<BuffItem> buffItems; 
+    public List<BuffItem> buffItems;
+    public List<Consumable> consumables;
 
     private void Start()
     {
@@ -26,7 +27,6 @@ public class Character : MonoBehaviour {
         coolDowns = new float[5];
         timeStamps = new float[5];
     }
-
 
     //Basic abillity, left mouse button
     public virtual bool BasicAbility()
@@ -138,5 +138,11 @@ public class Character : MonoBehaviour {
             coolDowns[i] *= buffItem.cooldownDecrease;
         }
 
+    }
+
+    public virtual void AddConsumableItem(Consumable consumable)
+    {
+        consumables.Add(consumable);
+        health += consumable.healthIncrease;
     }
 }

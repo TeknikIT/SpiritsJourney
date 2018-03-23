@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Character))]
 public class PlayerManager : MonoBehaviour {
 
     #region Singleton
@@ -17,6 +18,7 @@ public class PlayerManager : MonoBehaviour {
     /// Used for keeping track over health and damage
     /// </summary>
     public GameObject player;
+    public Character character;
     public int health;
     private float timer = 0.0f;
     public bool movementLocked = false, locked = false;
@@ -27,7 +29,8 @@ public class PlayerManager : MonoBehaviour {
     }
     private void Start()
     {
-        health = 100;
+        character = GetComponent<Character>();
+        health = character.health;
     }
     private void Update()
     {
@@ -43,8 +46,7 @@ public class PlayerManager : MonoBehaviour {
         {
             transform.position = holdPosition;
         }
-        
-
+        health = character.health;
     }
     public void TakeDamage(int damage)
     {

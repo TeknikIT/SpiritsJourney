@@ -10,7 +10,7 @@ public class BaseRoomManager : RoomManager {
 
     protected void SpawnLoot()
     {
-        Instantiate(lootManager.RandomContainer(), transform.Find("LootPoint"));
+        Instantiate(lootManager.RandomContainerWithConsumable(), transform.Find("LootPoint"));
         LootHasDropped = true;
     }
 

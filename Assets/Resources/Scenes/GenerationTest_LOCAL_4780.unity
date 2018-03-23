@@ -585,7 +585,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4226573807496628, guid: c5eb2eef7b742a64cb01fcfe3d7a82af, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1.93
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4226573807496628, guid: c5eb2eef7b742a64cb01fcfe3d7a82af, type: 2}
       propertyPath: m_LocalRotation.x
@@ -649,6 +649,10 @@ Prefab:
         type: 2}
       propertyPath: gravity
       value: 980
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177883303828826, guid: c5eb2eef7b742a64cb01fcfe3d7a82af, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.774
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5eb2eef7b742a64cb01fcfe3d7a82af, type: 2}
@@ -939,8 +943,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3234d3e7161757479bd9787311b96c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickups: []
-  lootContainer: []
+  itemPickups: []
+  itemContainers: []
+  consumablePickups: []
+  consumalbeContainers: []
 --- !u!1 &1598794990
 GameObject:
   m_ObjectHideFlags: 0
