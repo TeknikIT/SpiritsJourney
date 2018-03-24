@@ -31,13 +31,13 @@ public class Bullet : MonoBehaviour {
     {
         if(other.tag == "Enemy")
         {
-            other.GetComponent<EnemyManager>().TakeDamageWithKnockback(damage, 5f, movementDirection);
+            other.GetComponent<EnemyManager>().TakeDamageWithKnockback(damage, 5f, transform.TransformDirection(new Vector3(0, 0, 1)));
         }
         if(other.tag == "EnemyChild")
         {
-            other.GetComponentInParent<EnemyManager>().TakeDamageWithKnockback(damage, 10f, transform.TransformDirection(movementDirection));
+            other.transform.parent.GetComponent<EnemyManager>().TakeDamageWithKnockback(damage, 5f, transform.TransformDirection(new Vector3(0, 0, 1)));
         }
-        if(other.tag == "Utillity" || other.tag == "Player")
+        if (other.tag == "Utillity" || other.tag == "Player")
         {
             //EVERYITHING EXEPCT UNTILITY AND PLAYER
         }

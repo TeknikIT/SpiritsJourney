@@ -8229,7 +8229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72c305175697da4ba71d0427b6d4a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
   minDistance: 2
   gravity: 20
   isActive: 0
@@ -8455,6 +8454,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e29b4c24885f0468d1a17456bc4cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doors: []
+  roomCompleted: 0
+  roomActive: 0
+  roomGridPosition: {x: 0, y: 0}
+  roomArrayPosition: 0
+  monsters: []
+  LootHasDropped: 0
 --- !u!114 &114865640579324134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8523,7 +8529,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065b04190d932804db3482d3b2efbf3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHealth: 50
   health: 0
+  baseMovementSpeed: 2
+  movementSpeed: 0
+  maxMovementSpeed: 20
+  baseDamage: 5
+  damage: 0
+  maxDamage: 50
   room: {fileID: 0}
 --- !u!114 &114964226289491196
 MonoBehaviour:

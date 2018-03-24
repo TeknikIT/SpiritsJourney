@@ -52,9 +52,10 @@ public class MeleeSwing : MonoBehaviour {
     {
         if (c.CompareTag("Enemy"))
         {
+            Debug.Log(new Vector3(0, 0, -1));
             //Change to use aim direction instead!
             c.gameObject.GetComponent<EnemyManager>().TakeDamageWithKnockback(20, 10f,
-                transform.TransformDirection(Vector3.one));
+                transform.TransformDirection(new Vector3(0, 0, 1)));
         }
         if (c.CompareTag("EnemyChild"))
         {

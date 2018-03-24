@@ -11,6 +11,7 @@ public class RoomManager : MonoBehaviour {
     public Vector2 roomGridPosition;
     public int roomArrayPosition;
     protected LootManager lootManager;
+    public List<GameObject> monsters;
     // Use this for initialization
     public virtual void Initialize(Vector2 gridPosition, int arrayPosition) {
         doors = new List<GameObject>(4);

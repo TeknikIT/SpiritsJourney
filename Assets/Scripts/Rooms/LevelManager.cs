@@ -30,30 +30,50 @@ public class LevelManager : MonoBehaviour {
     public Vector2 display;
     private LevelGenerationManager levelGenerationManager;
     private List<GameObject> rooms;
+    public List<GameObject> enemies;
     private List<Vector2> directions;
+    public int startingRoomAmount;
+    public int currentRoomAmount;
+    public int maxRoomAmount;
 	// Use this for initialization
 	void Start () {
-        
-        
+        directions = new List<Vector2>
+        {
+            Vector2.up,
+            Vector2.right,
+            Vector2.down,
+            Vector2.left
+        };
+
     }
     public void Initialize()
     {
         levelGenerationManager = GetComponent<LevelGenerationManager>();
         rooms = levelGenerationManager.rooms;
-        directions = levelGenerationManager.directions;
+        
     }
 
     public void Reload()
     {
-        Transform room = GameObject.Find("Rooms").transform;
-        foreach (Transform r in room)
+        Transform roomTransforms = GameObject.Find("Rooms").transform;
+        foreach (Transform rt in roomTransforms)
         {
-            Destroy(r.gameObject);
+            Destroy(rt.gameObject);
         }
         levelGenerationManager.InstantiateRooms();
         rooms = levelGenerationManager.rooms;
         PlayerManager.instance.transform.position = PlayerManager.instance.GetComponent<PlayerController>().originPosition;
         PlayerManager.instance.health = 100;
+        foreach (GameObject r in rooms)
+        {
+            if (r.GetComponent<RoomManager>().monsters.Count != 0)
+            {
+                foreach (GameObject monster in r.GetComponent<RoomManager>().monsters)
+                {
+                    enemies.Add(monster);
+                }
+            }
+        }
     }
 
     private void OpenNeighboursDoors()
@@ -99,5 +119,6 @@ public class LevelManager : MonoBehaviour {
             rooms[activeRoom].GetComponent<RoomManager>().LockAllDoors();
         }
         display = rooms[activeRoom].GetComponent<RoomManager>().roomGridPosition;
+
 	}
 }

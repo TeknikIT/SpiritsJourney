@@ -882,8 +882,9 @@ GameObject:
   - component: {fileID: 1474643615}
   - component: {fileID: 1474643616}
   - component: {fileID: 1474643618}
+  - component: {fileID: 1474643619}
   m_Layer: 0
-  m_Name: GenerationManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -900,7 +901,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887c02522e5336641b4e5551ed3ce992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSize: 20
   rooms: []
   directions: []
   maxX: 0
@@ -919,6 +919,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   display: {x: 0, y: 0}
+  enemies: []
+  startingRoomAmount: 10
+  currentRoomAmount: 10
+  maxRoomAmount: 40
 --- !u!4 &1474643617
 Transform:
   m_ObjectHideFlags: 0
@@ -947,6 +951,27 @@ MonoBehaviour:
   itemContainers: []
   consumablePickups: []
   consumalbeContainers: []
+--- !u!114 &1474643619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1474643614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61a9bcec385218409b201201a520647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  earnedTokens: 0
+  roomScaling: 2
+  amountOfRoomsIncrease: 0
+  enemyHealthScaling: 10
+  enemyDamageScaling: 10
+  enemySpeedScaling: 0.5
+  totalEnemyHealthIncrease: 0
+  totalEnemyDamageIncrease: 0
+  totalEnemySpeedIncrease: 0
 --- !u!1 &1598794990
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +1016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6be0832d92cd94b83e1a4985844cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.5
   minDistance: 1
   gravity: 20
   isActive: 1
@@ -1038,7 +1062,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065b04190d932804db3482d3b2efbf3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHealth: 0
   health: 0
+  baseMovementSpeed: 0
+  movementSpeed: 0
+  maxMovementSpeed: 0
+  baseDamage: 0
+  damage: 0
+  maxDamage: 0
   room: {fileID: 0}
 --- !u!1 &1617035132
 GameObject:

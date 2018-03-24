@@ -5,7 +5,6 @@ using UnityEngine;
 public class BaseRoomManager : RoomManager {
 
     public bool LootHasDropped = false;
-    public List<GameObject> monsters;
 
 
     protected void SpawnLoot()

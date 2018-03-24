@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
     protected Transform Player; //The player's transform
-    public float moveSpeed = 5; // Movementspeed of the enemy
+    protected float moveSpeed = 5; // Movementspeed of the enemy
     public float minDistance = 1; //The minimum distance the enemy strives to get to
     public float gravity = 20.0F; //Gravitymodifier
     public bool isActive; //Displays if the character should move

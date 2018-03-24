@@ -13,7 +13,7 @@ public class LevelGenerationManager : MonoBehaviour {
     #endregion
     private GameObject[] GeneralRoomPrefabs, BossRoomPrefabs, StartingRoomPrefabs, LootRoomPrefabs; //Room prefabs
     private GameObject emptyRoom;
-    public int levelSize; //The size of the level. More than one 100 is very laggy
+    private int levelSize; //The size of the level. More than one 100 is very laggy
     public LevelGenerationHelper levelGenerationHelper; //Helperclass for creating the level
     private Bounds[] roomBounds = new Bounds[100]; //Size of rooms, Used for making enough room between rooms
     private Vector3 emptyRoomSize;
@@ -24,19 +24,25 @@ public class LevelGenerationManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //Initalizing lists
-        directions = new List<Vector2>();
-        directions.Add(Vector2.up);
-        directions.Add(Vector2.right);
-        directions.Add(Vector2.down);
-        directions.Add(Vector2.left);
+        directions = new List<Vector2>
+        {
+            Vector2.up,
+            Vector2.right,
+            Vector2.down,
+            Vector2.left
+        };
         //Creating the rooms
-        InstantiateRooms();
-        GetComponent<LevelManager>().Initialize(); // Initializing Levelmanager
+        //GetComponent<LevelManager>().Initialize(); // Initializing Levelmanager
     }
 
 
     public void InstantiateRooms()
     {
+        if(directions.Count == 0)
+        {
+            Start();
+        }
+        levelSize = LevelManager.instance.currentRoomAmount;
         rooms = new List<GameObject>();
         //Loading in all prefabs
         GeneralRoomPrefabs = Resources.LoadAll<GameObject>("Prefabs/Rooms/GeneralRooms");

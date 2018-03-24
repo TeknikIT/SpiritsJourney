@@ -8,7 +8,17 @@ using UnityEngine;
 /// </summary>
 public class EnemyManager : MonoBehaviour {
 
+    public int baseHealth;
     public int health;
+
+    public  float baseMovementSpeed;
+    public float movementSpeed;
+    public float maxMovementSpeed;
+
+    public float baseDamage;
+    public float damage;
+    public float maxDamage;
+
     public BaseRoomManager room;
     private float timer;
     private void Start()

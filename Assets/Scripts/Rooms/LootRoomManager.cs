@@ -12,6 +12,14 @@ public class LootRoomManager : RoomManager {
         }
     }
 
+    protected void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            roomCompleted = true;
+        }
+    }
+
     protected void SpawnLoot()
     {
         Instantiate(lootManager.RandomContainerWithItem(), transform.Find("LootPoint"));
