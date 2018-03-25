@@ -14,6 +14,8 @@ namespace Assets.Scripts.Player.Characters
         public bool collisionAttack;
         public int collisionAttackDamage;
 
+
+
         private void Start()
         {
             projectile = (GameObject)Resources.Load("Prefabs/Bullet");
@@ -69,6 +71,7 @@ namespace Assets.Scripts.Player.Characters
 				var hitBox = Instantiate(meleeHitbox, PlayerManager.instance.transform.position, Quaternion.Euler(0, cone.transform.rotation.eulerAngles.y + 60, cone.transform.rotation.eulerAngles.z));
                 hitBox.transform.parent = transform;
                 hitBox.GetComponent<MeleeSwing>().createdBy = this;
+                hitBox.GetComponent<MeleeSwing>().damage = baseDamage[0] + damageModifier;
             }
             cone.SetActive(false);
             return true;
@@ -78,8 +81,9 @@ namespace Assets.Scripts.Player.Characters
         {
             if (base.CharacterSpecificAbility())
             {
-                Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), 
+                var bullet = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), 
                     Quaternion.Euler(0, arrow.transform.rotation.eulerAngles.y, arrow.transform.rotation.eulerAngles.z));
+                bullet.GetComponent<Bullet>().damage = (int)(baseDamage[1] + damageModifier);
             }
             arrow.SetActive(false);
             return true;

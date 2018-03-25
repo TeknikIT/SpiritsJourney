@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Rose
   healthIncrease: 0
-  speedIncrease: 0
+  speedIncrease: 1
   damageIncrease: 10
-  cooldownDecrease: 0
+  cooldownDecrease: 1
   item: {fileID: 1695412553109554, guid: f8ee104d5f08fb64181575f03314d07c, type: 2}

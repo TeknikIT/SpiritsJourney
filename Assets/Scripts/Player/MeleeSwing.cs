@@ -12,6 +12,7 @@ public class MeleeSwing : MonoBehaviour {
     Vector3 endRot;
     public Character createdBy;
     bool charLocked;
+    public float damage;
     void Start()
     {
         slashTime = 0.15f;
@@ -56,12 +57,12 @@ public class MeleeSwing : MonoBehaviour {
         {
             Debug.Log(new Vector3(0, 0, -1));
             //Change to use aim direction instead!
-            c.gameObject.GetComponent<EnemyManager>().TakeDamageWithKnockback(20, 10f,
+            c.gameObject.GetComponent<EnemyManager>().TakeDamageWithKnockback((int)damage, 10f,
                 transform.TransformDirection(new Vector3(0, 0, 1)));
         }
         if (c.CompareTag("EnemyChild"))
         {
-            c.gameObject.GetComponentInParent<EnemyManager>().TakeDamageWithKnockback(20, 10f,
+            c.gameObject.GetComponentInParent<EnemyManager>().TakeDamageWithKnockback((int)damage, 10f,
                 transform.parent.TransformDirection(new Vector3(0, 0, 1)));
 
         }

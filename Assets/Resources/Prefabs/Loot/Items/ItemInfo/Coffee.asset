@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   healthIncrease: 0
-  speedIncrease: 5
+  speedIncrease: 1.5
   damageIncrease: 0
-  cooldownDecrease: 0
+  cooldownDecrease: 1
   item: {fileID: 1156956350711938, guid: 46c569a831bd99c438db1e326c404556, type: 2}

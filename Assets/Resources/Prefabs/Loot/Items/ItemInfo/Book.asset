@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654446ab5c119e54597c9a256b913616, type: 3}
   m_Name: Book
   m_EditorClassIdentifier: 
-  name: 
+  name: Book
   healthIncrease: 0
-  speedIncrease: 0
+  speedIncrease: 1
   damageIncrease: 0
   cooldownDecrease: 0.9
   item: {fileID: 1697907171506818, guid: 8763e8b63f910c040b2726d1285cd08b, type: 2}

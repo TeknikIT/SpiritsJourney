@@ -19,7 +19,7 @@ public class Character : MonoBehaviour {
     public PlayerStatistics localPlayerData = new PlayerStatistics();
 
     public GameObject arrow, cone; //The aim arrow/cone
-    public float[] coolDowns, timeStamps; //Arrays containing both coolDowns and the last time the abillity was used
+    public float[] coolDowns, timeStamps, baseDamage; //Arrays containing both coolDowns and the last time the abillity was used
     
     public List<BuffItem> buffItems;
     public List<Consumable> consumables;
@@ -33,6 +33,7 @@ public class Character : MonoBehaviour {
         cone = gameObject.transform.Find("Cone").gameObject;
         coolDowns = new float[5];
         timeStamps = new float[5];
+        baseDamage = new float[5];
         health += (int)localPlayerData.healthStat;
         moveSpeed += localPlayerData.movespeedStat;
         damageModifier += localPlayerData.damageStat;
