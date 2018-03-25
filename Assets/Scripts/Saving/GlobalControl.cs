@@ -57,6 +57,11 @@ public class GlobalControl : MonoBehaviour {
         saveFile.Close();
     }
 
+    public void NotPlaying()
+    {
+        hasStartedPlaying = false;
+    }
+
     public string[] DisplaySaves()
     {
         return Directory.GetFiles("Saves");

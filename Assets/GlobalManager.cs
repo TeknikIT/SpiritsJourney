@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class GlobalManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
+    public GameObject pauseMenu;
+
 	void Update () {
-		
+        if (GlobalControl.instance.hasStartedPlaying)
+        {
+            if (pauseMenu.activeSelf && Input.GetButtonDown("Cancel"))
+            {
+                pauseMenu.SetActive(false);
+            }
+            else if (!pauseMenu.activeSelf && Input.GetButtonDown("Cancel"))
+            {
+                pauseMenu.SetActive(true);
+            }
+        }
 	}
 }
