@@ -7,6 +7,7 @@ public class GlobalManager : MonoBehaviour {
     public GameObject pauseMenu;
 
 	void Update () {
+        pauseMenu = PauseMenu.instance.transform.Find("PauseMenuCanvas").gameObject;
         if (GlobalControl.instance.hasStartedPlaying)
         {
             if (pauseMenu.activeSelf && Input.GetButtonDown("Cancel"))
