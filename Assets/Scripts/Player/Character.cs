@@ -10,9 +10,14 @@ using UnityEngine;
 public class Character : MonoBehaviour {
 
     public string characterName; //Name of the character
+
     public int health; //Character health
     public float moveSpeed;
     public float damageModifier;
+    public float cooldownModifier;
+
+    public PlayerStatistics localPlayerData = new PlayerStatistics();
+
     public GameObject arrow, cone; //The aim arrow/cone
     public float[] coolDowns, timeStamps; //Arrays containing both coolDowns and the last time the abillity was used
     
@@ -21,11 +26,26 @@ public class Character : MonoBehaviour {
 
     private void Start()
     {
+        localPlayerData = GlobalControl.instance.savedGameStatistics.playerStatistics;
+
         //Initializing arrow and cd arrays
         arrow = gameObject.transform.Find("Arrow").gameObject;
         cone = gameObject.transform.Find("Cone").gameObject;
         coolDowns = new float[5];
         timeStamps = new float[5];
+        health += (int)localPlayerData.healthStat;
+        moveSpeed += localPlayerData.movespeedStat;
+        damageModifier += localPlayerData.damageStat;
+        cooldownModifier += localPlayerData.cooldownStat;
+        for(int i = 0; i < coolDowns.Length; i++)
+        {
+            coolDowns[i] *= cooldownModifier;
+        }
+    }
+
+    public void SaveStatistics()
+    {
+        GlobalControl.instance.savedGameStatistics.playerStatistics = localPlayerData;
     }
 
     //Basic abillity, left mouse button

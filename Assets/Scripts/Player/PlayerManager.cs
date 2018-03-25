@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour {
     private void Update()
     {
         timer += Time.deltaTime;
-        if(GameObject.Find("Text") != null)
+        if(GameObject.Find("Text") != null && character.characterName != "Cursor")
             GameObject.Find("Text").GetComponent<UnityEngine.UI.Text>().text = "Health: " + health;
         if (movementLocked)
         {
@@ -52,7 +52,7 @@ public class PlayerManager : MonoBehaviour {
     {
         if(timer >= 0.5)
         {
-            health -= damage;
+            character.health -= damage;
             if (health <= 0)
             {
                 KillPlayer();
