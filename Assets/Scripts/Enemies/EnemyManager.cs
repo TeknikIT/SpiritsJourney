@@ -23,9 +23,9 @@ public class EnemyManager : MonoBehaviour {
     private float timer;
     private void Start()
     {
-        health = 100;
         
     }
+
 
     private void Update()
     {

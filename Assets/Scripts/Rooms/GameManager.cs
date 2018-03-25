@@ -46,19 +46,18 @@ public class GameManager : MonoBehaviour {
     public void NewLevel()
     {
         level++;
-        levelManager.Reload();
+        levelManager.currentRoomAmount = levelManager.startingRoomAmount + amountOfRoomsIncrease;
+        if (levelManager.currentRoomAmount > levelManager.maxRoomAmount)
+        {
+            levelManager.currentRoomAmount = levelManager.maxRoomAmount;
+        }
         totalEnemyHealthIncrease = enemyHealthScaling * (level - 1);
         totalEnemyDamageIncrease = enemyDamageScaling * (level - 1);
         totalEnemySpeedIncrease = enemySpeedScaling * (level - 1);
         amountOfRoomsIncrease = roomScaling * (level - 1);
+        levelManager.Reload();
 
-        levelManager.currentRoomAmount = levelManager.startingRoomAmount + amountOfRoomsIncrease;
-        if(levelManager.currentRoomAmount > levelManager.maxRoomAmount)
-        {
-            levelManager.currentRoomAmount = levelManager.maxRoomAmount;
-        }
-
-        foreach(GameObject enemy in levelManager.enemies)
+        foreach (GameObject enemy in levelManager.enemies)
         {
             EnemyManager em = enemy.GetComponent<EnemyManager>();
             em.damage = em.baseDamage + enemyDamageScaling * (level - 1);
@@ -72,13 +71,13 @@ public class GameManager : MonoBehaviour {
     {
         GlobalControl.instance.hasStartedPlaying = true;
         TokenManager.instance.SaveStatistics();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(0);
 
     }
 
     public void ExitGame()
     {
         GlobalControl.instance.hasStartedPlaying = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(0);
     }
 }

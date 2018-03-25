@@ -35,7 +35,7 @@ public class SlimeController : EnemyController {
     {
         if(other.tag == "Player")
         {
-            PlayerManager.instance.TakeDamage(20);
+            PlayerManager.instance.TakeDamage((int)enemyManager.damage);
         }
     }
 }

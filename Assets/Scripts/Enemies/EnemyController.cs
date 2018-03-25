@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour {
     public float timer; // timer used for counting
     protected Vector3 moveDirection = Vector3.zero; //A vector of the movement direction
     protected CharacterController controller; //The charactercontroller component on the enemty
+    protected EnemyManager enemyManager;
     //Mostly used for movement
     protected IEnumerator coroutine; //A coroutine. Allows code to run simulaniously
     //Especially knockback
@@ -26,6 +27,7 @@ public class EnemyController : MonoBehaviour {
         Player = PlayerManager.instance.transform;
         isActive = false; //Default state of the enemy.
         hasBeenActivated = false;
+        enemyManager = GetComponent<EnemyManager>();
         //Makes sure that the enemy doesnt move before a character hasn't entered the room.
     }
 

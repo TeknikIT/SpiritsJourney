@@ -62,60 +62,60 @@ public class LevelGenerationManager : MonoBehaviour {
 
         int halfGridSize = levelGenerationHelper.GridSize / 2;
             
-        for(int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
+        for(int i = 0; i < levelGenerationHelper.CreatedRooms.Count; i++)
         {
-            switch(levelGenerationHelper.roomPlacementGrid[(int)levelGenerationHelper.createdRooms[i].x, (int)levelGenerationHelper.createdRooms[i].y]){
+            switch(levelGenerationHelper.RoomPlacementGrid[(int)levelGenerationHelper.CreatedRooms[i].x, (int)levelGenerationHelper.CreatedRooms[i].y]){
                 case 1:
                     int randomGeneralRoom = Random.Range(0, GeneralRoomPrefabs.Length);
-                    rooms.Add(Instantiate(GeneralRoomPrefabs[randomGeneralRoom], new Vector3((levelGenerationHelper.createdRooms[i].x - halfGridSize) * roomBounds[randomGeneralRoom].size.x,
-                        0, (levelGenerationHelper.createdRooms[i].y - halfGridSize)* roomBounds[randomGeneralRoom].size.z),
+                    rooms.Add(Instantiate(GeneralRoomPrefabs[randomGeneralRoom], new Vector3((levelGenerationHelper.CreatedRooms[i].x - halfGridSize) * roomBounds[randomGeneralRoom].size.x,
+                        0, (levelGenerationHelper.CreatedRooms[i].y - halfGridSize)* roomBounds[randomGeneralRoom].size.z),
                         transform.rotation) as GameObject);
                     rooms[i].transform.parent = GameObject.Find("Rooms").transform;
-                    rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.createdRooms[i], i);
+                    rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.CreatedRooms[i], i);
                     break;
                 case 2:
                     int randomStartingRoom = Random.Range(0, StartingRoomPrefabs.Length);
-                    rooms.Add(Instantiate(StartingRoomPrefabs[randomStartingRoom], new Vector3((levelGenerationHelper.createdRooms[i].x - halfGridSize) * roomBounds[randomStartingRoom].size.x,
-                        0, (levelGenerationHelper.createdRooms[i].y - halfGridSize) * roomBounds[randomStartingRoom].size.z),
+                    rooms.Add(Instantiate(StartingRoomPrefabs[randomStartingRoom], new Vector3((levelGenerationHelper.CreatedRooms[i].x - halfGridSize) * roomBounds[randomStartingRoom].size.x,
+                        0, (levelGenerationHelper.CreatedRooms[i].y - halfGridSize) * roomBounds[randomStartingRoom].size.z),
                         transform.rotation) as GameObject);
                     rooms[i].transform.parent = GameObject.Find("Rooms").transform;
-                    rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.createdRooms[i], i);
+                    rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.CreatedRooms[i], i);
                     break;
                 case 3:
                     int randomBossRoom = Random.Range(0, BossRoomPrefabs.Length);
-                    rooms.Add(Instantiate(BossRoomPrefabs[randomBossRoom], new Vector3((levelGenerationHelper.createdRooms[i].x - halfGridSize) * roomBounds[randomBossRoom].size.x,
-                        0, (levelGenerationHelper.createdRooms[i].y - halfGridSize) * roomBounds[randomBossRoom].size.z),
+                    rooms.Add(Instantiate(BossRoomPrefabs[randomBossRoom], new Vector3((levelGenerationHelper.CreatedRooms[i].x - halfGridSize) * roomBounds[randomBossRoom].size.x,
+                        0, (levelGenerationHelper.CreatedRooms[i].y - halfGridSize) * roomBounds[randomBossRoom].size.z),
                         transform.rotation) as GameObject);
                     rooms[i].transform.parent = GameObject.Find("Rooms").transform;
-                    rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.createdRooms[i], i);
+                    rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.CreatedRooms[i], i);
                     break;
                 case 4:
                     int randomLootRoom = Random.Range(0, LootRoomPrefabs.Length);
-                    rooms.Add(Instantiate(LootRoomPrefabs[randomLootRoom], new Vector3((levelGenerationHelper.createdRooms[i].x - halfGridSize) * roomBounds[randomLootRoom].size.x,
-                        0, (levelGenerationHelper.createdRooms[i].y - halfGridSize) * roomBounds[randomLootRoom].size.z),
+                    rooms.Add(Instantiate(LootRoomPrefabs[randomLootRoom], new Vector3((levelGenerationHelper.CreatedRooms[i].x - halfGridSize) * roomBounds[randomLootRoom].size.x,
+                        0, (levelGenerationHelper.CreatedRooms[i].y - halfGridSize) * roomBounds[randomLootRoom].size.z),
                         transform.rotation) as GameObject);
                     rooms[i].transform.parent = GameObject.Find("Rooms").transform;
-                    rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.createdRooms[i], i);
+                    rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.CreatedRooms[i], i);
                     break;
             }
 
             
         }
 
-        maxX = levelGenerationHelper.createdRooms[0].x;
-        maxY = levelGenerationHelper.createdRooms[0].y;
-        minX = levelGenerationHelper.createdRooms[0].x;
-        minY = levelGenerationHelper.createdRooms[0].y;
-        for (int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
+        maxX = levelGenerationHelper.CreatedRooms[0].x;
+        maxY = levelGenerationHelper.CreatedRooms[0].y;
+        minX = levelGenerationHelper.CreatedRooms[0].x;
+        minY = levelGenerationHelper.CreatedRooms[0].y;
+        for (int i = 0; i < levelGenerationHelper.CreatedRooms.Count; i++)
         {
-            if (maxX < levelGenerationHelper.createdRooms[i].x)
-                maxX = levelGenerationHelper.createdRooms[i].x;
-            if (maxY < levelGenerationHelper.createdRooms[i].y)
-                maxY = levelGenerationHelper.createdRooms[i].y;
-            if (minX > levelGenerationHelper.createdRooms[i].x)
-                minX = levelGenerationHelper.createdRooms[i].x;
-            if (minY > levelGenerationHelper.createdRooms[i].y)
-                minY = levelGenerationHelper.createdRooms[i].y;
+            if (maxX < levelGenerationHelper.CreatedRooms[i].x)
+                maxX = levelGenerationHelper.CreatedRooms[i].x;
+            if (maxY < levelGenerationHelper.CreatedRooms[i].y)
+                maxY = levelGenerationHelper.CreatedRooms[i].y;
+            if (minX > levelGenerationHelper.CreatedRooms[i].x)
+                minX = levelGenerationHelper.CreatedRooms[i].x;
+            if (minY > levelGenerationHelper.CreatedRooms[i].y)
+                minY = levelGenerationHelper.CreatedRooms[i].y;
         }
         maxX++;
         maxY++;
@@ -126,7 +126,7 @@ public class LevelGenerationManager : MonoBehaviour {
         {
             for(int x = (int)minX; x <= (int)maxX; x++)
             {
-                if(levelGenerationHelper.roomPlacementGrid[x,y] == 0)
+                if(levelGenerationHelper.RoomPlacementGrid[x,y] == 0)
                 {
                     var emptyRoomInstance = Instantiate(emptyRoom, new Vector3((x - halfGridSize) * emptyRoomSize.x,
                         0.99f, (y - halfGridSize) * emptyRoomSize.z), transform.rotation);
@@ -136,7 +136,7 @@ public class LevelGenerationManager : MonoBehaviour {
         }
         
         //Open the correct doors
-        for (int i = 0; i < levelGenerationHelper.createdRooms.Count; i++)
+        for (int i = 0; i < levelGenerationHelper.CreatedRooms.Count; i++)
         {
             CheckDoors(i);
         }
@@ -147,9 +147,9 @@ public class LevelGenerationManager : MonoBehaviour {
     {
         for(int direction = 0; direction < 4; direction++)
         {
-            Vector2 resultingVector = levelGenerationHelper.createdRooms[index] + directions[direction];
+            Vector2 resultingVector = levelGenerationHelper.CreatedRooms[index] + directions[direction];
 
-            if (levelGenerationHelper.roomPlacementGrid[(int)resultingVector.x, (int)resultingVector.y] == 0)
+            if (levelGenerationHelper.RoomPlacementGrid[(int)resultingVector.x, (int)resultingVector.y] == 0)
             {
                 rooms[index].GetComponent<RoomManager>().PlaceDoorCover(direction);
             }

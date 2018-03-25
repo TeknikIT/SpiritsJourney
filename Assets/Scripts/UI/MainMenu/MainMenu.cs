@@ -53,7 +53,7 @@ public class MainMenu : MonoBehaviour {
         string text = fileNameField.GetComponent<InputField>().text;
         GlobalControl.instance.SaveData(text);
         GlobalControl.instance.hasStartedPlaying = true;
-        HubManager.instance.ToPreviousScene();
+        HubManager.instance.ToTutorialScene();
     }
 
     public void LoadGame(string file)

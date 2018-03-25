@@ -15,13 +15,18 @@ public class HubManager : MonoBehaviour {
     }
     #endregion
 
-    public void ToNextScene()
+    public void ToTutorialScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(1);
     }
 
-    public void ToPreviousScene()
+    public void ToGameScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(2);
+    }
+
+    public void ToHubworldScene()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -8419,7 +8419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 10
-  damageCoefficient: 10
+  damage: 0
 --- !u!114 &114449421289428680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8747,7 +8747,7 @@ MonoBehaviour:
   baseMovementSpeed: 2
   movementSpeed: 0
   maxMovementSpeed: 20
-  baseDamage: 5
+  baseDamage: 10
   damage: 0
   maxDamage: 50
   room: {fileID: 0}

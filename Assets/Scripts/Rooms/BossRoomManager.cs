@@ -14,7 +14,7 @@ public class BossRoomManager : RoomManager {
     public static void LevelFinished()
     {
         TokenManager.instance.AddTokens();
-        LevelManager.instance.Reload();
+        GameManager.instance.NewLevel();
     }
 
 }

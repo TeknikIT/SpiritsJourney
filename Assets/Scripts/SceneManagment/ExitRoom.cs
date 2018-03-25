@@ -8,7 +8,7 @@ public class ExitRoom : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            HubManager.instance.ToNextScene();
+            HubManager.instance.ToHubworldScene();
         }
     }
 }
