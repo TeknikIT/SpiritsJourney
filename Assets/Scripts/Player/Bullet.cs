@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour {
         }
         if(other.tag == "EnemyChild")
         {
-            other.transform.parent.GetComponent<EnemyManager>().TakeDamageWithKnockback(damage, 5f, transform.TransformDirection(new Vector3(0, 0, 1)));
+            other.transform.parent.GetComponent<EnemyManager>().TakeDamageWithKnockback(damage, 5f, transform.parent.TransformDirection(new Vector3(0, 0, 1)));
         }
         if (other.tag == "Utillity" || other.tag == "Player")
         {

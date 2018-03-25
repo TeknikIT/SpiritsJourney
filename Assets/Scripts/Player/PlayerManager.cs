@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour {
     private Vector3 holdPosition;
     public void KillPlayer()
     {
-        LevelManager.instance.Reload();
+        GameManager.instance.PlayerDied();
     }
     private void Start()
     {

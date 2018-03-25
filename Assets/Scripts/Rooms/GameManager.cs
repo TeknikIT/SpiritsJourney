@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     #region Singleton
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour {
         levelManager.Initialize();
         level = 0;
         NewLevel();
+        GlobalControl.instance.hasStartedPlaying = true;
 	}
 	
 	// Update is called once per frame
@@ -64,5 +66,19 @@ public class GameManager : MonoBehaviour {
             em.movementSpeed = em.baseMovementSpeed + enemySpeedScaling * (level - 1);
 
         }
+    }
+
+    public void PlayerDied()
+    {
+        GlobalControl.instance.hasStartedPlaying = true;
+        TokenManager.instance.SaveStatistics();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+
+    }
+
+    public void ExitGame()
+    {
+        GlobalControl.instance.hasStartedPlaying = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

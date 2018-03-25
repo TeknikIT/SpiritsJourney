@@ -158,6 +158,8 @@ public class Character : MonoBehaviour {
             coolDowns[i] *= buffItem.cooldownDecrease;
         }
 
+        damageModifier += buffItem.damageIncrease;
+
     }
 
     public virtual void AddConsumableItem(Consumable consumable)

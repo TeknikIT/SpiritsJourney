@@ -13,6 +13,8 @@ public class GlobalControl : MonoBehaviour {
     public bool isSceneBeingLoaded = false;
     public bool hasStartedPlaying = false;
 
+    public string currentSave;
+
     #region Singleton
     public static GlobalControl instance;
 
@@ -55,6 +57,7 @@ public class GlobalControl : MonoBehaviour {
         FileStream saveFile = File.Open(filename, FileMode.Open);
         savedGameStatistics = (GameStatistics)formatter.Deserialize(saveFile);
         saveFile.Close();
+        currentSave = filename;
     }
 
     public void NotPlaying()

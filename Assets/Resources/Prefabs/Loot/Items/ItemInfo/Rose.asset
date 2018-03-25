@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654446ab5c119e54597c9a256b913616, type: 3}
+  m_Name: Rose
+  m_EditorClassIdentifier: 
+  name: Rose
+  healthIncrease: 0
+  speedIncrease: 0
+  damageIncrease: 10
+  cooldownDecrease: 0
+  item: {fileID: 1695412553109554, guid: f8ee104d5f08fb64181575f03314d07c, type: 2}

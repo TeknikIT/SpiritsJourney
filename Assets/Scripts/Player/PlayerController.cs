@@ -13,22 +13,24 @@ public class PlayerController : MonoBehaviour {
     public bool movementIsLocked = false;
     CharacterController controller;
     void Update () {
-        speed = character.moveSpeed;
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        if(moveDirection != Vector3.zero)
-            transform.rotation = Quaternion.LookRotation(moveDirection);
-        moveDirection *= speed;
-        moveDirection.y -= gravity * Time.deltaTime;
-        if (!movementIsLocked)
+        if (GlobalControl.instance.hasStartedPlaying)
         {
-            controller.Move(Vector3.ClampMagnitude(moveDirection, speed) * Time.deltaTime);
-            GetComponent<Animator>().SetFloat("Velocity", Vector3.Distance(Vector3.zero, controller.velocity));
+            speed = character.moveSpeed;
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            if (moveDirection != Vector3.zero)
+                transform.rotation = Quaternion.LookRotation(moveDirection);
+            moveDirection *= speed;
+            moveDirection.y -= gravity * Time.deltaTime;
+            if (!movementIsLocked)
+            {
+                controller.Move(Vector3.ClampMagnitude(moveDirection, speed) * Time.deltaTime);
+                GetComponent<Animator>().SetFloat("Velocity", Vector3.Distance(Vector3.zero, controller.velocity));
+            }
+            else
+            {
+                GetComponent<Animator>().SetFloat("Velocity", 0);
+            }
         }
-        else
-        {
-            GetComponent<Animator>().SetFloat("Velocity", 0);
-        }
-       
         //transform.Translate(moveDirection * speed * Time.deltaTime, Space.Self);
         
        

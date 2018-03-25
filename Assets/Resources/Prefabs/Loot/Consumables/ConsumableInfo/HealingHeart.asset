@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4d88b845c82f74a99c1c43ea6e5290, type: 3}
   m_Name: HealingHeart
   m_EditorClassIdentifier: 
-  name: Healing Heart
-  healthIncrease: 20
+  name: Healing Potion
+  healthIncrease: 10
   speedIncrease: 0
   cooldownDecrease: 0
-  item: {fileID: 1144398564411484, guid: b9a3adf0fb4c6b74b8675dd4a82e2c44, type: 2}
+  item: {fileID: 1663442389147172, guid: fbcdefa1746dba24ea23ef6b2365ca59, type: 2}

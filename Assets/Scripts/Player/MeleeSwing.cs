@@ -20,6 +20,7 @@ public class MeleeSwing : MonoBehaviour {
         endRot = new Vector3(startRot.x, startRot.y - 120f, startRot.z);
         charLocked = false;
         centerRot = (endRot - startRot) / 2;
+        PlayerManager.instance.GetComponent<Animator>().SetBool("BasicAttacking", true);
 
     }
     // Update is called once per frame
@@ -36,6 +37,7 @@ public class MeleeSwing : MonoBehaviour {
             currentSlashTime = slashTime;
             transform.parent.gameObject.isStatic = false;
             createdBy.ToggleCharacterMovement();
+            PlayerManager.instance.GetComponent<Animator>().SetBool("BasicAttacking", false);
             Destroy(gameObject);
         }
         float perc = currentSlashTime / slashTime;
@@ -60,7 +62,7 @@ public class MeleeSwing : MonoBehaviour {
         if (c.CompareTag("EnemyChild"))
         {
             c.gameObject.GetComponentInParent<EnemyManager>().TakeDamageWithKnockback(20, 10f,
-                transform.TransformDirection(centerRot));
+                transform.parent.TransformDirection(new Vector3(0, 0, 1)));
 
         }
     }

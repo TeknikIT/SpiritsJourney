@@ -27,7 +27,7 @@ public class LootManager : MonoBehaviour {
 
     public BuffItem RandomItem()
     {
-        int i = Random.Range(0, consumablePickups.Length);
+        int i = Random.Range(0, itemPickups.Length);
         return itemPickups[i];
     }
 

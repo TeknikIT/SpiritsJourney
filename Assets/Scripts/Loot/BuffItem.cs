@@ -9,6 +9,7 @@ public class BuffItem : ScriptableObject {
 
     public int healthIncrease;
     public float speedIncrease;
+    public float damageIncrease;
     public float cooldownDecrease;
 
     public GameObject item;
