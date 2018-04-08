@@ -26,7 +26,7 @@ public class TitleScreen : MonoBehaviour {
         {
             FadeCanvas();
         }
-        fluctuateImage();
+        FluctuateImage();
     }
     IEnumerator FlucuateTextAlpha(float FadeTime) {
         text.CrossFadeAlpha(0.0f, FadeTime, false);
@@ -48,7 +48,7 @@ public class TitleScreen : MonoBehaviour {
             gameObject.SetActive(false);
         }
     }
-    void fluctuateImage()
+    void FluctuateImage()
     {
         float size = 0.01f * Mathf.Sin(2 * timer) + 0.5f;
         image.GetComponent<RectTransform>().localScale = new Vector3(size, size, 1);

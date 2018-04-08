@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+/// <summary>
+/// Statistics of the character from the token store
+/// </summary>
+
 [Serializable]
 public class PlayerStatistics  {
 

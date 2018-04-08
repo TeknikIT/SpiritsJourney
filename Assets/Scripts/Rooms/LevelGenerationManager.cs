@@ -11,14 +11,21 @@ public class LevelGenerationManager : MonoBehaviour {
         instance = this;
     }
     #endregion
-    private GameObject[] GeneralRoomPrefabs, BossRoomPrefabs, StartingRoomPrefabs, LootRoomPrefabs; //Room prefabs
-    private GameObject emptyRoom;
+    //Room prefabs
+    private GameObject[] GeneralRoomPrefabs, BossRoomPrefabs, StartingRoomPrefabs, LootRoomPrefabs; 
+    private GameObject emptyRoom; 
+
     private int levelSize; //The size of the level. More than one 100 is very laggy
+
     public LevelGenerationHelper levelGenerationHelper; //Helperclass for creating the level
+
     private Bounds[] roomBounds = new Bounds[100]; //Size of rooms, Used for making enough room between rooms
+
     private Vector3 emptyRoomSize;
+
     public List<GameObject> rooms; // A list of all the rooms in the game
     public List< Vector2> directions;//A list of vectors setting integers to Vectors
+
     public float maxX, maxY, minX, minY;
 
     // Use this for initialization
@@ -35,7 +42,9 @@ public class LevelGenerationManager : MonoBehaviour {
         //GetComponent<LevelManager>().Initialize(); // Initializing Levelmanager
     }
 
-
+    /// <summary>
+    /// Instantiating the rooms
+    /// </summary>
     public void InstantiateRooms()
     {
         if(directions.Count == 0)
@@ -65,7 +74,7 @@ public class LevelGenerationManager : MonoBehaviour {
         for(int i = 0; i < levelGenerationHelper.CreatedRooms.Count; i++)
         {
             switch(levelGenerationHelper.RoomPlacementGrid[(int)levelGenerationHelper.CreatedRooms[i].x, (int)levelGenerationHelper.CreatedRooms[i].y]){
-                case 1:
+                case 1: // Normal Rooms
                     int randomGeneralRoom = Random.Range(0, GeneralRoomPrefabs.Length);
                     rooms.Add(Instantiate(GeneralRoomPrefabs[randomGeneralRoom], new Vector3((levelGenerationHelper.CreatedRooms[i].x - halfGridSize) * roomBounds[randomGeneralRoom].size.x,
                         0, (levelGenerationHelper.CreatedRooms[i].y - halfGridSize)* roomBounds[randomGeneralRoom].size.z),
@@ -73,7 +82,7 @@ public class LevelGenerationManager : MonoBehaviour {
                     rooms[i].transform.parent = GameObject.Find("Rooms").transform;
                     rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.CreatedRooms[i], i);
                     break;
-                case 2:
+                case 2: // Starting room
                     int randomStartingRoom = Random.Range(0, StartingRoomPrefabs.Length);
                     rooms.Add(Instantiate(StartingRoomPrefabs[randomStartingRoom], new Vector3((levelGenerationHelper.CreatedRooms[i].x - halfGridSize) * roomBounds[randomStartingRoom].size.x,
                         0, (levelGenerationHelper.CreatedRooms[i].y - halfGridSize) * roomBounds[randomStartingRoom].size.z),
@@ -81,7 +90,7 @@ public class LevelGenerationManager : MonoBehaviour {
                     rooms[i].transform.parent = GameObject.Find("Rooms").transform;
                     rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.CreatedRooms[i], i);
                     break;
-                case 3:
+                case 3: // Boss Room
                     int randomBossRoom = Random.Range(0, BossRoomPrefabs.Length);
                     rooms.Add(Instantiate(BossRoomPrefabs[randomBossRoom], new Vector3((levelGenerationHelper.CreatedRooms[i].x - halfGridSize) * roomBounds[randomBossRoom].size.x,
                         0, (levelGenerationHelper.CreatedRooms[i].y - halfGridSize) * roomBounds[randomBossRoom].size.z),
@@ -89,7 +98,7 @@ public class LevelGenerationManager : MonoBehaviour {
                     rooms[i].transform.parent = GameObject.Find("Rooms").transform;
                     rooms[i].GetComponent<RoomManager>().Initialize(levelGenerationHelper.CreatedRooms[i], i);
                     break;
-                case 4:
+                case 4: // Loot room
                     int randomLootRoom = Random.Range(0, LootRoomPrefabs.Length);
                     rooms.Add(Instantiate(LootRoomPrefabs[randomLootRoom], new Vector3((levelGenerationHelper.CreatedRooms[i].x - halfGridSize) * roomBounds[randomLootRoom].size.x,
                         0, (levelGenerationHelper.CreatedRooms[i].y - halfGridSize) * roomBounds[randomLootRoom].size.z),
@@ -102,10 +111,13 @@ public class LevelGenerationManager : MonoBehaviour {
             
         }
 
+        // Constraints for optimisation
         maxX = levelGenerationHelper.CreatedRooms[0].x;
         maxY = levelGenerationHelper.CreatedRooms[0].y;
         minX = levelGenerationHelper.CreatedRooms[0].x;
         minY = levelGenerationHelper.CreatedRooms[0].y;
+
+        //Decide the constraints
         for (int i = 0; i < levelGenerationHelper.CreatedRooms.Count; i++)
         {
             if (maxX < levelGenerationHelper.CreatedRooms[i].x)
@@ -122,6 +134,7 @@ public class LevelGenerationManager : MonoBehaviour {
         minX--;
         minY--;
 
+        //Instantiate empty rooms
         for (int y = (int)minY; y <= maxY; y++)
         {
             for(int x = (int)minX; x <= (int)maxX; x++)

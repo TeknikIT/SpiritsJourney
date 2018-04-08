@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Used for setting the correct size on the flame
+/// </summary>
 public class FlameSize : MonoBehaviour {
 
 	void Start () {

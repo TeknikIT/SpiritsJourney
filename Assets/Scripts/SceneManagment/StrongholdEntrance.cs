@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Collider trigger to game scene
+/// </summary>
 public class StrongholdEntrance : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)

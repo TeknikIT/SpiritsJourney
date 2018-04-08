@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Used to test some functionally with colliders and stores
+/// </summary>
 public class Tent : MonoBehaviour {
 
 	// Use this for initialization

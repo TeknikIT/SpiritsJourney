@@ -2,17 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controller for the character
+/// </summary>
 public class PlayerController : MonoBehaviour {
 
 
     public float speed;
     public float gravity = 20.0F;
+
+    // The character, i.e Ericka
     public Character character;
+
     public Vector3 moveDirection = Vector3.zero;
     public Vector3 originPosition;
+
     public bool movementIsLocked = false;
+
     CharacterController controller;
+
     void Update () {
+
         if (GlobalControl.instance.hasStartedPlaying)
         {
             speed = character.moveSpeed;

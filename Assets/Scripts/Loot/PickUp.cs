@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Pickup handler
+/// </summary>
 public class PickUp : MonoBehaviour {
 
     public BuffItem buffItem;

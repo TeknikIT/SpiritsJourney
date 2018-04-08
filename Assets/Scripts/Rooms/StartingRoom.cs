@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Starting room manager
+/// </summary>
 public class StartingRoom : RoomManager {
 
     private void Start()

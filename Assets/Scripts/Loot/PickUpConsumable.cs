@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Pickup handler for consumable
+/// </summary>
 public class PickUpConsumable : MonoBehaviour {
 
     public Consumable consumable;
@@ -13,21 +17,23 @@ public class PickUpConsumable : MonoBehaviour {
 
     private void Start()
     {
-        item = transform.Find("Item");
-        consumable = LevelManager.instance.GetComponent<LootManager>().RandomConsumable();
-        consumableModel = Instantiate(consumable.item);
-        consumableModel.transform.parent = item;
-        consumableModel.transform.position = item.position;
-        startY = item.position.y;
+        item = transform.Find("Item"); //The gameobject under which the consumable will be instatiated
+        consumable = LevelManager.instance.GetComponent<LootManager>().RandomConsumable(); //Get a random consumable
+        consumableModel = Instantiate(consumable.item); //Instatiate in game world
+        consumableModel.transform.parent = item; //Set parent
+        consumableModel.transform.position = item.position; //Transform position
+        startY = item.position.y; //Set y coordinate
     }
+
+
     private void Update()
     {
-        consumableModel.transform.position = transform.Find("Item").position;
-        item.position = new Vector3(item.position.x, startY + Mathf.Cos(count) / 10, item.position.z);
+        consumableModel.transform.position = transform.Find("Item").position; //Continually set position
+        item.position = new Vector3(item.position.x, startY + Mathf.Cos(count) / 10, item.position.z); //Make the item move according to a cosine function
         count += 0.1f;
-
-
     }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

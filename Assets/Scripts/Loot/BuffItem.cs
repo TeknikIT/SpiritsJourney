@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Contains the stats for an item
+/// </summary>
 [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
 public class BuffItem : ScriptableObject {
 

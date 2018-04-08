@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Melee attack, swing
+/// </summary>
 public class MeleeSwing : MonoBehaviour {
 
     float slashTime;
@@ -46,17 +49,20 @@ public class MeleeSwing : MonoBehaviour {
         transform.eulerAngles = currentRot;
 
     }
+    /// <summary>
+    /// Used for debug
+    /// </summary>
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(gameObject.GetComponent<Collider>().bounds.center, gameObject.GetComponent<Collider>().bounds.size);
     }
+
+
     private void OnTriggerEnter(Collider c)
     {
         if (c.CompareTag("Enemy"))
         {
-            Debug.Log(new Vector3(0, 0, -1));
-            //Change to use aim direction instead!
             c.gameObject.GetComponent<EnemyManager>().TakeDamageWithKnockback((int)damage, 10f,
                 transform.TransformDirection(new Vector3(0, 0, 1)));
         }

@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles features that cross over scenes
+/// </summary>
+
 public class GlobalManager : MonoBehaviour {
 
+    // The pause menu game object
     public GameObject pauseMenu;
 
 	void Update () {

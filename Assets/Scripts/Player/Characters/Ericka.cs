@@ -2,24 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Player character: Ericka
+/// </summary>
 namespace Assets.Scripts.Player.Characters
 {
     class Ericka : Character
     {
-        GameObject projectile, meleeHitbox;
-        public float dashDistance, dashTime;
-        private float dashSpeed;
-        public bool dashing;
-        public Vector3 target, distanceTraveled;
-        public bool collisionAttack;
-        public int collisionAttackDamage;
+        GameObject projectile, meleeHitbox; // Subordinate gameobject
+        public float dashDistance, dashTime, dashSpeed; // Dash variables
+        public bool dashing; // Is the character dashing
+        public Vector3 target, distanceTraveled; // Target is dashtarget. Distance traveled during dash
+        public bool collisionAttack; // Is the character using a collision attack
+        public int collisionAttackDamage; // Collision attack damage
 
 
 
         private void Start()
         {
-            projectile = (GameObject)Resources.Load("Prefabs/Bullet");
+            //Loading the attack prefabs
+            projectile = (GameObject)Resources.Load("Prefabs/Bullet"); 
             meleeHitbox = (GameObject)Resources.Load("Prefabs/MeleeAttackHB");
+
             dashing = false;
             collisionAttack = false;
             collisionAttackDamage = 10;
@@ -28,24 +32,29 @@ namespace Assets.Scripts.Player.Characters
 
         public void Update()
         {
+            //Basic Attack Aim
             if (Input.GetButton("Basic"))
             {
                 AimCone(0.2f);
             }
+            //Basic Attack Use
             if (Input.GetButtonUp("Basic"))
             {
                 BasicAbility();
             }
 
+            //Character Specific Abillity Aim
             if (Input.GetButton("CSA"))
             {
                 AimArrow();
             }
+            //Character Specific Abillity Use
             if (Input.GetButtonUp("CSA"))
             {
                 CharacterSpecificAbility();
             }
 
+            //Used for dashing. Not currently used
             if (dashing)
             {
                 collisionAttack = true;
@@ -63,7 +72,10 @@ namespace Assets.Scripts.Player.Characters
             }
 
         }
-
+        /// <summary>
+        /// Basic ability activated
+        /// </summary>
+        /// <returns>Boolean</returns>
         public override bool BasicAbility()
         {
             if (base.BasicAbility())
@@ -77,6 +89,10 @@ namespace Assets.Scripts.Player.Characters
             return true;
         }
 
+        /// <summary>
+        /// Character Specific Ability activated
+        /// </summary>
+        /// <returns>Boolean</returns>
         public override bool CharacterSpecificAbility()
         {
             if (base.CharacterSpecificAbility())
@@ -91,6 +107,10 @@ namespace Assets.Scripts.Player.Characters
 
         }
 
+        /// <summary>
+        /// Recover Ability
+        /// </summary>
+        /// <returns></returns>
         public override bool RecoveryAbility()
         {
             if (base.RecoveryAbility())
@@ -100,6 +120,10 @@ namespace Assets.Scripts.Player.Characters
             return true;
         }
 
+        /// <summary>
+        /// Utillity Ability
+        /// </summary>
+        /// <returns>Boolean</returns>
         public override bool UtilityAbility()
         {
             if (base.UtilityAbility())
@@ -117,6 +141,10 @@ namespace Assets.Scripts.Player.Characters
 
         }
 
+        /// <summary>
+        /// Special ability activated
+        /// </summary>
+        /// <returns>Boolean</returns>
         public override bool SpecialAbility()
         {
             if (base.SpecialAbility())
@@ -126,11 +154,18 @@ namespace Assets.Scripts.Player.Characters
             return true;
         }
 
+        /// <summary>
+        /// Aim with arrow
+        /// </summary>
         public override void AimArrow()
         {
             base.AimArrow();
         }
 
+        /// <summary>
+        /// Aim with cone
+        /// </summary>
+        /// <param name="scale">Scale of the cone</param>
         public override void AimCone(float scale)
         {
             base.AimCone(scale);
@@ -138,10 +173,9 @@ namespace Assets.Scripts.Player.Characters
 
         public void OnCollisionEnter(Collision c)
         {
-            Debug.Log("1");
+            // Used for dash attack
             if(c.gameObject.tag == "Enemy")
             {
-                Debug.Log(2);
                 if (collisionAttack)
                 {
                     this.gameObject.layer = 9;
@@ -150,10 +184,8 @@ namespace Assets.Scripts.Player.Characters
             }
             else if(c.gameObject.tag == "EnemyChild")
             {
-                Debug.Log(3);
                 if (collisionAttack)
                 {
-                    Debug.Log(4);
                     this.gameObject.layer = 9;
                     c.gameObject.GetComponentInParent<EnemyManager>().TakeDamage(collisionAttackDamage);
                 }
@@ -162,6 +194,7 @@ namespace Assets.Scripts.Player.Characters
 
         public void OnCollisionExit(Collision c)
         {
+            // Used for dash attack
             if (c.gameObject.tag == "Enemy")
             {
                 if (collisionAttack)

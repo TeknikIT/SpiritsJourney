@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// EnemyController for the Slime
+/// </summary>
 public class SlimeController : EnemyController {
+    
 
+    /// <summary>
+    /// Movement for the Slime
+    /// </summary>
     public override void Movement()
     {
         controller = GetComponent<CharacterController>(); //Gets the character controller
@@ -31,6 +38,10 @@ public class SlimeController : EnemyController {
         transform.Find("AnimationModel").GetComponent<Animator>().SetFloat("DistanceToChar", Vector3.Distance(transform.position, Player.position));
     }
 
+    /// <summary>
+    /// Checks if a trigger has entered the collider
+    /// </summary>
+    /// <param name="other">The collider of the object that has enered</param>
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")

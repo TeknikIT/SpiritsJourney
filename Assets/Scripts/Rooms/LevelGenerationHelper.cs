@@ -62,9 +62,9 @@ public class LevelGenerationHelper {
         while (CreatedRooms.Count < LevelSize)
         {
             if (CreatedRooms.Count == LevelSize - 2)
-                PlaceSpecialRoom(3);
+                PlaceSpecialRoom(3); // End room
             else if (CreatedRooms.Count == LevelSize - 1)
-                PlaceSpecialRoom(4);
+                PlaceSpecialRoom(4); // Loot Room
             else
                 PickARandomRoomAndDirection();
         }

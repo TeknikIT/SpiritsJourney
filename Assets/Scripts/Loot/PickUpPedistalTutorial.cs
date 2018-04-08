@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Ordinary pedistal for tutorial
+/// </summary>
 public class PickUpPedistalTutorial : MonoBehaviour {
 
     public BuffItem buffItem;

@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Manager of the game world
+/// </summary>
 public class GameManager : MonoBehaviour {
+
     #region Singleton
     public static GameManager instance;
 
@@ -13,8 +17,11 @@ public class GameManager : MonoBehaviour {
     }
     #endregion
 
+    //Current level manager
     private LevelManager levelManager;
 
+    // Scaling variables
+    #region Scaling Variables
     public int level;
     public int earnedTokens;
     public int roomScaling;
@@ -27,7 +34,7 @@ public class GameManager : MonoBehaviour {
     public float totalEnemyHealthIncrease;
     public float totalEnemyDamageIncrease;
     public float totalEnemySpeedIncrease;
-
+    #endregion
 
     // Use this for initialization
     void Start () {
@@ -38,11 +45,9 @@ public class GameManager : MonoBehaviour {
         GlobalControl.instance.hasStartedPlaying = true;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
+    /// <summary>
+    /// Restart on a new level
+    /// </summary>
     public void NewLevel()
     {
         level++;
@@ -67,6 +72,9 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Player died, kick back to hubworld
+    /// </summary>
     public void PlayerDied()
     {
         GlobalControl.instance.hasStartedPlaying = true;
@@ -75,6 +83,9 @@ public class GameManager : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Exit game to hubworld
+    /// </summary>
     public void ExitGame()
     {
         GlobalControl.instance.hasStartedPlaying = false;

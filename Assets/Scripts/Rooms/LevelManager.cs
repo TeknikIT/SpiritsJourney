@@ -20,21 +20,27 @@ public class LevelManager : MonoBehaviour {
     }
     #endregion
 
+    // The current active room
     public static int activeRoom;
 
+    //Set the active room
     public static void SetActiveRoom (int arrayPosition)
     {
         activeRoom = arrayPosition;
     }
 
-    public Vector2 display;
+    //public Vector2 display;
+
     private LevelGenerationManager levelGenerationManager;
+
     private List<GameObject> rooms;
     public List<GameObject> enemies;
     private List<Vector2> directions;
+
     public int startingRoomAmount;
     public int currentRoomAmount;
     public int maxRoomAmount;
+
 	// Use this for initialization
 	void Start () {
         directions = new List<Vector2>
@@ -46,13 +52,18 @@ public class LevelManager : MonoBehaviour {
         };
 
     }
+    /// <summary>
+    /// Initialize the level
+    /// </summary>
     public void Initialize()
     {
         levelGenerationManager = GetComponent<LevelGenerationManager>();
         rooms = levelGenerationManager.rooms;
-        
     }
 
+    /// <summary>
+    /// Reload the level
+    /// </summary>
     public void Reload()
     {
         Transform roomTransforms = GameObject.Find("Rooms").transform;
@@ -76,6 +87,9 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Open the doors of a neighbouring room
+    /// </summary>
     private void OpenNeighboursDoors()
     {
         for(int i = 0; i < 4; i++)
@@ -93,6 +107,11 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Gets the opposite direction in the direction list
+    /// </summary>
+    /// <param name="direction">Input direction</param>
+    /// <returns>Oposite direction index</returns>
     private int GetOppositeDirection(int direction)
     {
         for (int i = 0; i < 2; i++)
@@ -118,7 +137,7 @@ public class LevelManager : MonoBehaviour {
         {
             rooms[activeRoom].GetComponent<RoomManager>().LockAllDoors();
         }
-        display = rooms[activeRoom].GetComponent<RoomManager>().roomGridPosition;
+        //display = rooms[activeRoom].GetComponent<RoomManager>().roomGridPosition;
 
 	}
 }

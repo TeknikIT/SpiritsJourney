@@ -36,7 +36,9 @@ public class EnemyController : MonoBehaviour {
     {
         Movement();
     }
-
+    /// <summary>
+    /// Movement for enemies.
+    /// </summary>
     public virtual void Movement()
     {
         controller = GetComponent<CharacterController>(); //Gets the character controller
@@ -59,7 +61,7 @@ public class EnemyController : MonoBehaviour {
             controller.Move(moveDirection * Time.deltaTime);
 
         }
-
+        //Checks if the character has an animator
         if (GetComponent<Animator>() == null)
         {
             if (transform.Find("AnimationModel") != null)
@@ -73,14 +75,23 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    //Starts the knockback coroutine
+    /// <summary>
+    /// Starts the knockback coroutine
+    /// </summary>
+    /// <param name="strength">Knockback strength</param>
+    /// <param name="hitDirection">Knockback direction</param>
     public void StartKnockback(float strength, Vector3 hitDirection)
     {
         timer = 0;
         coroutine = Knockback(strength, hitDirection);
         StartCoroutine(coroutine);
     }
-
+    /// <summary>
+    /// Knockback coroutine
+    /// </summary>
+    /// <param name="strength">Knockback strength</param>
+    /// <param name="hitDirection">Knockback direction</param>
+    /// <returns></returns>
     private IEnumerator Knockback(float strength, Vector3 hitDirection)
     {
         isActive = false; //Makes the character not move during knockback
@@ -90,7 +101,7 @@ public class EnemyController : MonoBehaviour {
             //Moves the character during the knockback
             yield return controller.Move(hitDirection * Time.deltaTime * strength);
         }
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.1f); //Freezes the character for 0.1 seconds after knockback
         isActive = true;//Makes the character move again
     }
 }

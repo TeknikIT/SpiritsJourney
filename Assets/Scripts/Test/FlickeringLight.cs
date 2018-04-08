@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Makes the light flicker
+/// </summary>
 public class FlickeringLight : MonoBehaviour {
 
     public float minIntensity;

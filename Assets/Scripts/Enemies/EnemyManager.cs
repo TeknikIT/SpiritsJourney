@@ -7,20 +7,25 @@ using UnityEngine;
 /// Manages an enemy's health and status
 /// </summary>
 public class EnemyManager : MonoBehaviour {
-
+    //Health variables
     public int baseHealth;
     public int health;
 
+    //Movementspeed
     public  float baseMovementSpeed;
     public float movementSpeed;
     public float maxMovementSpeed;
 
+    //Damage
     public float baseDamage;
     public float damage;
     public float maxDamage;
 
+    //The room in which the enemy resides in
     public BaseRoomManager room;
-    private float timer;
+
+    private float timer; //Used for timing and delay
+
     private void Start()
     {
         
