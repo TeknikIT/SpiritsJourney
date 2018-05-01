@@ -1241,9 +1241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98048e36a7cb3d24294ad037e6e5f740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  display: {x: 0, y: 0}
   enemies: []
-  startingRoomAmount: 10
+  startingRoomAmount: 8
   currentRoomAmount: 10
   maxRoomAmount: 40
 --- !u!4 &1474643617
@@ -1290,7 +1289,7 @@ MonoBehaviour:
   roomScaling: 2
   amountOfRoomsIncrease: 0
   enemyHealthScaling: 10
-  enemyDamageScaling: 10
+  enemyDamageScaling: 5
   enemySpeedScaling: 0.5
   totalEnemyHealthIncrease: 0
   totalEnemyDamageIncrease: 0

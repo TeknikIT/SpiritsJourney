@@ -75,6 +75,7 @@ public class LevelManager : MonoBehaviour {
         rooms = levelGenerationManager.rooms;
         PlayerManager.instance.transform.position = PlayerManager.instance.GetComponent<PlayerController>().originPosition;
         PlayerManager.instance.health = 100;
+        enemies.Clear();
         foreach (GameObject r in rooms)
         {
             if (r.GetComponent<RoomManager>().monsters.Count != 0)

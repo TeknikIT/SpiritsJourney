@@ -60,14 +60,16 @@ public class GameManager : MonoBehaviour {
         totalEnemyDamageIncrease = enemyDamageScaling * (level - 1);
         totalEnemySpeedIncrease = enemySpeedScaling * (level - 1);
         amountOfRoomsIncrease = roomScaling * (level - 1);
+        levelManager.currentRoomAmount = levelManager.startingRoomAmount + amountOfRoomsIncrease;
+
         levelManager.Reload();
 
         foreach (GameObject enemy in levelManager.enemies)
         {
             EnemyManager em = enemy.GetComponent<EnemyManager>();
-            em.damage = em.baseDamage + enemyDamageScaling * (level - 1);
-            em.health = (int)(em.baseHealth + enemyHealthScaling * (level - 1));
-            em.movementSpeed = em.baseMovementSpeed + enemySpeedScaling * (level - 1);
+            em.damage = em.baseDamage + totalEnemyDamageIncrease;
+            em.health = (int)(em.baseHealth + totalEnemyHealthIncrease);
+            em.movementSpeed = em.baseMovementSpeed + totalEnemySpeedIncrease;
 
         }
     }

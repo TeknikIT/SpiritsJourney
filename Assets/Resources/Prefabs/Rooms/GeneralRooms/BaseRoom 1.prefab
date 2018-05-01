@@ -8742,12 +8742,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065b04190d932804db3482d3b2efbf3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 50
+  baseHealth: 40
   health: 0
-  baseMovementSpeed: 2
+  baseMovementSpeed: 0.5
   movementSpeed: 0
   maxMovementSpeed: 20
-  baseDamage: 10
+  baseDamage: 5
   damage: 0
   maxDamage: 50
   room: {fileID: 0}
